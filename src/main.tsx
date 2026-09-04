@@ -9,6 +9,9 @@ import BuscarEnderecoPage from './pages/BuscarFlow/BuscarEnderecoPage'
 import BuscarRestaurantesPage from './pages/BuscarFlow/BuscarRestaurantesPage'
 import PerfilPage from './pages/PerfilPage/PerfilPage'
 import ReservasPage from './pages/ReservasPage/ReservasPage'
+import ReservasLandingPage from './pages/ReservasLandingPage/ReservasLandingPage'
+import TagMeAccessPage from './pages/TagMeAccessPage/TagMeAccessPage'
+import TagmeReservaPage from './pages/TagmeReserva/TagmeReservaPage'
 import ReservaConfirmPage from './pages/ReservaFlow/ReservaConfirmPage'
 import ReservaSuccessPage from './pages/ReservaFlow/ReservaSuccessPage'
 import RestaurantPage from './pages/RestaurantPage/RestaurantPage'
@@ -37,15 +40,23 @@ createRoot(document.getElementById('root')!).render(
       <ReservaProvider>
         <BrowserRouter>
           <Routes>
-            {/* Seleção de perfil (Move) e Visão Restaurante (Portal B2B): fluidas
-                em TODA tela, inclusive na TV. */}
+            {/* Seleção de perfil (Move), Visão Restaurante (Portal B2B) e landing
+                intermediária de reservas: fluidas em TODA tela, inclusive na TV.
+                A landing (/reservas/visao-geral) é aberta pelo card "Visão de
+                reservas" do /move e o CTA dela leva ao iframe de /reservas. */}
             <Route path="/move" element={<MovePage />} />
             <Route path="/salao" element={<SalaoPage />} />
+            <Route path="/reservas/visao-geral" element={<ReservasLandingPage />} />
 
-            {/* Visão de Reservas: embute o portal de reservas externo
-                (portal-nn.vercel.app) em iframe full-screen – mesma mecânica de
+            {/* Visão de Reservas: embute o portal de reservas externo (Get In,
+                ginb2b.vercel.app) em iframe full-screen – mesma mecânica de
                 /salao, com barra "Voltar" para /move (ver ReservasPage). */}
             <Route path="/reservas" element={<ReservasPage />} />
+
+            {/* TagMe (fluxo "Prévia Tagme" da landing): tela de acesso + Painel
+                do app Reserva – telas fluidas próprias, fora do ClientFrame. */}
+            <Route path="/tagme" element={<TagMeAccessPage />} />
+            <Route path="/tagme/reservas" element={<TagmeReservaPage />} />
 
             {/* Visão Cliente: cada rota é envolvida pelo ClientFrame, que abaixo
                 do breakpoint de tablet renderiza normal e, em telas grandes/TV,

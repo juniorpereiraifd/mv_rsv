@@ -25,3 +25,6 @@ Portal-B2B-main/
 
 # Vercel local
 .vercel/
+
+# Prints de referência do fluxo TagMe (material local, não usado no build)
+tgme_img/

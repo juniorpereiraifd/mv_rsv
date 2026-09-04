@@ -1,0 +1,309 @@
+/* TagmeReservaPage – Painel do app "Reserva" do TagMe (print "image (64)").
+ * Layout de portal em tela cheia: sidebar escura à esquerda + conteúdo claro.
+ * Cores extraídas do print: sidebar #244242 (itens/topo) e #091618 (fundo
+ * inferior), acento laranja #ee7936, status verde-água #48958b; conteúdo em
+ * fundo quase branco #f7f7f7/#fff. Tipografia/tokens reusados do projeto. */
+.tagme-reserva {
+  display: flex;
+  min-height: 100vh;
+  background: #f5f5f5;
+  font-family: var(--font-brand);
+}
+
+/* ----------------------------- Sidebar ----------------------------- */
+.tagme-reserva__sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  background: #244242; /* tom superior da sidebar no print */
+  color: #eaf2f0;
+}
+.tagme-reserva__logo {
+  display: block;
+  padding: 18px 20px;
+  font-size: 22px;
+  font-weight: var(--font-weight-semibold);
+  color: #f59e72; /* logo laranja */
+  text-decoration: none;
+}
+.tagme-reserva__nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 10px;
+  overflow-y: auto;
+}
+.tagme-reserva__nav-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.tagme-reserva__nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: #d7e4e1;
+  font-size: 14px;
+  cursor: default;
+}
+.tagme-reserva__nav-item--active {
+  background: #ee7936;
+  color: #fff;
+  font-weight: var(--font-weight-medium);
+}
+
+/* --------------------------- Área principal -------------------------- */
+.tagme-reserva__main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: #f7f7f7;
+}
+.tagme-reserva__topbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--color-outline-default);
+  background: #fff;
+}
+.tagme-reserva__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-body);
+  text-decoration: none;
+}
+.tagme-reserva__back:hover { color: var(--color-text-brand); }
+.tagme-reserva__crumb {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-caption);
+}
+
+/* Toolbar da loja + ações */
+.tagme-reserva__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 16px 20px 8px;
+}
+.tagme-reserva__store-name {
+  display: block;
+  font-size: 18px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+.tagme-reserva__store-meta {
+  color: var(--color-text-secondary);
+  font-size: 13px;
+}
+.tagme-reserva__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tagme-reserva__btn {
+  padding: 8px 14px;
+  border: 1px solid var(--color-outline-default);
+  border-radius: var(--radius-pill);
+  background: #fff;
+  color: var(--color-text-primary);
+  font-family: var(--font-brand);
+  font-size: 13px;
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+}
+.tagme-reserva__btn--primary {
+  background: #ee7936;
+  border-color: #ee7936;
+  color: #fff;
+}
+
+/* Busca e filtros */
+.tagme-reserva__filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 4px 20px 12px;
+}
+.tagme-reserva__search {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid var(--color-outline-default);
+  border-radius: var(--radius-pill);
+  background: #fff;
+  color: var(--color-text-secondary);
+  font-size: 13px;
+}
+.tagme-reserva__filter {
+  padding: 6px 12px;
+  border: 1px solid var(--color-outline-default);
+  border-radius: var(--radius-pill);
+  background: #fff;
+  color: var(--color-text-primary);
+  font-size: 13px;
+}
+.tagme-reserva__filter--muted { color: var(--color-text-secondary); }
+
+/* Corpo: coluna + painel */
+.tagme-reserva__body {
+  flex: 1;
+  display: flex;
+  gap: 16px;
+  padding: 8px 20px 24px;
+  align-items: flex-start;
+}
+.tagme-reserva__reservas {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.tagme-reserva__section-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+/* Card de reserva */
+.tagme-reserva__card {
+  background: #fff;
+  border: 1px solid var(--color-outline-default);
+  border-radius: var(--radius-card);
+  padding: 14px 16px;
+}
+.tagme-reserva__card-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.tagme-reserva__badge {
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: var(--font-weight-semibold);
+}
+.tagme-reserva__badge--confirmado {
+  background: #e3f2f0;
+  color: #0e7a6b;
+}
+.tagme-reserva__badge--novo {
+  background: #fff0e8;
+  color: #d85a17;
+}
+.tagme-reserva__card-name {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+.tagme-reserva__card-event {
+  color: var(--color-text-secondary);
+  font-size: 12px;
+}
+.tagme-reserva__card-code {
+  color: var(--color-text-secondary);
+  font-size: 12px;
+}
+.tagme-reserva__card-close {
+  margin-left: auto;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+.tagme-reserva__card-tags {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.tagme-reserva__chip {
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: #f1f1f1;
+  color: var(--color-text-secondary);
+  font-size: 12px;
+}
+.tagme-reserva__chip--rsvp {
+  background: #fff0e8;
+  color: #d85a17;
+}
+.tagme-reserva__add-tag {
+  border: 0;
+  background: transparent;
+  color: var(--color-text-informative);
+  font-family: var(--font-brand);
+  font-size: 12px;
+  cursor: pointer;
+}
+.tagme-reserva__card-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+.tagme-reserva__card-time { font-weight: var(--font-weight-semibold); }
+.tagme-reserva__card-pax { color: var(--color-text-secondary); font-size: 13px; }
+.tagme-reserva__card-contact {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  color: var(--color-text-primary);
+}
+.tagme-reserva__contact-name { font-weight: var(--font-weight-medium); }
+.tagme-reserva__contact-code,
+.tagme-reserva__contact-note { color: var(--color-text-secondary); font-size: 12px; }
+
+/* Painel lateral de ocupação */
+.tagme-reserva__panel {
+  width: 280px;
+  flex-shrink: 0;
+  background: #fff;
+  border: 1px solid var(--color-outline-default);
+  border-radius: var(--radius-card);
+  padding: 16px;
+}
+.tagme-reserva__panel-title {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+.tagme-reserva__panel-occupancy {
+  margin: 0 0 8px;
+  color: var(--color-text-primary);
+}
+.tagme-reserva__panel-note {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* Responsivo básico – empilha painel abaixo da lista em telas estreitas. */
+@media (max-width: 900px) {
+  .tagme-reserva__body { flex-direction: column; }
+  .tagme-reserva__panel { width: 100%; }
+}
+@media (max-width: 640px) {
+  .tagme-reserva__sidebar { width: 64px; }
+  .tagme-reserva__nav-item { font-size: 0; gap: 0; justify-content: center; }
+  .tagme-reserva__logo { text-align: center; padding: 18px 8px; }
+}

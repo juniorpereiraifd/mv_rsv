@@ -6,7 +6,7 @@ import { useCheckins } from '../../context/CheckinProvider'
 import { useReservas } from '../../context/ReservaProvider'
 import faixa1Url from '../../assets/move/faixa-1.svg'
 import faixa2Url from '../../assets/move/faixa-2.svg'
-import heroPhotoUrl from '../../../header_foto.png'
+import heroPhotoUrl from '../../../bgmv.png'
 import deco1Url from '../../assets/move/deco-1.svg'
 import deco2Url from '../../assets/move/deco-2.svg'
 import deco3Url from '../../assets/move/deco-3.svg'
@@ -25,16 +25,16 @@ import './MovePage.css'
  *  1. Hero (103:7957): fundo vermelho #f91c4c (camada "Faixas" 103:7958 pinta
  *     por cima do #eb0033) com duas faixas em SVG ancoradas à borda direita –
  *     fora do canvas em 1306px, entram só em telas muito largas.
- *  2. Lockup do logo (103:7962) + título "Atraia e fidelize clientes com o
- *     iFood pra Comer Fora" e subtítulo, alinhados ao canto superior esquerdo.
+ *  2. Lockup do logo (103:7962) + título "Traga a força do iFood direto para a
+ *     sua mesa." e subtítulo, alinhados ao canto superior esquerdo.
  *  3. Ilustração do hero (103:7990) com os 3 decos em `mix-blend-multiply`,
  *     ancorada no canto superior direito.
  *  4. Cardlist "Explore nossas experiências" (103:7996), branco, colado na base
  *     com 4px de vermelho visível nas bordas (o design sobrepõe o card ao hero),
  *     com dois cards navegáveis: "Visão do cliente" (ícone user) → home do Comer
- *     Fora; e "Visão de reservas" (ícone calendar) → `/reservas`, que por enquanto
- *     embute o portal-nn.vercel.app (teste). Ambos usam a mesma mecânica: iframe
- *     full-screen com barra "Voltar" p/ /move. (O card "Visão do restaurante"
+ *     Fora; e "Visão de reservas" (ícone calendar) → `/reservas/visao-geral`, a
+ *     landing intermediária que apresenta a ferramenta e cujo CTA "Conhecer
+ *     ferramenta" abre o iframe de `/reservas`. (O card "Visão do restaurante"
  *     → `/salao` foi removido a pedido do usuário.)
  *
  * Desvios responsivos (documentados no CSS): a ilustração some abaixo de
@@ -99,13 +99,14 @@ export default function MovePage() {
 
           <div className="move-hero__text">
             <h1 className="move-hero__title">
-              Atraia e fidelize clientes
+              Traga a força do iFood
               <br />
-              com o iFood pra Comer Fora
+              direto para a sua mesa.
             </h1>
             <p className="move-hero__subtitle">
-              Fidelize quem já vem ao salão e traga clientes do delivery para a
-              sua vitrine com a força do iFood
+              Permita que os usuários descubram seu restaurante, façam reservas
+              com facilidade e vivam a experiência completa que só o seu
+              atendimento presencial oferece.
             </p>
           </div>
         </div>
@@ -130,11 +131,10 @@ export default function MovePage() {
                 </div>
               </Link>
 
-              {/* "Visão de reservas" navega (mesma aba) para a página /reservas,
-                  que embute o portal de reservas externo (portal-nn.vercel.app)
-                  em iframe full-screen com a barra "Voltar" para /move – mesma
-                  mecânica do card "Visão do cliente". */}
-              <Link to="/reservas" className="move-experience move-experience--link">
+              {/* "Visão de reservas" abre a landing intermediária
+                  (/reservas/visao-geral) que apresenta a ferramenta; o CTA
+                  "Conhecer ferramenta" dela é que leva ao iframe de /reservas. */}
+              <Link to="/reservas/visao-geral" className="move-experience move-experience--link">
                 <Icon name="calendar" style="Line" size={24} className="move-experience__icon" />
                 <div className="move-experience__text">
                   <h3 className="move-experience__name">Visão de reservas</h3>

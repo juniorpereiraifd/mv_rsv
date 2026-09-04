@@ -1,0 +1,354 @@
+/* ReservasLandingPage – landing intermediária antes do Portal de Reservas
+ * (Figma 154:6185 "Header"). Mesma linguagem visual da MovePage: página
+ * full-height full-bleed, hero vermelho cobrindo a viewport inteira e cardlist
+ * branca colada na base sobrepondo o hero. Diferença: o conteúdo do hero é
+ * CENTRALIZADO (eixo horizontal e vertical) e não tem a ilustração/foto do lado
+ * – o bloco é título + subtítulo + CTA, como no design (154:6190 "Content").
+ *
+ * Estrutura:
+ *   .reservas-landing            – página; flex column, min-height 100vh
+ *   .reservas-landing__hero      – fundo absoluto inset:0 (full-bleed)
+ *   .reservas-landing__frame     – coluna centralizada max-width:1306px
+ *   .reservas-landing__hero-content – lockup + texto + CTA, centralizado
+ *   .reservas-landing__cardlist  – cardlist branca colada na base */
+
+.reservas-landing {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* Telas altas: o conjunto (conteúdo + cardlist) mantém a altura natural e é
+   * centralizado verticalmente – mesmo comportamento da /move. */
+  justify-content: center;
+}
+
+/* Fundo do hero – cobre a página inteira. O #eb0033 aparece só na tira de 3px
+ * à esquerda; a camada de faixas pinta #f91c4c por cima de tudo. */
+.reservas-landing__hero {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--color-text-brand); /* #eb0033 */
+}
+
+.reservas-landing__faixas {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: -3px;
+  background: #f91c4c;
+}
+
+/* Frame central – espelha o canvas do design (1306px), já centrado
+ * horizontalmente via `max-width` + `margin: auto`. `flex: none` mantém a
+ * altura natural do conteúdo. */
+.reservas-landing__frame {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1306px;
+  margin: 0 auto;
+  flex: none;
+}
+
+/* Voltar para /move – fixo no topo esquerdo do frame (posição relativa ao
+ * canvas 1306px). Mesmo idioma do "Redefinir demonstração" da /move: pílula
+ * translúcida sobre o vermelho do hero, com o glifo de voltar da família Line.
+ * Como é um `<Link>`, remove o sublinhado/cor de link herdados do UA. */
+.reservas-landing__back {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.reservas-landing__back:hover,
+.reservas-landing__back:focus-visible {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.6);
+  outline: none;
+}
+
+.reservas-landing__back-icon {
+  color: #ffffff;
+}
+
+.reservas-landing__back-label {
+  white-space: nowrap;
+}
+
+/* Conteúdo do hero (154:6190) – centralizado nos dois eixos, com respiro na
+ * base (padding-bottom) para o cardlist não colar no CTA. */
+.reservas-landing__hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  padding: 48px 48px 80px;
+}
+
+/* Fileira de marcas (154:6342) – lockup iFood Move + logos das ferramentas
+ * apresentadas (Get In e TagMe) lado a lado, com o mesmo gap de 36px e o
+ * alinhamento centralizado do design. As logos vêm do Figma (nós "image 9191"
+ * e "image 9193" do header), vetorizadas em SVGs próprios do projeto. */
+.reservas-landing__brands {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+/* Lockup iFood Move – as 3 peças (marca + 2 palavras) do SVG posicionadas com
+ * as mesmas coordenadas relativas da /move. */
+.reservas-landing__logo {
+  position: relative;
+  width: 127.48px;
+  height: 24px;
+}
+
+/* Logos das ferramentas – preservam a cor/forma originais do SVG (alt vazio:
+ * decorativas, o nome da ferramenta já está nos CTAs abaixo). */
+.reservas-landing__brand-img {
+  display: block;
+}
+
+.reservas-landing__brand-img--getin {
+  width: 64px;
+  height: 25px;
+}
+
+.reservas-landing__brand-img--tagme {
+  width: 90px;
+  height: 24px;
+}
+
+.reservas-landing__logo-mark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20.58px;
+  height: 24px;
+}
+
+.reservas-landing__logo-word {
+  position: absolute;
+}
+
+.reservas-landing__logo-word--1 {
+  left: 27.61px;
+  top: 6.19px;
+  width: 61.16px;
+  height: 11.87px;
+}
+
+.reservas-landing__logo-word--2 {
+  left: 91.87px;
+  top: 0.26px;
+  width: 35.61px;
+  height: 17.55px;
+}
+
+/* Bloco de texto (154:6208) – coluna centralizada, gap 20. Título 40/48 Bold
+ * branco e subtítulo 16/24 Medium branco, ambos com largura máxima do design. */
+.reservas-landing__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+.reservas-landing__title {
+  margin: 0;
+  max-width: 618px;
+  font-family: var(--font-brand);
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  color: #ffffff;
+}
+
+.reservas-landing__subtitle {
+  margin: 0;
+  max-width: 532px;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+}
+
+/* Grupo de CTAs de prévia (154:6212 "Button") – os gatilhos para o iframe do
+ * Portal de Reservas (rota /reservas). Enquanto não há portal TagMe publicado,
+ * os dois botões abrem o mesmo `/reservas`. Não há componente Button no
+ * projeto; os CTAs usam o mesmo tratamento visual dos cards de experiência da
+ * /move (pill branco com sombra no hover), com cor de texto da marca. Como são
+ * `<Link>`, removem o sublinhado de link do UA. */
+.reservas-landing__cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.reservas-landing__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: var(--radius-pill);
+  background: #ffffff;
+  color: var(--color-text-brand);
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-semibold);
+  font-size: 16px;
+  line-height: 20px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: box-shadow 0.2s ease;
+}
+
+.reservas-landing__cta:hover,
+.reservas-landing__cta:focus-visible {
+  box-shadow: var(--shadow-card-high);
+  outline: none;
+}
+
+/* Cardlist "Como funciona" (154:6224/6225) – moldura externa transparente:
+ * espelha o `.move-experiences` da /move, com padding de 4px nas laterais e na
+ * base para deixar a faixa vermelha do hero visível ao redor do painel branco.
+ * O painel branco em si (`.reservas-landing__panel`) tem o raio de 24px
+ * completo (154:6225 rounded-[24px]). */
+.reservas-landing__cardlist {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 0 4px 4px;
+}
+
+.reservas-landing__cardlist-header {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+
+.reservas-landing__cardlist-title {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.6px;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+/* Painel branco – raio completo de 24px (mesmo do card de experiências da
+ * /move), com o mesmo padding vertical (top 32 / bottom 16) e o gap entre o
+ * header e os cards. */
+.reservas-landing__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 32px 24px 16px;
+  border-radius: 24px;
+  background: #ffffff;
+}
+
+.reservas-landing__cards {
+  display: flex;
+  gap: 8px;
+}
+
+/* Card de benefício (154:6232/6237/6247) – sem contorno (borda removida a
+ * pedido do usuário, só nesta página), flex-1, não clicável (é só informativo;
+ * o CTA da página é o "Conhecer ferramenta"). */
+.reservas-landing__card {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  padding: 24px 20px;
+  border-radius: var(--radius-card-lg);
+  background: #ffffff;
+}
+
+.reservas-landing__card-icon {
+  color: var(--color-text-secondary);
+}
+
+.reservas-landing__card-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  width: 100%;
+}
+
+.reservas-landing__card-name {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-title-sm);
+  line-height: 24px;
+  color: var(--color-text-primary);
+}
+
+.reservas-landing__card-desc {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: var(--color-text-secondary);
+}
+
+/* Responsivo – mesmo comportamento da /move: reduz paddings/tipografia no
+ * celular e mantém os cards lado a lado em todas as larguras. */
+@media (max-width: 767px) {
+  .reservas-landing__hero-content {
+    gap: 40px;
+    padding: 40px 24px 56px;
+  }
+
+  .reservas-landing__title {
+    max-width: none;
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .reservas-landing__subtitle {
+    max-width: none;
+  }
+
+  .reservas-landing__cardlist-title {
+    font-size: 18px;
+  }
+
+  .reservas-landing__panel {
+    padding: 24px 16px 16px;
+  }
+
+  .reservas-landing__card {
+    gap: 24px;
+  }
+}
