@@ -31,11 +31,11 @@ import './MovePage.css'
  *     ancorada no canto superior direito.
  *  4. Cardlist "Explore nossas experiências" (103:7996), branco, colado na base
  *     com 4px de vermelho visível nas bordas (o design sobrepõe o card ao hero),
- *     com três cards navegáveis: "Visão do restaurante" (ícone order) → `/salao`,
- *     que embute o Portal B2B/CRM publicado em portal-nn.vercel.app; "Visão do
- *     cliente" (ícone user) → home do Comer Fora; e "Visão de reservas" (ícone
- *     calendar) → `/reservas`, que por enquanto embute o mesmo portal-nn (teste).
- *     Ambos usam a mesma mecânica: iframe full-screen com barra "Voltar" p/ /move.
+ *     com dois cards navegáveis: "Visão do cliente" (ícone user) → home do Comer
+ *     Fora; e "Visão de reservas" (ícone calendar) → `/reservas`, que por enquanto
+ *     embute o portal-nn.vercel.app (teste). Ambos usam a mesma mecânica: iframe
+ *     full-screen com barra "Voltar" p/ /move. (O card "Visão do restaurante"
+ *     → `/salao` foi removido a pedido do usuário.)
  *
  * Desvios responsivos (documentados no CSS): a ilustração some abaixo de
  * 1280px (a composição texto-à-esquerda/imagem-à-direita só fecha com folga
@@ -118,21 +118,6 @@ export default function MovePage() {
             </div>
 
             <div className="move-experiences__list">
-              {/* "Visão do restaurante" leva à rota /salao, que embute o Portal
-                  B2B (CRM do restaurante) publicado em portal-nn.vercel.app –
-                  mesma mecânica da "Visão de reservas": iframe full-screen com
-                  a barra "Voltar" para /move. */}
-              <Link to="/salao" className="move-experience move-experience--link">
-                <Icon name="order" style="Line" size={24} className="move-experience__icon" />
-                <div className="move-experience__text">
-                  <h3 className="move-experience__name">Visão do restaurante</h3>
-                  <p className="move-experience__desc">
-                    Crie ofertas no app, construa sua base de dados no check-in e
-                    dispare mensagens para atrair e fidelizar clientes.
-                  </p>
-                </div>
-              </Link>
-
               {/* "Visão do cliente" leva à home do Comer Fora (pedido do usuário) */}
               <Link to="/" className="move-experience move-experience--link">
                 <Icon name="user" style="Line" size={24} className="move-experience__icon" />
@@ -148,7 +133,7 @@ export default function MovePage() {
               {/* "Visão de reservas" navega (mesma aba) para a página /reservas,
                   que embute o portal de reservas externo (portal-nn.vercel.app)
                   em iframe full-screen com a barra "Voltar" para /move – mesma
-                  mecânica do card "Visão do restaurante" (/salao). */}
+                  mecânica do card "Visão do cliente". */}
               <Link to="/reservas" className="move-experience move-experience--link">
                 <Icon name="calendar" style="Line" size={24} className="move-experience__icon" />
                 <div className="move-experience__text">

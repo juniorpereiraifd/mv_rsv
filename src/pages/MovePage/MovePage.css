@@ -275,7 +275,7 @@
   white-space: nowrap;
 }
 
-/* Cards (103:8013/8018): lado a lado (gap 8), cada um flex-1. Ícone 24 no topo
+/* Cards de experiência: lado a lado (gap 8), cada um flex-1. Ícone 24 no topo
  * + gap 32 + bloco de texto (título 16/24 Medium, descrição 14/16 Regular). */
 .move-experiences__list {
   display: flex;
@@ -297,15 +297,15 @@
   border: 1px solid var(--color-outline-default);
   border-radius: var(--radius-card-lg);
   background: #ffffff;
-  /* Os dois cards são `<Link>` (cliente → home, restaurante → /salao); um `<a>`
+  /* Os cards são `<Link>` (cliente → home, reservas → /reservas); um `<a>`
      herda sublinhado e cor de link do UA – remove ambos (mesmo padrão do
      brand-header). */
   color: inherit;
   text-decoration: none;
 }
 
-/* Card clicável (restaurante → /salao, cliente → home do Comer Fora): sombra
- * suave no hover para indicar que é navegável. */
+/* Card clicável (cliente → home, reservas → /reservas): sombra suave no hover
+ * para indicar que é navegável. */
 .move-experience--link {
   transition: box-shadow 0.2s ease;
 }
