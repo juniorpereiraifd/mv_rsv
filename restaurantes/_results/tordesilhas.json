@@ -1,0 +1,14 @@
+{
+  "slug": "tordesilhas",
+  "name": "Tordesilhas",
+  "categoryGroup": "Comida brasileira",
+  "officialUrl": "https://tordesilhas.com",
+  "hero": {"file": "restaurantes/tordesilhas/hero.jpg", "source": "https://images.squarespace-cdn.com/content/v1/5edbe369723faa2b0d774e22/1591478227764-7J3Y1H38GVMXQOC586R2/Tord+Fachada-+Lais+Podesta.jpg"},
+  "gallery": [
+    {"file": "restaurantes/tordesilhas/gallery-1.jpg", "source": "https://images.squarespace-cdn.com/content/v1/5edbe369723faa2b0d774e22/1591562177994-T9AG6QU4RNLD96RFW00R/FOTO+SITE+MARA.DEGA.jpg"},
+    {"file": "restaurantes/tordesilhas/gallery-2.jpg", "source": "https://images.squarespace-cdn.com/content/v1/5edbe369723faa2b0d774e22/1591562678450-W04XOG0E5TVA2DBV7MZF/Comiss%C3%A3o+de+Frente+2014+IV.jpg"},
+    {"file": "restaurantes/tordesilhas/gallery-3.jpg", "source": "https://images.squarespace-cdn.com/content/v1/5edbe369723faa2b0d774e22/1591805064731-6AYXVT9HFMKT09RXTWLK/sineta.jpg"}
+  ],
+  "logo": {"file": "restaurantes/tordesilhas/logo.png", "source": "https://images.squarespace-cdn.com/content/v1/5edbe369723faa2b0d774e22/1591563068046-PKO916MDUU0LBU0Y9XYX/ilustracoes_tordesilhas.png"},
+  "notes": "Site Squarespace. og:image e o logo (ilustracoes_tordesilhas.png). CDN servia WebP por negociacao; forcei Accept image/jpeg,image/png para obter JPEG/PNG. Hero = fachada (1500x1000). Fotos do proprio site (fachada por Lais Podesta)."
+}

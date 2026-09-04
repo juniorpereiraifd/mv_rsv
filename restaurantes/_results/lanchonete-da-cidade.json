@@ -1,0 +1,12 @@
+{
+  "slug": "lanchonete-da-cidade",
+  "name": "Lanchonete da Cidade",
+  "categoryGroup": "Hambúrguer",
+  "officialUrl": "https://lanchonetedacidade.com.br/",
+  "hero": {"file": "restaurantes/lanchonete-da-cidade/hero.jpg", "source": "https://lanchonetedacidade.com.br/wp-content/uploads/2025/10/@MarcosBacon-SOLC_SPH-30-09-25-385-scaled.jpg"},
+  "gallery": [
+    {"file": "restaurantes/lanchonete-da-cidade/gallery-1.jpg", "source": "https://lanchonetedacidade.com.br/wp-content/uploads/2025/11/AndreFavilla_Lanchonete_Cidade_Higienopolis_2-scaled.jpg"}
+  ],
+  "logo": {"file": "restaurantes/lanchonete-da-cidade/logo.png", "source": "https://lanchonetedacidade.com.br/wp-content/uploads/2025/10/AF_Logo_LC_2025.png"},
+  "notes": "Site WordPress com muitas imagens. Logo colorida AF_Logo_LC_2025.png (verde #47704c + dourado #ffcb08 + preto, 1772x454, com transparência). Hero 2560x840 (foto @MarcosBacon, Canon EOS R6m2). gallery-1 2560x1703 (foto Andre Favilla, Canon 5DS R)."
+}

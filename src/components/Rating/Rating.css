@@ -1,0 +1,41 @@
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  /* O bloco inteiro (estrela + nota + contagem, ex. "(3,7 mil)") é uma única
+     unidade de linha: nunca quebra o texto interno quando o card aperta.
+     Herdado pelos filhos, mantém `.rating__count` numa linha só. */
+  white-space: nowrap;
+  /* Tinta a estrela (glifo da fonte de ícones, herdado via `color`) */
+  color: var(--color-text-primary);
+}
+
+.rating--new {
+  gap: 0;
+}
+
+.rating__value {
+  font-family: var(--font-brand);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--color-text-primary);
+}
+
+.rating__count {
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--color-text-secondary);
+}
+
+.rating--closed {
+  /* Acinzentar a estrela do rating fechado (glifo tintável via `color`) */
+  color: var(--color-text-disabled);
+}
+
+.rating--closed .rating__value,
+.rating--closed .rating__count {
+  color: var(--color-text-disabled);
+}

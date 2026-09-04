@@ -1,0 +1,106 @@
+/* GallerySection – bloco "Fotos" (design 68:3864). Bento de 2 colunas (361px):
+ * a esquerda tem a foto grande (235px, design 68:3850); a direita uma média
+ * (155px) e duas miniaturas (72px), a última com overlay "+N". O frame de cada
+ * tile é fixo – a foto se adapta a ele com object-fit: cover, nunca o contrário.
+ *
+ * Desvio documentado: o protótipo marca os tiles de foto com ícone de câmera +
+ * sombra de gradiente no rodapé (indicador de vídeo/mídia). Aqui, sem conteúdo
+ * de vídeo, os tiles mostram só a foto — o placeholder de câmera aparece apenas
+ * quando o slot está vazio. */
+
+.gallery-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.gallery-section__title {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-title-md);
+  line-height: 24px;
+  color: var(--color-text-primary);
+}
+
+/* Bento: duas colunas iguais (~176,5px em 361px) com gap de 8px, 235px de altura */
+.gallery-section__grid {
+  display: flex;
+  gap: 8px;
+  height: 235px;
+}
+
+.gallery-section__tile {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #b9b9b9, #dedede);
+}
+
+/* Foto grande – coluna 1 (design 68:3850): 235px, raio 16px */
+.gallery-section__tile--large {
+  flex: 1;
+  border-radius: 16px;
+}
+
+/* Coluna 2: média + linha de miniaturas, empilhadas com gap 8px */
+.gallery-section__col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Foto média – 155px, raio 16px */
+.gallery-section__tile--medium {
+  height: 155px;
+  border-radius: 16px;
+}
+
+/* Linha de miniaturas – preenche o restante da coluna (235 − 155 − 8 = 72px) */
+.gallery-section__row {
+  flex: 1;
+  display: flex;
+  gap: 8px;
+}
+
+/* Miniaturas – 72px, raio 12px */
+.gallery-section__tile--thumb {
+  flex: 1;
+  border-radius: 12px;
+}
+
+/* A foto se adapta ao frame: cobre o tile inteiro, sem distorcer */
+.gallery-section__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Placeholder skeleton – gradiente neutro + câmera branca translúcida */
+.gallery-section__placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.55;
+}
+
+/* Overlay "+N" da última miniatura: scrim preto + ícone de fotos + contagem */
+.gallery-section__count {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  background: rgba(0, 0, 0, 0.64);
+  color: #fff;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: 14px;
+  line-height: 16px;
+}

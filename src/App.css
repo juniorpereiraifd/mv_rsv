@@ -1,0 +1,15 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  background-color: var(--color-page-bg);
+}
+
+.app__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: var(--content-padding-top) var(--content-padding-x) var(--space-6);
+}

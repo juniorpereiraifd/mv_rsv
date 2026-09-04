@@ -1,0 +1,14 @@
+{
+  "slug": "bar-brahma",
+  "name": "Bar Brahma",
+  "categoryGroup": "Bares",
+  "officialUrl": "https://barbrahma.com.br",
+  "hero": {"file": "restaurantes/bar-brahma/hero.jpg", "source": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/90/Bar_Brahma_%289327009785%29.jpg/1920px-Bar_Brahma_%289327009785%29.jpg"},
+  "gallery": [
+    {"file": "restaurantes/bar-brahma/gallery-1.jpg", "source": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Bar_Brahma_%289327020643%29.jpg/1920px-Bar_Brahma_%289327020643%29.jpg"},
+    {"file": "restaurantes/bar-brahma/gallery-2.jpg", "source": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Bar_Brahma_%289327081377%29.jpg/1920px-Bar_Brahma_%289327081377%29.jpg"},
+    {"file": "restaurantes/bar-brahma/gallery-3.jpg", "source": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Bar_Brahma%2C_S%C3%A3o_Paulo%2C_SP%2C_Brasil.jpg"}
+  ],
+  "logo": {"file": "restaurantes/bar-brahma/logo.jpg", "source": "https://scontent.cdninstagram.com/v/t51.82787-19/753534654_18618274117007547_5942321584319535658_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=100&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=kbmCoQAwp5QQ7kNvwEdzmDU&_nc_oc=AdqbWsjCX349KYgRbVVBdPSinxeWJf3bJMPH1KQH7oV3hYA8eYBUVBaGrgqlohSiNK4&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=oM86sjhYSSg6pDSik1Uv6Q&_nc_ss=7f60f&oh=00_AQLOO5IO2qp0I_SAOu4WjEQAbEVnsFuiqbD2e2nLVkbN-g&oe=6A9DC956"},
+  "notes": "barbrahma.com.br está atrás de bot protection (Imperva 'Pardon Our Interruption'); https não respondeu. Fotos reais do Bar Brahma (Largo do Arouche / esquina Av. Ipiranga x São João) via Wikimedia Commons (arquivos de Dornicke e série Flickr 9327*, CC). Logo via Instagram @barbrahma (avatar 150x150)."
+}

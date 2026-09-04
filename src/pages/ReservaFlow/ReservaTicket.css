@@ -1,0 +1,103 @@
+/* ReservaTicket – ticket do fluxo de confirmação (Figma cMhyOvWvhsuRtOjTLvFvDH:
+   revisão 125:12134 "Background+Shadow", sucesso 125:12037). Superfície #f5f5f5
+   radius 20 com a foto 158px no topo (30% menor que os 226px do design) e o
+   corpo logo abaixo, SEM sobreposição: o texto (nome, fatos, endereço) nasce
+   sempre sobre a superfície do card, nunca sobre a imagem. */
+
+.reserva-ticket {
+  width: 100%;
+  border-radius: 20px;
+  background: var(--color-surface-secondary);
+  overflow: hidden;
+}
+
+/* Foto do restaurante (revisão 125:12136, sucesso 125:12039) – 158px de altura
+   (30% menor que os 226px do design; 226 × 0,7), largura cheia, object-fit
+   cover. Os cantos superiores são clipados pelo radius do card (.reserva-ticket
+   tem overflow hidden). Fica isolada do corpo: nada do texto a cobre nem a foto
+   invade o conteúdo. */
+.reserva-ticket__photo {
+  display: block;
+  width: 100%;
+  height: 158px;
+  object-fit: cover;
+}
+
+/* Corpo (revisão 125:12140, sucesso 125:12043) – coluna gap 16 com padding 20,
+   empilhado logo abaixo da foto (SEM o margin-top negativo da abordagem antiga):
+   o nome começa sobre a superfície #f5f5f5 do ticket, com respiro da imagem. O
+   topo da foto não entra no fluxo do texto e a hierarquia não compete com ela. */
+.reserva-ticket__body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+}
+
+/* Nome da loja (125:12142 / 125:12045) – 24px Medium #141414, lh 32. 24px não
+   existe na escala de tokens (o teto é title-lg 20px), então vai cru. */
+.reserva-ticket__name {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: 24px;
+  line-height: 32px;
+  color: var(--color-text-primary);
+}
+
+/* Linha Data / Horário / Convidados (125:12144 / 125:12047) – 3 colunas com
+   gap 40, cada uma: rótulo acima do valor, coluna gap 4. */
+.reserva-ticket__facts {
+  display: flex;
+  gap: 40px;
+  margin: 0;
+}
+
+.reserva-ticket__fact {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+/* Rótulos "Data/Horário/Convidados/Endereço" (Caption C1) – 10px Regular #666,
+   lh 16. 10px é menor que o piso da escala do repo (--font-size-caption 12px),
+   então vai cru (mesmo padrão do ReservaSection). */
+.reserva-ticket__label {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 16px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+/* Valores (P1 16px Medium #141414, lh 24) – o "Convidados" fica sem wrap para
+   "2 pessoas" não quebrar. */
+.reserva-ticket__value {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-title-sm);
+  line-height: 24px;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+/* Endereço (125:12157 / 125:12060) – mesmo rótulo de cima + valor 16px Regular
+   que pode quebrar em até 2 linhas. */
+.reserva-ticket__address {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.reserva-ticket__address-value {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-title-sm);
+  line-height: 24px;
+  color: var(--color-text-primary);
+}

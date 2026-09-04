@@ -1,0 +1,102 @@
+/* CategoriaPage – página de uma categoria (rota `/categorias/:slug`), aberta ao
+   tocar num item do MerchantRail da home. Reapresenta a seção ALTA da home
+   (chips + grade de cards altos) filtrada pela categoria tocada, SEM BrandHeader
+   – a página de cliente tem o próprio topo: barra com voltar + nome.
+
+   Shell igual às outras páginas-cluna (.app / .perfil-page): coluna de 834px
+   centralizada com fundo da página. A `.categoria-page` NÃO tem
+   transform/filter/position, então o `position: fixed` da FilterSheet (último
+   filho) cobre a viewport inteira (mesmo contrato do `.app`). O único filho
+   posicionado é o toolbar (`position: sticky`) – ele não vira containing block
+   do fixed da sheet (o sticky afeta só os próprios descendentes). */
+.categoria-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  background-color: var(--color-page-bg);
+}
+
+/* Barra do topo – clara, com divisória sutil. `padding-top: 58px` reserva a
+   faixa superior do frame (status bar/island) ANTES do voltar – mesma régua dos
+   outros toolbars de página (ReservaConfirm: 48px; home: --content-padding-top
+   45px), aqui com a cota de 58px do design. Sticky: ao rolar a grade longa o
+   voltar + título continuam visíveis e os cards passam por baixo (fundo opaco +
+   z-index acima do grid) – a faixa reservada fica fixa com a barra, como a
+   status bar nativa. O padding horizontal acompanha o gutter da página
+   (--content-padding-x), alinhando o voltar à borda de conteúdo. */
+.categoria-page__toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 58px var(--content-padding-x) 8px;
+  background-color: var(--color-page-bg);
+  border-bottom: 1px solid var(--color-outline-default);
+}
+
+/* Voltar – círculo 44 translúcido, mesmo idioma do `.perfil-page__back`, porém
+   dentro da barra (não flutuando). Ícone `back` Line 24 na cor do texto. */
+.categoria-page__back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(227, 227, 227, 0.3);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.categoria-page__back:hover {
+  background: rgba(227, 227, 227, 0.5);
+}
+
+.categoria-page__back:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 2px;
+}
+
+/* Título centralizado de verdade: o slot do meio (flex:1) fica entre o voltar
+   (44px) e o espaçador simétrico (44px) → o centro do texto coincide com o
+   centro da barra. Nome da categoria em Medium 18px (--font-size-title-md). */
+.categoria-page__title {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-title-md);
+  line-height: 22px;
+  color: var(--color-text-primary);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Espaçador à direita espelhando a largura do voltar – mantém o título no
+   centro real da barra (invisível). */
+.categoria-page__toolbar-end {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+}
+
+/* Conteúdo – sem padding-top: abaixo da barra vêm direto os chips (a seção abre
+   com o próprio respiro, --space-2). O gutter lateral (--content-padding-x) casa
+   com a home; grid e estado vazio reaproveitam os espaçamentos do
+   ContentSection. */
+.categoria-page__main {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 var(--content-padding-x) var(--space-6);
+}

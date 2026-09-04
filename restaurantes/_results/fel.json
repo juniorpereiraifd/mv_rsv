@@ -1,0 +1,13 @@
+{
+  "slug": "fel",
+  "name": "Fel",
+  "categoryGroup": "Bares",
+  "officialUrl": "https://www.instagram.com/fel.sp/",
+  "hero": {"file": "restaurantes/fel/hero.jpg", "source": "https://vejasp.abril.com.br/wp-content/uploads/2022/11/fel-132.jpg.jpg"},
+  "gallery": [
+    {"file": "restaurantes/fel/gallery-1.jpg", "source": "https://scontent.cdninstagram.com/v/t51.82787-15/572276140_18291678091273788_6938280339380899623_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=yGC3wrFZAeIQ7kNvwGSXmMu&_nc_oc=Adr3qGi9vB3m7995iY9AMITPUBypuqtsfAx_pgUJUAQpjpJJnDD8KmQmLsxvK7s0TEE&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=FKwq2SGqEXUzLpAOppBKpQ&_nc_ss=7f60f&oh=00_AQKLAqWZoV2Gm2KYxmMxeFEiU5lzbqhuOiXlwRSN_9UMRQ&oe=6A9DF46C"},
+    {"file": "restaurantes/fel/gallery-2.jpg", "source": "https://scontent.cdninstagram.com/v/t51.82787-15/572510690_18291676054273788_7543341492949145018_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=108&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=wwBvWb8zWuIQ7kNvwEimHQB&_nc_oc=AdqaWmnFRduTUvp3IhBUSdeeEZHEqj7WjrrfGyBBtzoTWhjhDYX9WTwzKw9KkqXM-TQ&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=FKwq2SGqEXUzLpAOppBKpQ&_nc_ss=7f60f&oh=00_AQJWUzpvv9WecZ7Cs30pCNc-cTERinqjEYskk5HNz5LsXA&oe=6A9DFCD1"}
+  ],
+  "logo": {"file": "restaurantes/fel/logo.jpg", "source": "https://scontent.cdninstagram.com/v/t51.2885-19/36762343_972711749603767_154230415878520832_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=104&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy44MDAuQzMifQ%3D%3D&_nc_ohc=KS1aqOfQRaAQ7kNvwGCVJSL&_nc_oc=AdrTZPUkzx5U_ZDi7NwwuX3kS_HZSPPhv_N2AsZNU31eJ6vw_yRzvHsFy61-U_9xitE&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_ss=7f60f&oh=00_AQK6JDzCDwiZksjkLxPMMZy3w5ozagrRbF-f4AQjY0X9Hw&oe=6A9DD189"},
+  "notes": "Fel não tem site próprio (bar de coquetelaria clássica no Edifício Copan, Av. Ipiranga 200 loja 69, República). Hero = foto do bar da Veja SP (matéria 'Fel, no Copan, apresenta bons motivos para uma nova visita', 2250x1500; original CMYK convertido para RGB). Galeria/logo ainda via Instagram @fel.sp (~640px)."
+}

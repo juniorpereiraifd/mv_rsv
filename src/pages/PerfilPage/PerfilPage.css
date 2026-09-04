@@ -1,0 +1,272 @@
+/* PerfilPage – perfil do usuário (Figma 112:8338 "Perfil", iPhone 393×852).
+ * A página reproduz o frame: toolbar claro (botão circular de voltar à
+ * esquerda; botões de chat/badge da direita estão `opacity:0` no design →
+ * omitidos), saudação centralizada, contadores e as seções "Suas reservas" /
+ * "Seus cupons" / "Seus restaurantes".
+ *
+ * Conteúdo HÍBRIDO: a maior parte do TOPO é vitrine fixa com a cópia do mock
+ * ("Olá, Mariana", 27/3 — números de exemplo, não existem no app). Os cartões
+ * de saldo do frame ("Cashback"/"Cupons") foram removidos. As seções de dados:
+ * "Suas reservas" e "Seus cupons" são CARROSSÉIS horizontais (`.perfil-page__rail`,
+ * cards de largura fixa que deslizam); só "Seus restaurantes" segue como LISTA
+ * vertical (`.perfil-page__list`). "Suas reservas" vem das reservas confirmadas
+ * (store local `useReservas`); "Seus cupons"/"Seus restaurantes" dos check-ins
+ * reais + catálogo. Por isso reservas e cupons têm estado vazio.
+ *
+ * Mesma convenção do `.restaurant-page`: página-cluna de 834px centralizada
+ * (o frame mobile 393 fica fluido/centralizado dentro do container da app).
+ * Barra de status do iOS omitida (chrome de celular, mesmo desvio dos outros
+ * full-pages). */
+.perfil-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  background-color: var(--color-page-bg);
+}
+
+/* Botão de voltar (design 112:8477 "Btn") – círculo 44px, fundo claro
+ * rgba(227,227,227,0.3) (perfil é página clara, não o overlay do Beneficio),
+ * ícone chevron-left Line 24 na cor do texto. Flutua no topo esquerdo sobre o
+ * conteúdo, com `top 16px` (a barra de status foi omitida). */
+.perfil-page__back {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(227, 227, 227, 0.3);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Conteúdo – coluna com o gap de 32px entre os blocos do frame (112:8340). O
+ * `padding-top` de 76px deixa o botão de voltar flutuar sem encostar no
+ * título; px 16 espelha a grade do frame (coluna de conteúdo a 16px da borda);
+ * o padding inferior dá o respiro final. */
+.perfil-page__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  padding: 76px 16px 48px;
+}
+
+/* Saudação (112:8351) – "Olá, Mariana" 28px Medium #141414 centralizada. */
+.perfil-page__greeting {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: 28px;
+  line-height: 34px;
+  color: var(--color-text-primary);
+  text-align: center;
+}
+
+/* Contadores (112:8355) – trio de colunas (número 20px Medium + rótulo 12px
+ * Regular #a3a3a3), centralizadas. Check-ins/Avaliações seguem a cópia fixa do
+ * frame; "Reservas" é um terceiro contador vivo (fora do frame). */
+.perfil-page__counters {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.perfil-page__counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 80px;
+}
+
+.perfil-page__counter-value {
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: 20px;
+  line-height: 24px;
+  color: var(--color-text-primary);
+}
+
+.perfil-page__counter-label {
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-caption);
+  line-height: 1.2;
+  color: var(--color-text-disabled);
+  text-align: center;
+}
+
+/* Seções (112:8379/112:8410) – título 16px Medium + conteúdo com gap 16px
+ * (o frame espaça título→cards com 16px). O conteúdo é o rail horizontal
+ * (reservas/cupons) ou a lista vertical (restaurantes). */
+.perfil-page__section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.perfil-page__section-title {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-title-sm);
+  line-height: 24px;
+  color: var(--color-text-primary);
+}
+
+/* Rail carrossel de "Suas reservas"/"Seus cupons" – mesmo idioma do carrossel
+ * "Próximos a você" da home (`.content-section__carousel`): flex com gap 12,
+ * overflow horizontal com scrollbar oculta e snap leve; os cards mantêm a
+ * largura fixa (definida abaixo no escopo do rail) e deslizam. A borda DIREITA
+ * do rail é esticada até a viewport com `margin-right: calc(50% - 50vw)` (a
+ * esquerda permanece na borda de conteúdo do container, casando com o título);
+ * o padding lateral 4px dá respiro à sombra do card no corte do overflow.
+ * Sem `margin-top`: o gap da seção (16px) já espaça o rail abaixo do título. */
+.perfil-page__rail {
+  display: flex;
+  gap: var(--space-1-5);
+  overflow-x: auto;
+  margin-right: calc(50% - 50vw);
+  padding: 0 4px 8px;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+.perfil-page__rail::-webkit-scrollbar {
+  display: none;
+}
+
+/* Cards do rail – largura fixa ~75% da coluna do frame 393 (272px), então o
+ * card seguinte espreita na borda direita indicando a rolagem. No rail o card
+ * é um `<Link>` inteiro sem o chevron da lista (sobra espaço pro texto); o
+ * `width: 100%` do `.perfil-card` (lista) é neutralizado e o snap alinha o
+ * card à esquerda ao rolar. */
+.perfil-page__rail > .perfil-card {
+  flex: 0 0 272px;
+  width: auto;
+  scroll-snap-align: start;
+}
+
+/* Lista vertical de "Seus restaurantes" (112:8421) – cards de linha única com
+ * espaçamento menor (8px). É a ÚNICA seção que permanece lista. */
+.perfil-page__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Cartão de restaurante/cupom (112:8391) – borda #ebebeb, radius 20, padding
+ * 16px, linha única com o logo à esquerda e o chevron à direita. É um `<Link>`
+ * inteiro; sem sublinhado/cor de link do `<a>` (mesmo padrão do brand-header).
+ * Hover suave indica que navega. */
+.perfil-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--color-outline-default);
+  border-radius: 20px;
+  background: var(--color-page-bg);
+  color: inherit;
+  text-decoration: none;
+  transition: box-shadow 0.2s ease;
+}
+
+.perfil-card:hover,
+.perfil-card:focus-visible {
+  box-shadow: var(--shadow-card-high);
+  outline: none;
+}
+
+.perfil-card__logo {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-card-lg);
+  background: var(--color-surface-secondary);
+  object-fit: cover;
+}
+
+.perfil-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.perfil-card__name {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
+  line-height: 16px;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Substituto do estado "Última em…" do mock – nos cupons leva o título da
+ * oferta (o cupom desbloqueado), em tom desabilitado. */
+.perfil-card__sub {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: var(--color-text-disabled);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Linha de meta dos restaurantes – Rating real do catálogo + "•" + categoria
+ * real (mesma gramática do merchant no BeneficioPage). */
+.perfil-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.perfil-card__dot {
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: var(--color-text-disabled);
+}
+
+.perfil-card__category {
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Estado vazio das listas (dinâmicas) – linha de ajuda discreta, 14px. */
+.perfil-page__empty {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-body);
+  line-height: 20px;
+  color: var(--color-text-disabled);
+}

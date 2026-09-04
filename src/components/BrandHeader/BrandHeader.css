@@ -1,0 +1,244 @@
+.brand-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 280px;
+  padding: var(--space-4) var(--content-padding-x);
+  /* Bloco de marca com ilustração (design 3:2358) – export 2x do frame 834x280.
+   * O vermelho fica como fallback caso a imagem não carregue. */
+  background-color: var(--color-brand-primary);
+  background-image: url('../../assets/brandblock.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 0 0 var(--radius-brand) var(--radius-brand);
+}
+
+/* Toolbar colado à borda superior da header (design 64:2633 "Wrap").
+ * Faixa de 44px com inset lateral igual ao padding do container
+ * (--content-padding-x: 32px) e gap de 16px entre os itens – botões de
+ * círculo translúcido nas pontas e pílula de busca no meio. `top` respeita o
+ * padding superior da header, então o toolbar fica dentro do bloco de marca
+ * em vez de cobrir o topo. */
+.brand-header__toolbar {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--content-padding-x);
+  right: var(--content-padding-x);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 44px;
+  padding: 0;
+}
+
+/* Círculo translúcido dos botões laterais (design 64:2635 / 64:2649) */
+.brand-header__toolbar-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 100px;
+  background-color: var(--color-bg-toolbar);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #ffffff;
+  cursor: pointer;
+  /* O botão virou `<Link to="/move">` (abre a página do Move); um `<a>` herda
+     sublinhado e cor de link do UA – remove ambos. */
+  text-decoration: none;
+}
+
+/* Pílula de busca (design 64:2637 "Trailing"): pl 16 / pr 3, raio 32px */
+.brand-header__toolbar-search {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  gap: 10px;
+  height: 44px;
+  padding: 0 3px 0 16px;
+  border-radius: 32px;
+  background-color: var(--color-bg-toolbar);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Área de texto da busca – ocupa o restante da pílula, conteúdo centralizado.
+   O elemento é um `<button type="button">` (abre o overlay de busca da home via
+   `onOpenBuscar`, App/BuscarSheet): um `<button>` herda do UA `font`/`appearance`
+   e as cores – normaliza (`font: inherit`, `appearance: none`); o resto já zera
+   o estilo nativo (`border/background/padding`). As cores reais vêm dos spans
+   `.toolbar-search-title*`. */
+.brand-header__toolbar-search-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  border: none;
+  padding: 0;
+  background: none;
+  font: inherit;
+  appearance: none;
+  text-align: left;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* Linha 1 – "Buscar em Cambuí, Campinas" (12px/16px; local em bold, verbo regular) */
+.brand-header__toolbar-search-title {
+  max-width: 100%;
+  font-family: var(--font-brand);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.brand-header__toolbar-search-title-muted {
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Botão de ação (presente) dentro da pílula (design 64:2644): círculo 38px */
+.brand-header__toolbar-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--color-bg-toolbar-action);
+  /* Cor do glifo de fonte (a lupa de busca, família Line) – o presente que
+     ficava aqui era um SVG branco próprio; glifo herda `color`. */
+  color: #ffffff;
+  cursor: pointer;
+}
+
+/* Selo "Info Merchant" (design 64:2650): 12px, verde com contorno de 3px,
+ * posicionado no canto superior direito do botão de perfil */
+.brand-header__toolbar-badge {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  width: 12px;
+  height: 12px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background-color: var(--color-bg-success-primary);
+  border: 3px solid var(--color-outline-success);
+}
+
+/* Promo alinhada à esquerda da header (design 66:2662 "Frame 2147205304").
+ * Fica em (32, 76) – `top` colado na borda inferior do toolbar (y 32–76).
+ * O padding-top/bottom de 40px do box é o que cria o vão de 40px entre o
+ * toolbar e a tagline (y 116) e o respiro abaixo do logo (box 76–272, todo
+ * dentro da header de 280px). O conteúdo visível (tagline y 116–188, logo
+ * y 200–232) permanece dentro do padding da header (limite em 248). */
+.brand-header__promo {
+  position: absolute;
+  top: 76px;
+  left: var(--content-padding-x);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 40px 0;
+}
+
+/* Tagline de 2 linhas (design 66:2661): "Descontos e reserva de mesa" em
+ * Bold (#f6f6f6, leading 34px) + "em um só lugar" em Light (#ffc3da). Fonte
+ * 32px com tracking -1.6px; gap de 4px entre o bloco bold e a linha light. */
+.brand-header__promo-tagline {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  margin: 0;
+  font-family: var(--font-brand);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -1.6px;
+  line-height: 34px;
+  color: #f6f6f6;
+}
+
+.brand-header__promo-tagline-bold {
+  display: block;
+}
+
+.brand-header__promo-tagline-light {
+  display: block;
+  font-weight: 300;
+  line-height: 34px;
+  color: #ffc3da;
+}
+
+/* Lockup da marca: logo logocf.png (201×51). Exibida com 32px de altura,
+ * largura automática preservando a proporção (~126px). */
+.brand-header__promo-lockup {
+  display: flex;
+  align-items: flex-start;
+  margin: 0;
+}
+
+.brand-header__promo-lockup-logo {
+  display: block;
+  width: auto;
+  height: 32px;
+}
+
+/* TV – mockup de iPhone (documento interno marcado `data-mockup`): o header
+   ganha 16px a mais de respiro no topo (padding-top 48px). Como a toolbar e a
+   promo são position:absolute, elas descem junto para manter o alinhamento com
+   a borda de conteúdo: toolbar top 32→48 e promo top 76→92 (+16px em cada). */
+html[data-mockup] .brand-header {
+  padding-top: 48px;
+  /* TV – desloca o PNG de fundo (brandblock.png) 100px para a esquerda no eixo x */
+  background-position: calc(50% - 100px) center;
+}
+
+html[data-mockup] .brand-header__toolbar {
+  top: 48px;
+}
+
+html[data-mockup] .brand-header__promo {
+  top: 92px;
+  /* TV – respiro vertical da promo (40px → 32px) para caber melhor no mockup */
+  padding: 32px 0;
+}
+
+/* TV – tagline do header reduzida p/ 24px no mockup (de 32px). line-height e
+   letter-spacing acompanham a nova escala (34/32 → ~26px; -1.6px → -1.2px). */
+html[data-mockup] .brand-header__promo-tagline {
+  font-size: 24px;
+  line-height: 26px;
+  letter-spacing: -1.2px;
+}
+
+/* A linha light redeclara line-height 34px própria; reescala junto. */
+html[data-mockup] .brand-header__promo-tagline-light {
+  line-height: 26px;
+}
+
+/* TV – a frase em negrito compõe em 2 linhas FIXAS ("Descontos e" / "reserva
+   de mesa") dentro do mockup: o fragmento que inicia a 2ª linha (elemento
+   .brand-header__promo-tagline-bold-break) vira block e quebra de propósito,
+   sem depender de onde a fonte (ou o fallback dela) deixaria o texto fluir.
+   Fora do mockup (celular/tablet) o fragmento permanece inline e o texto corre
+   contínuo, exatamente como antes. */
+html[data-mockup] .brand-header__promo-tagline-bold-break {
+  display: block;
+}

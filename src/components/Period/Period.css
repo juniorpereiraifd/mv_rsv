@@ -1,0 +1,15 @@
+.period {
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--color-text-primary);
+}
+
+.period--closed {
+  color: var(--color-text-secondary);
+}
+
+.period--closing-soon {
+  color: var(--color-text-attention);
+}

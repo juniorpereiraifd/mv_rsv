@@ -1,0 +1,127 @@
+/* MiniAnnouncementCard – card compacto de anúncio (design 2:8582).
+ * 174×197, radius 16, sem sombra: foto full-bleed, overlay
+ * translúcido no rodapé (logo + nome + nota/distância) e selo no topo. */
+.mini-announcement-card {
+  position: relative;
+  flex-shrink: 0;
+  height: 197px;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: var(--color-page-bg);
+  box-shadow: none;
+  /* Snap suave no rail que contém o card (scroll-snap no content-section__carousel) */
+  scroll-snap-align: start;
+}
+
+.mini-announcement-card__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Mesmo raio do card: garante que a foto não apareça com canto reto
+     caso o clip do pai (`overflow: hidden`) não seja aplicado. */
+  border-radius: 16px;
+}
+
+/* Coluna superior – posiciona o offer pill (`Tags`) no canto (padding 12px do design) */
+.mini-announcement-card__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 12px;
+}
+
+/* Overlay translúcido do rodapé – backdrop-blur sobre a foto.
+ * Cantos de baixo com o mesmo raio do card (16px): sem isso o `backdrop-filter`
+ * (e o fundo escuro) vazam em retângulo por cima da borda arredondada – o
+ * `overflow: hidden` do pai não clipeia de forma confiável o efeito do blur. */
+.mini-announcement-card__overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  background: var(--color-bg-overlay);
+  backdrop-filter: blur(10px);
+  border-radius: 0 0 16px 16px;
+}
+
+.mini-announcement-card__logo {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.mini-announcement-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+/* Texto do overlay – branco opaco (design "Neutral BG Transparency/Opaque: #FFFFFF") */
+.mini-announcement-card__name {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 24px;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* A estrela (glifo da fonte de ícones) tinta de branco via `color` do container */
+.mini-announcement-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #fff;
+}
+
+.mini-announcement-card__rating {
+  font-family: var(--font-brand);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.mini-announcement-card__dot,
+.mini-announcement-card__distance {
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+/* Estado de link – quando `to` está presente o wrapper vira um `<Link>`.
+ * O `<a>` assume o posicionamento do card; hover eleva com a sombra já usada. */
+.mini-announcement-card--link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.mini-announcement-card--link:hover {
+  transform: translateY(-2px);
+}
+
+.mini-announcement-card--link:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 2px;
+}

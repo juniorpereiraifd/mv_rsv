@@ -1,0 +1,61 @@
+/* RestaurantHero – capa da página (design 68:3751). Imagem full-bleed com
+ * gradiente de leitura; a toolbar fica absoluta no topo. */
+
+.restaurant-hero {
+  position: relative;
+  height: 372px;
+  overflow: hidden;
+}
+
+.restaurant-hero__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Gradiente suave sobre a foto – dá contraste à toolbar branca no topo e ao
+ * canto do corpo branco na base (análogo ao "Filter" do design). */
+.restaurant-hero__gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.42) 0%,
+    rgba(0, 0, 0, 0) 38%,
+    rgba(0, 0, 0, 0.28) 100%
+  );
+}
+
+/* Toolbar sobreposta (design 68:4078): botões circulares 44px com fundo
+ * translúcido + blur, ícones Line 24px em branco. */
+.restaurant-hero__toolbar {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+
+/* Círculo translúcido dos botões da toolbar – mesmo visual do voltar da home
+ * (`.brand-header__toolbar-btn`): 44px, raio 100%, fundo `--color-bg-toolbar`. */
+.restaurant-hero__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  border-radius: 100px;
+  background-color: var(--color-bg-toolbar);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #ffffff;
+  text-decoration: none; /* o voltar é um <Link>; sem sublinhado como na home */
+  cursor: pointer;
+}

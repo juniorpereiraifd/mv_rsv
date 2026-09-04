@@ -1,0 +1,177 @@
+/* ReviewsSection – bloco "Avaliações" (design 68:3865). */
+
+.reviews-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.reviews-section__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.reviews-section__title {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-title-md);
+  line-height: 24px;
+  color: var(--color-text-primary);
+}
+
+.reviews-section__see-all {
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
+  line-height: 16px;
+  color: var(--color-text-informative);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.reviews-section__rating {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Card cinza único – superfície secundária que contém o card branco da nota
+ * (68:3871) e o resumo "O que os clientes dizem?" (68:3902), sem separação */
+.reviews-section__rating-card {
+  display: flex;
+  flex-direction: column;
+  padding: 4px;
+  border-radius: 20px;
+  background: var(--color-surface-secondary);
+}
+
+.reviews-section__graph {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 24px;
+  border-radius: 16px;
+  background: var(--color-page-bg);
+}
+
+/* Nota – estrela + valor 40px + total de avaliações */
+.reviews-section__score {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.reviews-section__score-value {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text-primary);
+}
+
+.reviews-section__score-number {
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: 40px;
+  line-height: 48px;
+}
+
+.reviews-section__score-count {
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: #717171;
+  white-space: nowrap;
+}
+
+.reviews-section__graph-divider {
+  flex-shrink: 0;
+  width: 1px;
+  height: 74px;
+  background: var(--color-outline-default);
+}
+
+/* Barras do gráfico – 3 linhas separadas por divisores */
+.reviews-section__bars {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.reviews-section__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--color-outline-default);
+}
+
+.reviews-section__bar:last-child {
+  border-bottom: none;
+}
+
+.reviews-section__bar-label {
+  flex: 1;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: var(--color-text-primary);
+}
+
+.reviews-section__bar-score {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: var(--color-text-primary);
+}
+
+/* Resumo "O que os clientes dizem?" (68:3902) – conteúdo dentro do card cinza */
+.reviews-section__summary {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+}
+
+.reviews-section__summary-header {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.reviews-section__summary-title {
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: var(--color-text-primary);
+}
+
+.reviews-section__summary-ai {
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 14px;
+  color: var(--color-text-disabled);
+}
+
+.reviews-section__summary-text {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: var(--color-text-secondary);
+}

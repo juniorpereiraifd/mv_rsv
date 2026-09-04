@@ -1,0 +1,29 @@
+{
+  "slug": "skye",
+  "name": "Skye",
+  "categoryGroup": "Contemporânea",
+  "officialUrl": "https://www.hotelunique.com/pt/skye-restaurante-bar",
+  "hero": {
+    "file": "restaurantes/skye/hero.jpg",
+    "source": "https://cdn.prod.website-files.com/68a37fe812fde78086e0bdad/68b71e3a7f200dc9278620fc_Hotel%20Unique%20Home%20Gastronomia%20o%20Chef.avif"
+  },
+  "gallery": [
+    {
+      "file": "restaurantes/skye/gallery-1.jpg",
+      "source": "https://cdn.prod.website-files.com/68a37fe812fde78086e0bdad/698f4fd37fea7c493d6d18e6_Espaco%20Skye%20Unique%203.avif"
+    },
+    {
+      "file": "restaurantes/skye/gallery-2.jpg",
+      "source": "https://cdn.prod.website-files.com/68a37fe812fde78086e0bdad/68c81444a7fced13a845bbd2_Skye%20Bar%2001.avif"
+    },
+    {
+      "file": "restaurantes/skye/gallery-3.jpg",
+      "source": "https://cdn.prod.website-files.com/68a37fe812fde78086e0bdad/68c81444437a46cd86e83a60_Skye%20Gastronomia%20brasileira%2001.avif"
+    }
+  ],
+  "logo": {
+    "file": "restaurantes/skye/logo.png",
+    "source": "https://cdn.prod.website-files.com/68a37fe812fde78086e0bdad/6925f995f22198470b7351bb_Webclip.png"
+  },
+  "notes": "Skye é o rooftop bar/restaurante do Hotel Unique. Imagens originais do site (Webflow) são AVIF e foram convertidas para JPG via sips para compatibilidade com Figma. Hero = 'Gastronomia o Chef' (chef Emmanuel Bassoleil, 1920x1080) da home do hotelunique.com — a única imagem >1200px do site (galeria do Skye é 650x433/500x500). NÃO existe logo standalone 'SKYE' no site (o wordmark é texto HTML); logo usado = apple-touch-icon do Hotel Unique (256x256 PNG)."
+}

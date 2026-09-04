@@ -1,0 +1,50 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  height: 20px;
+  padding: 2px 6px;
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-badge);
+  backdrop-filter: blur(4px);
+  box-shadow: var(--shadow-badge);
+  /* Tinta os ícones da fonte (fire, do popular) de branco, como no design;
+     os assets SVG (exclusivo/premium/gourmet) têm a própria cor. */
+  color: #ffffff;
+}
+
+.badge__label {
+  font-family: var(--font-brand);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  white-space: nowrap;
+  color: #ffffff;
+}
+
+.badge--exclusivo .badge__label,
+.badge--premium .badge__label {
+  color: var(--color-text-on-clube);
+}
+
+.badge__crown {
+  width: 7px;
+  height: 13px;
+}
+
+.badge__crown--right {
+  /* Tailwind's `-scale-y-100 rotate-180` = horizontal mirror */
+  transform: rotate(180deg) scaleY(-1);
+}
+
+.badge__seal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ffffff;
+  filter: drop-shadow(0 1.084px 3.251px rgba(0, 0, 0, 0.08));
+}

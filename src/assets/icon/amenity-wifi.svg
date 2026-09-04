@@ -1,0 +1,8 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Wi-Fi – arcos de sinal. Ícone de comodidade (seção "O que você pode
+       aproveitar"). Asset vetorial escuro sobre fundo claro. -->
+  <path d="M4 9.2 C7 6.4 17 6.4 20 9.2" stroke="#141414" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M6.8 12.6 C9 11 15 11 17.2 12.6" stroke="#141414" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M9.6 16 C10.8 15.2 13.2 15.2 14.4 16" stroke="#141414" stroke-width="1.7" stroke-linecap="round"/>
+  <circle cx="12" cy="19.2" r="1.4" fill="#141414"/>
+</svg>

@@ -1,0 +1,354 @@
+/* Bottom sheet de "Filtros" (Figma 133:2758). O painel base do BottomSheet
+   traz padding 8px 24px 68px e raio 56px no topo; a variante --filters sobe o
+   conteúdo (sem alça, quase full-bleed) e reduz o raio para 40px – daí a
+   especificidade dobrada (.bottom-sheet.bottom-sheet--filters) para vencer a
+   regra base independentemente da ordem de carga. */
+.bottom-sheet.bottom-sheet--filters {
+  padding: 46px 20px 20px;
+  border-radius: 40px 40px 0 0;
+}
+
+/* Raiz do conteúdo – a coluna de 24px do design. O panel base já centraliza
+   os filhos, então um único wrapper de largura total basta. */
+.filter-sheet {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 24px;
+  width: 100%;
+}
+
+/* Topo: título "Filtros" + X de fechar à direita (linha única do Figma). */
+.filter-sheet__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.filter-sheet__title {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-title-md);
+  line-height: 24px;
+  color: var(--color-text-primary);
+}
+
+.filter-sheet__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: none;
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+.filter-sheet__close:hover {
+  background: var(--color-surface-secondary);
+}
+
+/* Grupo colapsável (Culinária / Faixa de preço / Destaques): header em linha
+   com chevron Line que gira 180° quando expandido. O chevron herda a cor
+   secundária do header; o título força a primária. */
+.filter-sheet__group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.filter-sheet__group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--color-text-secondary);
+  text-align: left;
+  cursor: pointer;
+}
+
+.filter-sheet__group-title {
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--color-text-primary);
+}
+
+.filter-sheet__group-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  transition: transform 200ms ease;
+}
+
+/* Expandido → seta aponta para cima (rotação de 180° sobre o glifo). */
+.filter-sheet__group-chevron--up {
+  transform: rotate(180deg);
+}
+
+/* Fileira de pílulas dos critérios (culinárias e faixas de preço). */
+.filter-sheet__chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Faixas de preço ocupam a largura em colunas iguais (2 tiles iguais). */
+.filter-sheet__chip-row--price {
+  flex-wrap: nowrap;
+  gap: 8px;
+  width: 100%;
+}
+
+.filter-sheet__chip-row--price .filter-sheet__chip--price {
+  flex: 1 1 0;
+}
+
+/* Pílula de critério – chip do padrão DS (raio pill, borda neutra, texto
+   Regular 12px). Estado ativo: fundo escuro com conteúdo claro. */
+.filter-sheet__chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 18px;
+  border: 1px solid var(--color-outline-default);
+  border-radius: var(--radius-pill);
+  background: var(--color-page-bg);
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+.filter-sheet__chip:hover {
+  background: var(--color-surface-secondary);
+}
+
+.filter-sheet__chip--active {
+  background: var(--color-text-primary);
+  border-color: var(--color-text-primary);
+  color: var(--color-page-bg);
+}
+
+.filter-sheet__chip--active:hover {
+  background: var(--color-text-primary);
+}
+
+/* Colunas "$" de um tile de preço: as posições do nível escolhido em escuro
+   (#141414) e as restantes "fantasma" (#ebebeb). No estado ativo o tile é
+   escuro e o fantasma usa branco translúcido. */
+.filter-sheet__price-filled {
+  color: var(--color-text-primary);
+}
+
+.filter-sheet__price-ghost {
+  color: var(--color-outline-default);
+}
+
+.filter-sheet__chip--active .filter-sheet__price-filled {
+  color: var(--color-page-bg);
+}
+
+.filter-sheet__chip--active .filter-sheet__price-ghost {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* "Ver mais / Ver menos" de culinária – link-texto sob a fileira. */
+.filter-sheet__see-more {
+  align-self: flex-start;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.filter-sheet__see-more:hover {
+  color: var(--color-text-primary);
+}
+
+/* Empilhamento das opções de destaque (linhas largas de curadoria). */
+.filter-sheet__option-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+/* Linha de destaque (Premiados / Gourmet) – botão largo com ícone + título e
+   subtítulo. Ativo: fundo #f5f5f5 claro + borda escura (mantém o asset Gourmet
+   legível, que é desenhado para fundo claro – inverter para branco o quebraria). */
+.filter-sheet__option-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  height: 52px;
+  padding: 0 16px;
+  border: 1px solid var(--color-outline-default);
+  border-radius: var(--radius-card-lg);
+  background: var(--color-page-bg);
+  font-family: var(--font-brand);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  text-align: left;
+  cursor: pointer;
+}
+
+.filter-sheet__option-row:hover {
+  background: #fafafa;
+}
+
+.filter-sheet__option-row--active {
+  background: var(--color-surface-secondary);
+  border-color: var(--color-text-primary);
+}
+
+.filter-sheet__option-row--active:hover {
+  background: var(--color-surface-secondary);
+}
+
+.filter-sheet__option-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  color: var(--color-text-primary);
+}
+
+.filter-sheet__option-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.filter-sheet__option-title {
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  line-height: 20px;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.filter-sheet__option-subtitle {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Separação fina entre os grupos (mais próxima da régua #ebebeb do que do
+   "divider" com label). */
+.filter-sheet__divider {
+  width: 100%;
+  height: 1px;
+  margin: 0;
+  border: none;
+  background: var(--color-outline-default);
+  flex-shrink: 0;
+}
+
+/* Rodapé: "Limpar tudo" (flexível) + "Mostrar N restaurantes" (escuro). O
+   contador é o resultado JÁ combinado com o benefício ativo da home. */
+.filter-sheet__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.filter-sheet__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  border: none;
+  border-radius: var(--radius-card-lg);
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: 14px;
+  line-height: 16px;
+  cursor: pointer;
+}
+
+.filter-sheet__action--clear {
+  flex: 1 1 auto;
+  min-width: 0;
+  background: var(--color-surface-secondary);
+  color: var(--color-text-primary);
+}
+
+.filter-sheet__action--clear:hover {
+  background: var(--color-outline-default);
+}
+
+.filter-sheet__action--apply {
+  flex: 0 0 auto;
+  padding: 0 24px;
+  background: var(--color-text-primary);
+  color: var(--color-page-bg);
+}
+
+.filter-sheet__action--apply:hover {
+  background: #000;
+}
+
+/* Sem critério no rascunho → "Limpar tudo" some; 0 resultados (rascunho que
+   não acha loja nem combinando com o benefício) → "Mostrar" desabilita. */
+.filter-sheet__action:disabled {
+  cursor: default;
+}
+
+.filter-sheet__action--clear:disabled {
+  color: rgba(20, 20, 20, 0.4);
+}
+
+.filter-sheet__action--clear:disabled:hover {
+  background: var(--color-surface-secondary);
+}
+
+.filter-sheet__action--apply:disabled {
+  background: var(--color-surface-secondary);
+  color: rgba(20, 20, 20, 0.4);
+}
+
+.filter-sheet__action--apply:disabled:hover {
+  background: var(--color-surface-secondary);
+}
+
+/* Anel de foco do teclado nos controles interativos da sheet. */
+.filter-sheet__close:focus-visible,
+.filter-sheet__group-header:focus-visible,
+.filter-sheet__see-more:focus-visible,
+.filter-sheet__chip:focus-visible,
+.filter-sheet__option-row:focus-visible,
+.filter-sheet__action:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 2px;
+}

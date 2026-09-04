@@ -1,0 +1,12 @@
+{
+  "slug": "jiquitaia",
+  "name": "Jiquitaia",
+  "categoryGroup": "Comida brasileira",
+  "officialUrl": "https://jiquitaia.com.br",
+  "hero": {"file": "restaurantes/jiquitaia/hero.jpg", "source": "https://jiquitaia.com.br/wp-content/uploads/2018/11/header.jpg"},
+  "gallery": [
+    {"file": "restaurantes/jiquitaia/gallery-1.jpg", "source": "https://upload.wikimedia.org/wikipedia/commons/2/2b/O_Jiquitaia_%C3%A9_desses_restaurantes_de_ambienta%C3%A7%C3%A3o_%2828435839084%29.jpg"}
+  ],
+  "logo": {"file": "restaurantes/jiquitaia/logo.png", "source": "https://jiquitaia.com.br/wp-content/uploads/2018/11/logo_center.png"},
+  "notes": "Site oficial e jiquitaia.com.br (jiquitaia.com nao resolve). Site WordPress single-page: hero=header.jpg (banner 1440x890), logo=logo_center.png (700x140). Gallery-1 do Wikimedia Commons (CC BY 2.0, autor Shoichi Iwashita/Flickr, foto do ambiente/restaurante)."
+}

@@ -1,0 +1,31 @@
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+html {
+  /* O rail de carrossel é full-bleed (100vw) e sai da coluna centralizada;
+     clip na raiz (que controla a viewport) corta qualquer scroll horizontal
+     no limite da tela, sem criar scroll container (mantém o sticky seguro).
+     overflow-y: auto preserva a rolagem vertical – parear clip+visible
+     coagiria visible→clip e travaria a página. */
+  overflow-x: clip;
+  overflow-y: auto;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-page-bg);
+}

@@ -1,0 +1,153 @@
+/* BuscarFlow – casca compartilhada do fluxo de busca (fake door, Figma
+   cMhyOvWvhsuRtOjTLvFvDH: hub 139:4526, endereço 139:5230, resultados
+   139:5390/5548). Página branca no container da app (max-width 834, padrão do
+   ReservaFlow), com a coluna do design (393px) centralizada. Este arquivo só tem
+   a casca + o topo comum às telas de endereço/resultados (campo + "Cancelar");
+   o conteúdo de cada tela vive no css da própria página. */
+
+.buscar-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  background-color: var(--color-page-bg);
+}
+
+.buscar-page__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Coluna do design (393px) centralizada; padding lateral 16px do frame. Cada
+   tela ajusta o padding/`gap` próprio para o que vem depois do toolbar. */
+.buscar-page__inner {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 393px);
+  margin-inline: auto;
+  padding: 16px 16px 24px;
+}
+
+/* Topo das telas de endereço/resultados (design 139:5230/5548): o campo
+   (pílula à esquerda, flexível) + "Cancelar" colado à direita. O Cancelar não
+   some no mockup estreito: o campo encolhe (flex:1) antes de quebrar. */
+.buscar-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Pílula do campo – 48px, raio total, superfície #f5f5f5. Duas variantes:
+   a inativa (endereço, `<div>` decorativa com pin + placeholder) e a ativa
+   (resultados, `<input>` real com lupa + X de limpar quando tem texto). */
+.buscar-field {
+  box-sizing: border-box;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-secondary);
+}
+
+.buscar-field__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+}
+
+/* Texto "placeholder" da variante decorativa (não é um `<input>`). */
+.buscar-field__placeholder {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-body);
+  line-height: 20px;
+  color: var(--color-text-disabled);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Input real da variante ativa – sem borda/fundo próprios; a cor do texto é a
+   do placeholder do design (#a3a3a3) até o usuário digitar. */
+.buscar-field__input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  padding: 0;
+  background: none;
+  outline: none;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-body);
+  line-height: 20px;
+  color: var(--color-text-primary);
+}
+
+.buscar-field__input::placeholder {
+  color: var(--color-text-disabled);
+  opacity: 1; /* Firefox aplica opacidade própria ao placeholder */
+}
+
+/* X de limpar o campo (design 139:5548) – área de toque 32×32 à direita do
+   campo, glifo `close` (asset). Aparece só quando há texto. */
+.buscar-field__clear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  margin-right: -8px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.buscar-field__clear:hover {
+  background: var(--color-outline-default);
+}
+
+.buscar-field__clear:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 2px;
+}
+
+/* "Cancelar" (design 139:5230/5548) – `<Link>` de volta ao hub, 14px Medium
+   #141414. Um `<a>` herda sublinhado/cor de link do UA – remove ambos. */
+.buscar-cancel {
+  flex-shrink: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
+  line-height: 16px;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.buscar-cancel:hover {
+  color: var(--color-text-secondary);
+}
+
+.buscar-cancel:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}

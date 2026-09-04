@@ -1,0 +1,44 @@
+.tags {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 20px;
+  padding: 2px 4px;
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  /* Hug content instead of stretching as a flex-item of the card's info column */
+  width: fit-content;
+  /* Color tones the tintable icons (rendered inline with fill="currentColor") */
+  color: var(--color-text-success);
+}
+
+.tags--success {
+  background: var(--color-bg-success-secondary);
+}
+
+.tags--clube {
+  background: var(--color-bg-clube-secondary);
+  color: var(--color-text-clube);
+}
+
+.tags--informative {
+  background: var(--color-bg-informative-secondary);
+  color: var(--color-text-informative);
+}
+
+.tags__label {
+  font-family: var(--font-brand);
+  font-weight: 700;
+  font-size: 10px;
+  line-height: normal;
+  white-space: nowrap;
+  color: var(--color-text-success);
+}
+
+.tags--clube .tags__label {
+  color: var(--color-text-clube);
+}
+
+.tags--informative .tags__label {
+  color: var(--color-text-informative);
+}

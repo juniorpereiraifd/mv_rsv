@@ -1,0 +1,64 @@
+/* BottomSheet – painel drawer que sobe da base da tela (design 97:6949
+ * "cupom off only"). Fill-container: largura toda do container (a página
+ * BeneficioPage é full-bleed), com fundo branco SÓLIDO – pedido do usuário, pra
+ * não ver o fundo da página através do sheet. Sem scrim no overlay: a área
+ * acima do sheet segue sendo a página, e tocar fora fecha. */
+
+/* Camada de fundo, transparente, cobre a viewport e fecha ao tocar fora. */
+.bottom-sheet__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.bottom-sheet {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 56px;
+  padding: 8px 24px 68px;
+  border-radius: 56px 56px 0 0;
+  background: #ffffff;
+  /* Sombra suave na borda superior – define a aresta do sheet branco sobre a
+   * foto (o design não traz sombra; o shadow dele é transparente). */
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.08);
+  max-height: calc(100vh - 24px);
+  overflow-y: auto;
+  outline: none;
+  transform: translateY(0);
+  transition: transform 280ms cubic-bezier(0.32, 0.72, 0, 1);
+  animation: bottom-sheet-in 280ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.bottom-sheet--closing {
+  transform: translateY(100%);
+}
+
+/* Alça do drawer (97:6950) – 36×4, centralizada, cinza 20%. */
+.bottom-sheet__handle {
+  flex-shrink: 0;
+  width: 36px;
+  height: 4px;
+  border-radius: 50px;
+  background: rgba(80, 80, 80, 0.2);
+}
+
+@keyframes bottom-sheet-in {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bottom-sheet {
+    transition: none;
+    animation: none;
+  }
+}

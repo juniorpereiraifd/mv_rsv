@@ -1,0 +1,14 @@
+{
+  "slug": "pizzaria-veridiana",
+  "name": "Pizzaria Veridiana",
+  "categoryGroup": "Pizza",
+  "officialUrl": "https://www.veridiana.com.br",
+  "hero": {"file": "restaurantes/pizzaria-veridiana/hero.jpg", "source": "https://www.veridiana.com.br/imagens/produtos/categorias/img_4132.jpg"},
+  "gallery": [
+    {"file": "restaurantes/pizzaria-veridiana/gallery-1.jpg", "source": "https://www.veridiana.com.br/imagens/produtos/categorias/veridiana-app1520.jpg"},
+    {"file": "restaurantes/pizzaria-veridiana/gallery-2.jpg", "source": "https://www.veridiana.com.br/imagens/produtos/categorias/veridiana-app1873.jpg"},
+    {"file": "restaurantes/pizzaria-veridiana/gallery-3.jpg", "source": "https://www.veridiana.com.br/imagens/produtos/categorias/veridiana-app1986.jpg"}
+  ],
+  "logo": {"file": "restaurantes/pizzaria-veridiana/logo.png", "source": "https://www.veridiana.com.br/imagens/logos/logo-veridiana-600x350.png"},
+  "notes": "Domínio do hint (pizzariaveridiana.com.br) não resolve; oficial é veridiana.com.br. Site Redbit com body renderizado via JS — extraí as imagens da página /cardapio (imagens/produtos/categorias, 600x400). Uma categoria usava foto Unsplash (patrick-fore-...) — descartada por regra anti-banco genérico. Logo = og:image 600x350."
+}

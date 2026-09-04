@@ -1,0 +1,29 @@
+{
+  "slug": "kinoshita",
+  "name": "Kinoshita",
+  "categoryGroup": "Sushi / Japonesa",
+  "officialUrl": "https://restaurantekinoshita.com.br",
+  "hero": {
+    "file": "restaurantes/kinoshita/hero.jpg",
+    "source": "https://restaurantekinoshita.com.br/wp-content/uploads/2025/09/SUSHI.jpg"
+  },
+  "gallery": [
+    {
+      "file": "restaurantes/kinoshita/gallery-1.jpg",
+      "source": "https://restaurantekinoshita.com.br/wp-content/uploads/2025/09/LAGOSTA.jpg"
+    },
+    {
+      "file": "restaurantes/kinoshita/gallery-2.jpg",
+      "source": "https://restaurantekinoshita.com.br/wp-content/uploads/2025/09/CAVIAR.jpg"
+    },
+    {
+      "file": "restaurantes/kinoshita/gallery-3.jpg",
+      "source": "https://restaurantekinoshita.com.br/wp-content/uploads/2025/09/TACA.jpg"
+    }
+  ],
+  "logo": {
+    "file": "restaurantes/kinoshita/logo.png",
+    "source": "https://restaurantekinoshita.com.br/wp-content/uploads/2024/02/Logo-Kinoshita.png"
+  },
+  "notes": "Domínio-sugestão kinoshita.com.br NÃO é o restaurante; site oficial confirmado via WebSearch: restaurantekinoshita.com.br. Fotos reais de pratos (uploads/2025/09). Logo oficial em PNG transparente 1920x682."
+}

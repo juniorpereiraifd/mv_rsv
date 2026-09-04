@@ -1,0 +1,29 @@
+{
+  "slug": "spot",
+  "name": "Spot",
+  "categoryGroup": "Contemporânea",
+  "officialUrl": "http://www.restaurantespot.com.br",
+  "hero": {
+    "file": "restaurantes/spot/hero.jpg",
+    "source": "http://www.restaurantespot.com.br/wp-content/themes/spot-restaurante/assets/images/tu/ilustracao.jpg"
+  },
+  "gallery": [
+    {
+      "file": "restaurantes/spot/gallery-1.jpg",
+      "source": "http://www.restaurantespot.com.br/wp-content/uploads/2023/06/IMGP1472.jpg"
+    },
+    {
+      "file": "restaurantes/spot/gallery-2.jpg",
+      "source": "http://www.restaurantespot.com.br/wp-content/uploads/2022/11/BABY-BEEF.jpg"
+    },
+    {
+      "file": "restaurantes/spot/gallery-3.jpg",
+      "source": "http://www.restaurantespot.com.br/wp-content/uploads/2022/11/FUNDO-DE-ALCACHOFRA.jpg"
+    }
+  ],
+  "logo": {
+    "file": "restaurantes/spot/logo.svg",
+    "source": "http://www.restaurantespot.com.br/wp-content/themes/spot-restaurante/assets/images/logo-spot.svg"
+  },
+  "notes": "Domínio sugerido spotrestaurante.com.br estava fora do ar (HTTP 000); site oficial real é restaurantespot.com.br. hero = banner oficial do site (3920x1540, arquivo 'ilustracao' — banner de arte/marca). gallery-1 = foto interior real (IMGP), gallery-2/3 = pratos do cardápio. logo é SVG vetorial."
+}

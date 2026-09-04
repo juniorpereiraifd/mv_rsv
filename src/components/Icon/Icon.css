@@ -1,0 +1,38 @@
+/* Fonte de ícones da marca iFood – as famílias `pomodoro-icon-filled` (sólida)
+ * e `pomodoro-icon-line` (contorno) que o design referencia via
+ * <Icon style="Filled"/> / <Icon style="Line"/>. Copiadas de ~/Library/Fonts/
+ * (proprietárias/licenciadas; não estão no projeto original). */
+@font-face {
+  font-family: 'pomodoro-icon-filled';
+  src: url('../../assets/fonts/pomodoro-icon-filled.ttf') format('truetype');
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'pomodoro-icon-line';
+  src: url('../../assets/fonts/pomodoro-icon-line.ttf') format('truetype');
+  font-display: block;
+}
+
+.icon {
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Glifo da fonte de ícones. O span tem caixa = tamanho do ícone (width/height
+ * iguais a font-size) e o glifo é centralizado. Sem cor própria: herda `color`
+ * do container, então o tom do pill (success/clube/informative) ou o cinza do
+ * rating fechado tintam o glifo automaticamente via CSS. */
+.icon--font {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  font-family: 'pomodoro-icon-filled';
+  color: inherit;
+}
+
+/* Variante de contorno – sobrescreve a família padrão (filled) */
+.icon--font-line {
+  font-family: 'pomodoro-icon-line';
+}

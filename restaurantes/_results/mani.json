@@ -1,0 +1,14 @@
+{
+  "slug": "mani",
+  "name": "Maní",
+  "categoryGroup": "Michelin",
+  "officialUrl": "https://www.restaurantemani.com.br",
+  "hero": {"file": "restaurantes/mani/hero.jpg", "source": "https://www.restaurantemani.com.br/wp-content/uploads/2023/05/mani-img-vert_001.jpg"},
+  "gallery": [
+    {"file": "restaurantes/mani/gallery-1.jpg", "source": "https://www.restaurantemani.com.br/wp-content/uploads/mani_segundo-salao-5_pedro-napolitano-prata.jpg"},
+    {"file": "restaurantes/mani/gallery-2.jpg", "source": "https://www.restaurantemani.com.br/wp-content/uploads/mani_lingua-de-boi-berinjela-ora-pro-nobis-tucupi-e-molho-de-ervas-aromaticas-_-beef-tongue-eggplant-Barbados-gooseberry-leaves-tucupi-manioc-root-sauce-herbs-sauce2_juliana-primon.jpg"},
+    {"file": "restaurantes/mani/gallery-3.jpg", "source": "https://www.restaurantemani.com.br/wp-content/uploads/mani_baba-rum-e-uva-_-baba-rum-grape3_victor-collor.jpg"}
+  ],
+  "logo": {"file": "restaurantes/mani/logo.svg", "source": "https://www.restaurantemani.com.br/wp-content/uploads/2023/05/logo-mani.svg"},
+  "notes": "Site oficial real é restaurantemani.com.br (manicomendaria.com.br não resolve). Logo SVG vetorial; hero vertical 800x1200; galeria = salão + pratos assinados (língua de boi, baba de rum)."
+}

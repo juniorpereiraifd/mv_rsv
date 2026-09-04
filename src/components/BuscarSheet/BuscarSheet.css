@@ -1,0 +1,200 @@
+/* BuscarSheet – overlay "Buscar em" da home (Figma 139:4526/139:4487 dentro do
+   frame "Proposta" 139:3692). Antes o hub era uma página branca isolada em
+   `/buscar`; agora é um MODAL controlado pela home (App/BuscarSheet), flutuando
+   sobre o conteúdo VIVO da home. Duas camadas:
+     - `.buscar-overlay`: scrim de tela cheia (tint + backdrop blur) que cobre a
+       viewport; cobre o `.app` inteiro (que não tem transform/filter/position,
+       então `position:fixed; inset:0` vaza do `max-width:834px`). z-index 300,
+       acima do BottomSheet (100) e do ReservaOverlay (200).
+     - `.buscar-sheet`: painel #f5f5f5 migrado do BuscarPage.css, agora com os
+       QUATRO cantos arredondados e largura 361px do design, flutuando perto do
+       topo com uma banda (~66px) de home borrada acima (eco do y66 do frame).
+   Constantes do scrim/animação marcadas p/ afinar contra 139:4487/139:3692. */
+
+/* Overlay – tint #000 30% + blur 12px sobre a home viva. `padding-top` ancora o
+   painel a ~66px do topo (y66 do design); sem padding lateral: o painel usa
+   `width: min(100%, 361px)` + `margin-inline: auto`, o gutter ~16px do frame
+   surge da diferença na coluna da home (em telas estreitas 100% ainda deixa a
+   borda da home visível nas laterais, como o frame). */
+.buscar-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 66px;
+  background: rgba(0, 0, 0, 0.3);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  /* Entrada: fade do scrim (200ms). A saída usa a `transition` + a classe
+     `--closing` (opacidade 0). */
+  animation: buscar-overlay-in 200ms ease-out;
+  transition: opacity 200ms ease-out;
+}
+
+.buscar-overlay--closing {
+  opacity: 0;
+}
+
+/* Navegadores sem `backdrop-filter`: em vez de um fundo borrado fraco, um
+   scrim escuro mais denso mantém a home ilegível por trás do painel. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .buscar-overlay {
+    background: rgba(20, 20, 20, 0.45);
+  }
+}
+
+@keyframes buscar-overlay-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Painel do hub – superfície secundária (#f5f5f5), largura do frame 139:4526
+   (361px) centralizada, 4 cantos raio 40, sombra do design. gap 16 empilhando
+   header e as duas pílulas como no frame. Entra deslizando -14px com fade; a saída
+   usa a `transition` + `.buscar-sheet--closing`. `outline:none` para o foco de
+   abertura (`tabIndex={-1}`) não desenhar anel – o focus-visible dos filhos
+   segue visível. */
+.buscar-sheet {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: min(100%, 361px);
+  margin-inline: auto;
+  padding: 20px 20px 20px;
+  background: var(--color-surface-secondary);
+  border-radius: 40px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.16);
+  outline: none;
+  transform-origin: top center;
+  animation: buscar-sheet-in 200ms cubic-bezier(0.32, 0.72, 0, 1);
+  transition:
+    opacity 200ms ease,
+    transform 200ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.buscar-sheet--closing {
+  opacity: 0;
+  transform: translateY(-14px);
+}
+
+@keyframes buscar-sheet-in {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+}
+
+/* Header do sheet: título "Buscar em" à esquerda + X de fechar à direita. */
+.buscar-sheet__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.buscar-sheet__title {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-title-md);
+  line-height: 28px;
+  color: var(--color-text-primary);
+}
+
+/* X de fechar (asset `close`) dentro de um círculo translúcido – mesmo idioma
+   do botão de fechar do toolbar. Agora é `<button>` (fecha o modal via onClose);
+   era `<Link>` quando o hub era página. */
+.buscar-sheet__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-right: -8px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.buscar-sheet__close:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.buscar-sheet__close:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 2px;
+}
+
+/* Pílulas de ação do hub (design): h48, raio 42, fundo branco, ícone 16 à
+   esquerda + rótulo 14px. São `<Link>` para as sub-páginas do fluxo: remove
+   sublinhado/cor de link do UA. */
+.buscar-pill {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 42px;
+  background: #fff;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+}
+
+.buscar-pill:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.buscar-pill:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 2px;
+}
+
+.buscar-pill__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+}
+
+/* Rótulo da pílula – Regular #666 por padrão; o trecho forte (local atual) em
+   Medium #141414. Uma linha com reticências se não couber. */
+.buscar-pill__text {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-body);
+  line-height: 20px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.buscar-pill__text-muted {
+  color: var(--color-text-secondary);
+}
+
+.buscar-pill__text strong {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+/* `prefers-reduced-motion`: sem fade/deslize – o painel aparece/desaparece
+   direto (a `transition` ainda cobre a classe `--closing`; zerar tudo). */
+@media (prefers-reduced-motion: reduce) {
+  .buscar-overlay,
+  .buscar-sheet {
+    animation: none;
+    transition: none;
+  }
+}

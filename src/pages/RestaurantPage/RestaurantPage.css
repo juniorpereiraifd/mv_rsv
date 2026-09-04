@@ -1,0 +1,31 @@
+/* RestaurantPage – a página do restaurante (Figma 68:3750). Mantém as
+ * proporções do frame mobile de 393px dentro do container da app (834px). */
+
+.restaurant-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  background-color: var(--color-page-bg);
+}
+
+/* Corpo branco sobreposto ao hero – o Main Container do design (68:3754) começa
+ * a 186px do topo do frame de 372px, criando o canto superior arredondado (32px)
+ * com o hero "espiando" por cima. */
+.restaurant-page__body {
+  position: relative;
+  z-index: 1;
+  margin-top: -186px;
+  border-radius: 32px 32px 0 0;
+  background-color: var(--color-page-bg);
+}
+
+/* Seções de conteúdo – o Content do design (68:3800): pt 32px, px 16px, coluna
+ * com gap 40px entre seções. */
+.restaurant-page__content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 32px 16px 48px;
+}

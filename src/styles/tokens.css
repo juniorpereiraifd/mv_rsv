@@ -1,0 +1,135 @@
+/**
+ * Design tokens – values lifted from the "Comer Fora" wireframe
+ * (Figma: cMhyOvWvhsuRtOjTLvFvDH, frame 3:1655).
+ *
+ * These are placeholders until a proper design system lands. Swap the values
+ * below for the final token names / brand palette as the design evolves.
+ */
+:root {
+  /* Typography */
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-brand: 'iFood_RC_Textos', var(--font-body);
+
+  /* Color – surfaces */
+  --color-page-bg: #ffffff;
+  --color-text: #000000;
+
+  /* iFood neutral background tiers; secondary is the soft circle behind the
+     category/merchant images (Figma "Neutral BG/Neutral BG Secondary"),
+     tertiary is used for placeholder blocks */
+  --color-surface-secondary: #f5f5f5;
+  --color-surface-tertiary: #e0e0e0;
+
+  /* Outline neutro – borda de chips e campos (Figma "Outline/Outline Default") */
+  --color-outline-default: #ebebeb;
+
+  /* Skeleton / placeholder bars (titles, "see all" links) */
+  --color-skeleton: #d9d9d9;
+
+  /* Color – brand */
+  --color-brand-primary: #f5073b;
+  --color-brand-text: #fff7c3;
+
+  /* Radius */
+  --radius-brand: 32px;
+  --radius-card: 8px;
+  --radius-skeleton: 8px;
+  --radius-pill: 999px;
+
+  /* Spacing */
+  --space-1: 8px;
+  --space-1-5: 12px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-6: 48px;
+
+  /* Layout – app frame matches the wireframe canvas */
+  --content-max-width: 834px;
+  --content-padding-x: 32px;
+  /* Brand block is 280px tall and the content column starts 45px below it */
+  --content-padding-top: 45px;
+
+  /* Color – text */
+  --color-text-primary: #141414;
+  --color-text-secondary: #666666;
+  --color-text-disabled: #a3a3a3;
+  --color-text-success: #007a3f;
+  --color-text-attention: #a36d00;
+  --color-text-clube: #af47ff;
+  --color-text-informative: #0083cc;
+  --color-text-on-clube: #fff0d4;
+  --color-text-brand: #eb0033;
+  --color-text-critical: #cc0000;
+
+  /* Color – soft backgrounds */
+  --color-bg-success-secondary: #ebfff5;
+  --color-bg-clube-secondary: #f6ebff;
+  --color-bg-informative-secondary: #ebf8ff;
+  --color-bg-critical-secondary: #ffebeb;
+  --color-bg-badge: rgba(0, 0, 0, 0.4);
+  /* Overlay translúcido sobre a foto (rodapé do card de anúncio, design 2:8582) */
+  --color-bg-overlay: rgba(0, 0, 0, 0.32);
+
+  /* Toolbar colado ao topo da header (design 64:2633 "Wrap") */
+  --color-bg-toolbar: rgba(0, 0, 0, 0.1); /* pílula de busca e círculos dos botões */
+  --color-bg-toolbar-action: rgba(255, 255, 255, 0.16); /* círculo do botão de presente */
+  /* Selo "Info Merchant" (design 64:2650) – BG Success Primary + contorno */
+  --color-bg-success-primary: #1fad68;
+  --color-outline-success: #e01a45;
+
+  /* Radius */
+  --radius-card-image: 24px;
+  --radius-card-lg: 16px;
+
+  /* Shadows */
+  --shadow-badge: 0 0 14px rgba(0, 0, 0, 0.1);
+  /* Elevação do card de anúncio compacto (Figma "Elevation/Elevation High") */
+  --shadow-card-high: 0 6px 12px rgba(21, 21, 21, 0.16);
+
+  /* Font sizes */
+  --font-size-scale-3xs: 12px;
+
+  /* Página do restaurante (Figma 68:3750) – bloco "Ganhe também" (clube mais
+     forte que o tom padrão: #bc00f5 sobre #faebff). */
+  --color-text-clube-strong: #bc00f5;
+  --color-bg-clube-strong: #faebff;
+  /* Faixa de preço: o nível atual fica no tom padrão, os demais esmaecidos */
+  --color-text-price-disabled: #e0e0e0;
+  /* Rodapé fixo da página (sticky) – quase opaco com blur atrás */
+  --color-bg-footer: rgba(255, 255, 255, 0.9);
+
+  /* Escala tipográfica da página do restaurante (design 68:3750) – títulos,
+     meta e legenda em Medium */
+  --font-size-title-lg: 20px; /* nome do restaurante */
+  --font-size-title-md: 18px; /* títulos de seção */
+  --font-size-title-sm: 16px; /* subtítulos / nomes em cards */
+  --font-size-body: 14px; /* meta, resumo, ofertas */
+  --font-size-caption: 12px; /* badges, pills, legendas */
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+}
+
+/* SOMENTE dentro do mockup de iPhone (modo TV): o documento do iframe recebe o
+   atributo data-mockup (ver main.tsx / ClientTvShell) e afina o gutter lateral
+   para 12px. No breakpoint normal (< TV) a página roda sem o atributo e mantém
+   os 32px originais. O override cai no mesmo token que o frame usa. */
+html[data-mockup] {
+  --content-padding-x: 12px;
+}
+
+/* TV: esconde o INDICADOR de scroll (barra vertical da página e as barras dos
+   carrosséis/raízes horizontais) dentro do mockup. A rolagem continua normal
+   via touch/trackpad — apenas some a indicação de onde você está. */
+html[data-mockup],
+html[data-mockup] * {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Edge legado */
+}
+
+html[data-mockup]::-webkit-scrollbar,
+html[data-mockup] *::-webkit-scrollbar {
+  display: none; /* Chrome / Safari */
+  width: 0;
+  height: 0;
+}

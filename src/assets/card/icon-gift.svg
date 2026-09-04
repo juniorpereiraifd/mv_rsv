@@ -1,0 +1,5 @@
+<svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Presente do botão de ação do toolbar (design 64:2644) – traço branco
+       sobre o círculo rgba(255,255,255,0.16) renderizado via CSS. -->
+  <path d="M21.8435 14.1258L16.0706 11.2069L10.4847 12.7267L10.4847 25.3609L16.0706 23.9935M16.0706 11.2069V23.9935M16.0706 23.9935L21.8435 26.7931L27.5153 25.3609V12.5707L21.8435 14.1258M21.8435 14.1258V26.7931" stroke="#ffffff" stroke-width="1.4" stroke-linejoin="round"/>
+</svg>

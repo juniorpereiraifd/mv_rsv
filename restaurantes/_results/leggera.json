@@ -1,0 +1,13 @@
+{
+  "slug": "leggera",
+  "name": "Leggera Pizza Napoletana",
+  "categoryGroup": "Pizza",
+  "officialUrl": "https://www.pizzerialeggera.com.br",
+  "hero": {"file": "restaurantes/leggera/hero.jpg", "source": "https://www.pizzerialeggera.com.br/img/galeria2.jpg"},
+  "gallery": [
+    {"file": "restaurantes/leggera/gallery-1.jpg", "source": "https://www.pizzerialeggera.com.br/img/galeria1.jpg"},
+    {"file": "restaurantes/leggera/gallery-2.jpg", "source": "https://www.pizzerialeggera.com.br/img/galeria3.jpg"}
+  ],
+  "logo": {"file": "restaurantes/leggera/logo.png", "source": "https://www.pizzerialeggera.com.br/Leggera_05.png"},
+  "notes": "Fotos originais do site em alta resolução (Canon EOS R6, Adobe Lightroom — fotografia profissional real). galeria2.jpg (5472x3648, paisagem) escolhido como hero; galeria1/3 são retratos de pizza/ambiente. Logo Leggera_05.png (474x128, PNG RGBA)."
+}

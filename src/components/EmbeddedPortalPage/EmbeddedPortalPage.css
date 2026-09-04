@@ -1,0 +1,53 @@
+/* EmbeddedPortalPage – moldura de app externo embutido (rotas /salao e
+ * /reservas). Página dedicada que ocupa a viewport toda: barra B2C discreta no
+ * topo (voltar → /move) + iframe full-screen do app parceiro embaixo. */
+.portal-experience {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-page-bg);
+}
+
+.portal-experience__toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 56px;
+  padding: 0 var(--space-2);
+  border-bottom: 1px solid var(--color-outline-default);
+  flex-shrink: 0;
+}
+
+/* Botão voltar – mesmo padrão do BrandHeader: o Link vira <a>, que herda
+   sublinhado/cor de link do UA; remove ambos. */
+.portal-experience__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-family: var(--font-brand);
+  font-size: var(--font-size-body);
+}
+
+.portal-experience__back:hover,
+.portal-experience__back:focus-visible {
+  color: var(--color-brand-primary);
+  outline: none;
+}
+
+.portal-experience__title {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+}
+
+/* O iframe ocupa todo o espaço abaixo da barra; o app parceiro é uma SPA que
+   controla a própria altura, então sem borda e com largura total. */
+.portal-experience__frame {
+  flex: 1;
+  width: 100%;
+  border: 0;
+}

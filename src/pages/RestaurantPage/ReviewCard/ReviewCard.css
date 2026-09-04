@@ -1,0 +1,150 @@
+/* ReviewCard – momento compartilhado (design 68:3912 "Card-Social L"): coluna
+ * empilhada com card de foto 198×264, user infos e texto. A única coisa
+ * sobreposta à foto é o badge "+N". */
+
+.review-card {
+  flex-shrink: 0;
+  width: 198px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scroll-snap-align: start;
+}
+
+/* Card de foto – 198×264, arredondado 16px (design 68:3913) */
+.review-card__media {
+  position: relative;
+  width: 198px;
+  height: 264px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--color-surface-tertiary);
+}
+
+.review-card__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Escurece o topo da foto (design 68:3916) – 50% → transparente em 24% */
+.review-card__top-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 24%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+}
+
+/* Sombra de gradiente na base (design 68:3915) – 27px → preto 80% */
+.review-card__bottom-gradient {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 27px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+}
+
+/* Badge "+N" – único elemento sobreposto, canto inferior direito (design 68:3922) */
+.review-card__photos {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 9px;
+  background: rgba(0, 0, 0, 0.45);
+  font-family: var(--font-brand);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* User infos – avatar + nome + meta, abaixo da foto (design 68:3925) */
+.review-card__user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.review-card__avatar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-surface-secondary);
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: var(--color-text-primary);
+}
+
+.review-card__info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.review-card__name {
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.review-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.review-card__dot {
+  color: var(--color-text-disabled);
+}
+
+/* Texto do comentário, abaixo dos user infos (design 68:3939) */
+.review-card__text {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: var(--color-text-secondary);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.review-card__more {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}

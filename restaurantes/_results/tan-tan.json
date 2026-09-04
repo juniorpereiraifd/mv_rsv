@@ -1,0 +1,9 @@
+{
+  "slug": "tan-tan",
+  "name": "Tan Tan",
+  "categoryGroup": "Bares",
+  "officialUrl": "http://tantannb.com.br",
+  "hero": {"file": "restaurantes/tan-tan/hero.png", "source": "http://tantannb.com.br/images/BackgroundTT.png"},
+  "logo": {"file": "restaurantes/tan-tan/logo.png", "source": "http://tantannb.com.br/images/LogoTT.png"},
+  "notes": "Site oficial tantannb.com.br (bar nipônico, R. Fradique Coutinho 153, Pinheiros). https retorna erro de cadeia SSL (IncompleteCertChain/websiteseguro), usado http. Template Nicepage com página única: só há logo (LogoTT.png) + background hero (BackgroundTT.png); sem galeria."
+}

@@ -1,0 +1,400 @@
+/*
+ * ReservaSection – widget "Reserva de Mesa" (Figma yXiFmGvXvY1PTn3fRNHwSB,
+ * node 115:8558). Substitui o OfferSection nas lojas com reserva. As cores do
+ * widget não existem sob o mesmo nome nos tokens da página (o vermelho da marca
+ * aqui é #EB0033, não o #F5073B do resto da tela), então ficam como variáveis
+ * locais, cada uma com o node do design:
+ *   --reserva-accent: #EB0033 – dia/horário ativos (115:8584 / 115:8605)
+ *   --reserva-day:    #1FAD68 – mini-rótulo "N ofertas" das células inativas (115:8591)
+ *   --reserva-title:  #3E3E3E – título "Reserva de Mesa" (115:8559)
+ * O resto reusa os tokens globais (bordas/superfícies/textos têm match exato).
+ */
+.reserva-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  /* Variáveis locais do widget (declaradas no escopo do componente) – o
+     vermelho da marca aqui é #EB0033, não o #F5073B do resto da tela. */
+  --reserva-accent: #eb0033;
+  --reserva-day: #1fad68;
+  --reserva-title: #3e3e3e;
+}
+
+.reserva-section__title {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-title-md);
+  line-height: 24px;
+  color: var(--reserva-title);
+}
+
+/* Painel com borda (115:8560) – 1px #ebebeb, radius 20, padding 20. Largura-base
+   do widget = frame do design (361px) e o painel alinha à esquerda da seção
+   (sem `margin-inline: auto`) para casar com o título. No tablet (< 1205px) o
+   painel vira fluido (100%) e distribui as células – ver media query no fim do
+   arquivo. As fileiras de dia e de horário rolam em trilho horizontal (barra
+   oculta) quando o conteúdo excede a largura útil do painel. */
+.reserva-panel {
+  box-sizing: border-box;
+  width: min(100%, 361px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid var(--color-outline-default);
+  border-radius: 20px;
+}
+
+/* Cada bloco do widget (115:8569 / 115:8581 / 115:8602 / 115:8618): rótulo 12px
+   acima do controle, gap 12. */
+.reserva-block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.reserva-label {
+  font-family: var(--font-brand);
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: var(--color-text-secondary);
+}
+
+.reserva-label--center {
+  text-align: center;
+}
+
+/* Stepper de pessoas (115:8572) – trilho #f5f5f5 de 40px, radius 12, com os
+   botões circulares − / + nas pontas e o total ao centro. */
+.reserva-stepper {
+  display: grid;
+  grid-template-columns: 36px 1fr 36px;
+  align-items: center;
+  height: 40px;
+  padding: 0 2px;
+  border-radius: 12px;
+  background: var(--color-surface-secondary);
+}
+
+.reserva-stepper__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: #666;
+  cursor: pointer;
+}
+
+.reserva-stepper__btn:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.reserva-stepper__btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.reserva-stepper__btn:focus-visible {
+  outline: 2px solid var(--reserva-accent);
+  outline-offset: 1px;
+}
+
+.reserva-stepper__glyph {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+/* Contagem central ("2 pessoas", 115:8577) – 14px Medium #141414. */
+.reserva-stepper__count {
+  text-align: center;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
+  line-height: 16px;
+  color: var(--color-text-primary);
+}
+
+/* Dias disponíveis (115:8583) – carrossel horizontal de células de data
+   (60×74 de largura-base). São 7 datas (hoje + 6) geradas em buildDays; como o
+   painel mobile cabe ~5, o excedente rola em trilho com a barra oculta (padrão
+   do app). No tablet as células crescem (`flex-grow`) até preencher a fileira. */
+.reserva-days {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.reserva-days::-webkit-scrollbar {
+  display: none;
+}
+
+.reserva-day {
+  box-sizing: border-box;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  width: 60px;
+  height: 74px;
+  padding: 8px 0;
+  border: none;
+  border-radius: 12px;
+  background: var(--color-surface-secondary);
+  font-family: var(--font-brand);
+  cursor: pointer;
+}
+
+.reserva-day__dd {
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  line-height: 18px;
+  color: var(--color-text-primary);
+}
+
+.reserva-day__label {
+  font-size: 10px;
+  line-height: 12px;
+  color: var(--color-text-secondary);
+}
+
+/* Mini-rótulo "N ofertas" (115:8587…) – fixo por posição (2/1/2/2) no Figma;
+   verde #1FAD68 nas células inativas. */
+.reserva-day__oferta {
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 10px;
+  letter-spacing: 0.2px;
+  color: var(--reserva-day);
+}
+
+/* Célula ativa (115:8584) – fundo vermelho #EB0033, textos brancos e o
+   mini-rótulo em branco translúcido (α .93). */
+.reserva-day--active {
+  background: var(--reserva-accent);
+}
+
+.reserva-day--active .reserva-day__dd,
+.reserva-day--active .reserva-day__label {
+  color: #fff;
+}
+
+.reserva-day--active .reserva-day__oferta {
+  color: rgba(255, 255, 255, 0.93);
+}
+
+.reserva-day:focus-visible,
+.reserva-chip:focus-visible {
+  outline: 2px solid var(--reserva-accent);
+  outline-offset: 1px;
+}
+
+/* Horários disponíveis (115:8604) – carrossel horizontal de chips de largura-
+   base fixa (88px, ver Figma) que rolam quando o expediente gera mais do que
+   cabe na largura do painel (barra oculta, padrão do app). No tablet os chips
+   crescem (`flex-grow`) até preencher a fileira. */
+.reserva-times {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.reserva-times::-webkit-scrollbar {
+  display: none;
+}
+
+.reserva-chip {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 88px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-secondary);
+  font-family: var(--font-brand);
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  white-space: nowrap;
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+/* Chip ativo (115:8605) – fundo #EB0033 com ícone e texto brancos. */
+.reserva-chip--active {
+  background: var(--reserva-accent);
+  color: #fff;
+}
+
+.reserva-chip:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* "Ao reservar você ganha" (115:8618) – card do benefício (115:8622), branco,
+   90px, radius 21, com logo 77×82, título/subtítulo e o pill "Saiba mais". O
+   design sobrepõe um asset de faixa #f5f5f5 que cobriria o pill (ficaria
+   invisível), então o card mantém a superfície branca com o recorte do ingresso
+   sugerido pela divisória pontilhada entre o logo e o conteúdo. */
+.reserva-reward {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 90px;
+  padding: 4px 4px 4px 10px;
+  border-radius: 21px;
+  background: var(--color-page-bg);
+  /* faixa do ingresso – pontilhado vertical no encontro logo/conteúdo */
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0 6px,
+    var(--color-outline-default) 6px 8px
+  );
+  background-repeat: no-repeat;
+  background-position: 95px 0;
+  background-size: 1px 100%;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+}
+
+.reserva-reward__logo {
+  flex-shrink: 0;
+  width: 77px;
+  height: 82px;
+  border-radius: 18px;
+  object-fit: cover;
+}
+
+.reserva-reward__content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.reserva-reward__title {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
+  line-height: 18px;
+  color: var(--color-text-primary);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.reserva-reward__subtitle {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-size: 10px;
+  line-height: 14px;
+  color: var(--color-text-secondary);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Pill "Saiba mais" (115:8647) – #f5f5f5, radius 99, 10px sublinhado. */
+.reserva-reward__more {
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 99px;
+  background: var(--color-surface-secondary);
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: 10px;
+  line-height: 12px;
+  color: var(--color-text-secondary);
+  text-decoration: underline;
+}
+
+/* CTA "Reservar" (Figma 122:8752) – botão primário de largura total na base
+   do painel: 321×48 (largura útil do painel), radius 16, fundo vermelho da
+   marca do widget (#EB0033) e texto branco S2 14/Medium. Fica sempre visível;
+   ainda sem ação (placeholder visual). */
+.reserva-submit {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: 16px;
+  background: var(--reserva-accent);
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
+  line-height: 16px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.reserva-submit:hover:not(:active) {
+  filter: brightness(0.97);
+}
+
+.reserva-submit:active {
+  filter: brightness(0.9);
+}
+
+.reserva-submit:focus-visible {
+  outline: 2px solid var(--reserva-accent);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   Tablet – widget "fill container" (< 1205px)
+   ============================================================
+   No tablet o widget para de replicar o frame mobile (361px) e
+   preenche o contêiner da página: o painel vira 100% da largura e
+   as fileiras de dia e de horário distribuem as células
+   uniformemente (`flex-grow`) para ocupar toda a fileira — o mesmo
+   comportamento de esticar dos cards do OfferSection em contêiner
+   largo. Em telas estreitas nada muda: sem espaço para crescer, o
+   `min-width` segura cada célula na largura-base (60px/88px) e as
+   fileiras seguem rolando no trilho, como antes.
+   -----------------------------------------------------------------
+   Breakpoint: largura < 1205px ⇒ `max-width: 1204px`. Acima disso
+   (desktop) o painel mantém o cap do frame mobile definido em
+   `.reserva-panel` (min(100%, 361px)).
+   ----------------------------------------------------------------- */
+@media (max-width: 1204px) {
+  .reserva-panel {
+    width: 100%;
+  }
+
+  /* Células de dia (60px de base) e chips de horário (88px de base)
+     crescem igualmente até preencher a largura da fileira. */
+  .reserva-day {
+    flex: 1 1 0;
+    min-width: 60px;
+  }
+
+  .reserva-chip {
+    flex: 1 1 0;
+    min-width: 88px;
+  }
+}

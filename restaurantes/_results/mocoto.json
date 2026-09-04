@@ -1,0 +1,14 @@
+{
+  "slug": "mocoto",
+  "name": "Mocotó",
+  "categoryGroup": "Comida brasileira",
+  "officialUrl": "https://mocoto.com.br",
+  "hero": {"file": "restaurantes/mocoto/hero.jpg", "source": "https://mocoto.com.br/wp-content/uploads/carne2.jpg"},
+  "gallery": [
+    {"file": "restaurantes/mocoto/gallery-1.jpg", "source": "https://mocoto.com.br/wp-content/uploads/bar2.jpg"},
+    {"file": "restaurantes/mocoto/gallery-2.jpg", "source": "https://mocoto.com.br/wp-content/uploads/mural2.jpg"},
+    {"file": "restaurantes/mocoto/gallery-3.jpg", "source": "https://sp-ao.shortpixel.ai/client/q_glossy,ret_img/https://mocoto.com.br/wp-content/uploads/2018/04/pudim.jpg"}
+  ],
+  "logo": {"file": "restaurantes/mocoto/logo.png", "source": "https://mocoto.com.br/wp-content/uploads/mocoto.png"},
+  "notes": "Site WordPress. Sem og:image; hero/gallery extraidos do slider (data-lazyload). pudim.jpg so servia via CDN shortpixel (URL direta retornava HTML). Logo mocoto.png PNG RGBA transparente 210x80."
+}

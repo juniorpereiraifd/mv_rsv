@@ -1,0 +1,148 @@
+/* AboutSection – bloco "Sobre" (design 68:3866). */
+
+.about-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.about-section__block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.about-section__title {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-title-md);
+  line-height: 24px;
+  color: var(--color-text-primary);
+}
+
+.about-section__description {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-body);
+  line-height: 18px;
+  color: var(--color-text-secondary);
+}
+
+.about-section__more {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+/* Comodidades – lista em 2 colunas */
+.about-section__amenities {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 16px;
+}
+
+.about-section__amenity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: var(--color-text-primary);
+}
+
+/* Card de localização – superfície secundária com tile de mapa interno */
+.about-section__location {
+  padding: 4px;
+  border-radius: 20px;
+  background: var(--color-surface-secondary);
+}
+
+.about-section__map {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 235px;
+  border-radius: 16px;
+  overflow: hidden;
+  /* Fallback neutro – o SVG do mapa (`.about-section__map-art`) cobre o tile. */
+  background: linear-gradient(180deg, #eae3d3 0%, #dfe6d4 100%);
+}
+
+/* Mapa de SP estilizado – preenche o tile atrás do pin central */
+.about-section__map-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Marcador central – halo radial claro + sombra sob o pin (68:4065) */
+.about-section__map-pin {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  color: var(--color-text-primary);
+  background: radial-gradient(
+    circle at 50% 42%,
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(255, 255, 255, 0.4) 58%,
+    rgba(255, 255, 255, 0) 78%
+  );
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.28));
+}
+
+.about-section__location-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 8px 8px;
+}
+
+.about-section__address {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: var(--color-text-secondary);
+}
+
+.about-section__route {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 40px;
+  border: none;
+  border-radius: 16px;
+  background: var(--color-page-bg);
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
+  line-height: 16px;
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+.about-section__route:hover {
+  background: var(--color-outline-default);
+}
+
+/* icon-directions espelhado horizontalmente para apontar na direção do design */
+.about-section__route .icon {
+  transform: scaleX(-1);
+}

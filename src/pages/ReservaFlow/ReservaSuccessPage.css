@@ -1,0 +1,65 @@
+/* ReservaSuccessPage – estado final (Figma cMhyOvWvhsuRtOjTLvFvDH, 125:12026).
+   Página branca sem toolbar/back; o conteúdo começa com `pt 98` (debaixo do
+   espaço que o design reserva pra barra/ícone) e o cabeçalho de sucesso fica
+   centralizado. Casca e rodapé/CTA vivem no ReservaFlow.css. */
+
+/* pt 98 + pb 24 para a coluna de conteúdo (o sucesso não tem toolbar). */
+.reserva-success .reserva-page__inner {
+  padding-top: 98px;
+  padding-bottom: 24px;
+}
+
+/* Cabeçalho (125:12031) – coluna centralizada; margem inferior separa do
+   ticket (o gap 16 do `.reserva-page__inner` já segura, este é o respiro do
+   cabeçalho pra baixo do texto). */
+.reserva-success__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+/* Mark de sucesso (125:12030) – círculo 64px verde (#1fad68) com o check
+   branco em stroke; entra com um pop suave (reduced-motion no ReservaFlow.css). */
+.reserva-success__mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--color-bg-success-primary);
+  animation: reserva-mark-pop 0.45s cubic-bezier(0.22, 1.4, 0.36, 1) both;
+}
+
+@keyframes reserva-mark-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* "Reserva Confirmada" (125:12032) – 24px Medium #141414, lh 32. 24px não
+   existe na escala de tokens (o teto é title-lg 20px), então vai cru. */
+.reserva-success__title {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: 24px;
+  line-height: 32px;
+  color: var(--color-text-primary);
+}
+
+/* Aviso do e-mail (125:12034) – 14px Regular #666 centralizado. */
+.reserva-success__sub {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-size: var(--font-size-body);
+  line-height: 20px;
+  color: var(--color-text-secondary);
+}

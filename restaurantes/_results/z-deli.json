@@ -1,0 +1,14 @@
+{
+  "slug": "z-deli",
+  "name": "Z Deli",
+  "categoryGroup": "Hambúrguer",
+  "officialUrl": "https://zdeli.com.br",
+  "hero": {"file": "restaurantes/z-deli/hero.jpg", "source": "https://zdeli.com.br/images/carroussel1.jpg"},
+  "gallery": [
+    {"file": "restaurantes/z-deli/gallery-1.jpg", "source": "https://zdeli.com.br/images/jardins.jpg"},
+    {"file": "restaurantes/z-deli/gallery-2.jpg", "source": "https://zdeli.com.br/images/carroussel2.jpg"},
+    {"file": "restaurantes/z-deli/gallery-3.jpg", "source": "https://zdeli.com.br/images/itaim.jpg"}
+  ],
+  "logo": {"file": "restaurantes/z-deli/logo.png", "source": "https://zdeli.com.br/images/logo.png"},
+  "notes": "Site oficial funcionou via curl. logo.png é PNG RGBA transparente (1176x308). Hero 3500x2333 (NIKON D810). A foto Z_DELI_piclesRECOR.jpg era grayscale e foi descartada."
+}

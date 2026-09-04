@@ -1,0 +1,14 @@
+{
+  "slug": "sushi-yassu",
+  "name": "Sushi Yassu",
+  "categoryGroup": "Sushi / Japonesa",
+  "officialUrl": "https://www.sushiyassu.com.br",
+  "hero": {"file": "restaurantes/sushi-yassu/hero.jpg", "source": "https://d2ggymwysgdto.cloudfront.net/1783110526777-10adefa8.jpg"},
+  "gallery": [
+    {"file": "restaurantes/sushi-yassu/gallery-1.jpg", "source": "https://api.pico.com.br/storage/v1/object/public/uploads/google-photos/sushi-yassuh-liberdade-liberdade.jpg"},
+    {"file": "restaurantes/sushi-yassu/gallery-2.jpg", "source": "https://api.pico.com.br/storage/v1/object/public/uploads/google-photos/sushi-yassuh-liberdade-liberdade-2.jpg"},
+    {"file": "restaurantes/sushi-yassu/gallery-3.jpg", "source": "https://api.pico.com.br/storage/v1/object/public/uploads/google-photos/sushi-yassuh-liberdade-liberdade-3.jpg"},
+    {"file": "restaurantes/sushi-yassu/gallery-4.jpg", "source": "https://api.pico.com.br/storage/v1/object/public/uploads/google-photos/sushi-yassuh-liberdade-liberdade-4.jpg"}
+  ],
+  "notes": "Site oficial (sushiyassu.com.br) hoje é placeholder WordPress; snapshots antigos do Wayback Machine (2010-2014) existem em abundância no CDX, mas o acesso via curl retornou bloqueio anti-bot ('suspected abusive bot traffic') e o WebFetch não alcança web.archive.org. Fotos reais obtidas de terceiros: hero = foto principal do Sushi Yassuh Liberdade via espaces.com.br (CDN CloudFront, 1600x2133); galeria = 4 fotos do Google Photos do restaurante publicadas no pico.com.br (storage público da api.pico.com.br). restaurantsforkings.com exibe a mesma foto do salão (webp), duplicada do hero. Nenhum logo/letreiro isolado localizado em nenhuma fonte."
+}

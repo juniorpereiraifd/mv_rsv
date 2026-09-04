@@ -1,0 +1,12 @@
+{
+  "slug": "bullguer",
+  "name": "Bullguer",
+  "categoryGroup": "Hambúrguer",
+  "officialUrl": "https://bullguer.com.br",
+  "hero": {"file": "restaurantes/bullguer/hero.jpg", "source": "https://image-repository.harmo.me/local-landingpage/bullguer/cover_image.jpeg"},
+  "gallery": [
+    {"file": "restaurantes/bullguer/gallery-1.jpg", "source": "https://image-repository.harmo.me/local-landingpage/bullguer/bg-seguncario.jpeg"}
+  ],
+  "logo": {"file": "restaurantes/bullguer/logo.svg", "source": "https://image-repository.harmo.me/local-landingpage/bullguer/logo-bullguer-preto.svg"},
+  "notes": "bullguer.com.br não resolve (DNS falha). Assets reais obtidos da plataforma oficial de pedidos Harmo (bullguer.harmo.me). Logo é SVG vetorial preto transparente (viewBox 122x60). Hero 1349x810; gallery é 602x419 (baixa resolução)."
+}

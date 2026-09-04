@@ -1,0 +1,73 @@
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-1);
+  min-height: 24px;
+}
+
+/* Grupo esquerdo (status dot + título) – cresce para empurrar a ação à direita
+   (design 2:8573: content flex-[1_0_0], gap 8 entre dot e título). */
+.section-header__content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  flex: 1 0 0;
+  min-width: 0;
+}
+
+/* Indicador de status "aberto agora" – dot verde com halo (design 2:8573:
+   anel 10px em Outline Success a 20% de opacidade + dot sólido 4px centrado). */
+.section-header__status {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+}
+
+.section-header__status-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-text-success);
+  opacity: 0.2;
+}
+
+.section-header__status-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-text-success);
+  transform: translate(-50%, -50%);
+}
+
+.section-header__title {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+.section-header__action {
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--font-brand);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0;
+  color: var(--color-text-brand);
+  cursor: pointer;
+}
+
+.section-header__action:hover {
+  opacity: 0.7;
+}

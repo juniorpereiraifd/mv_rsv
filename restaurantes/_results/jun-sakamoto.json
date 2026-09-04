@@ -1,0 +1,29 @@
+{
+  "slug": "jun-sakamoto",
+  "name": "Jun Sakamoto",
+  "categoryGroup": "Sushi / Japonesa",
+  "officialUrl": "https://www.junsakamoto.com.br",
+  "hero": {
+    "file": "restaurantes/jun-sakamoto/hero.jpg",
+    "source": "https://www.junsakamoto.com.br/static/reservas_index_static/images/1.jpg"
+  },
+  "gallery": [
+    {
+      "file": "restaurantes/jun-sakamoto/gallery-1.jpg",
+      "source": "https://www.junsakamoto.com.br/static/reservas_index_static/images/2.jpg"
+    },
+    {
+      "file": "restaurantes/jun-sakamoto/gallery-2.jpg",
+      "source": "https://www.junsakamoto.com.br/static/reservas_index_static/images/3.jpg"
+    },
+    {
+      "file": "restaurantes/jun-sakamoto/gallery-3.jpg",
+      "source": "https://www.junsakamoto.com.br/static/imagens_experiencias/jun.jpg"
+    }
+  ],
+  "logo": {
+    "file": "restaurantes/jun-sakamoto/logo.png",
+    "source": "https://www.junsakamoto.com.br/static/reservas_index_static/images/junlogo.png"
+  },
+  "notes": "Site oficial acessível via www (junsakamoto.com.br sem www retornou HTTP 000). Homepage 'Reservas' é um carrossel de fotos reais (1920x800). Logo oficial em PNG 218x61."
+}

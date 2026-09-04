@@ -1,0 +1,130 @@
+.content-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-section__grid {
+  display: grid;
+  gap: var(--space-3);
+  width: 100%;
+  /* Gap header→grid (sem filtros) e filtros→grid (com filtros): o frame pai
+     do Figma espaça a seção e o grid de cards com 24px. */
+  margin-top: var(--space-3);
+  /* 4 colunas no desktop (834px de coluna) e colapso responsivo em telas
+     menores (2 no mobile): `1fr` de um `repeat(N, 1fr)` não encolhe abaixo
+     do min-content do card e estourava a largura da tela; com auto-fill +
+     minmax as tracks se ajustam ao container (min(150px, 100%) evita
+     overflow quando a tela é mais estreita que um card). */
+  grid-template-columns: repeat(auto-fill, minmax(min(150px, 100%), 1fr));
+}
+
+/* Fileira de filtros entre header e grid. No Figma (frame 2:8726) a seção
+   empilha header → filtros com 16px de itemSpacing. */
+.content-section__filters {
+  margin-top: var(--space-2);
+}
+
+/* Modo carrossel – o grid vira um rail horizontal rolável (design 2:8581:
+   flex com gap 12). Os cards mantêm largura fixa e deslizam com snap leve.
+   O padding dá respiro à sombra do card ("Elevation High", 6px) no corte do
+   overflow; a scrollbar é escondida (rail limpo, padrão iFood).
+
+   Full-bleed à direita ancorado no container: em vez de deslocar a borda
+   esquerda com `margin-left: calc(50% - 50vw + padding)` (que a coloca a 32px
+   da BORDA DA TELA em qualquer largura – no desktop ela ficava fora da coluna
+   .app, 834px centrada), o rail fica na posição estática do bloco: a borda
+   esquerda já nasce na borda de conteúdo do container (--content-padding-x),
+   casando com o cabeçalho da seção. Só a borda direita é esticada até a
+   viewport com margin-right negativo + width auto (o bloco cresce até a borda
+   direita da tela) – os cards cortam apenas aí. O snap devolve o scroll a 4,
+   recolocando o primeiro card na posição inicial ao voltar. */
+.content-section__carousel {
+  display: flex;
+  gap: var(--space-1-5);
+  overflow-x: auto;
+  margin-top: var(--space-3);
+  /* Estica a borda direita do rail até a viewport; a esquerda permanece na
+     borda de conteúdo do container (posição estática). */
+  margin-right: calc(50% - 50vw);
+  padding: 0 4px 8px;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+.content-section__carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* Placeholder sem `renderCard`: em modo carrossel o card ocupa largura fixa
+   (grid esticava; no rail flex "width: 100%" quebraria o layout). */
+.content-section__carousel > .store-card {
+  width: 174px;
+}
+
+/* Estado vazio – quando a combinação de filtros (benefício + sheet) não acha
+   loja. Centralizado, mesmo respiro do grid (gap 24 abaixo do header/filtros).
+   Os filhos (ícone, título, texto, ação) são fornecidos por quem usa a seção;
+   aqui ficam só as classes públicas do padrão. */
+.content-section__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 48px 24px;
+  margin-top: var(--space-3);
+  text-align: center;
+}
+
+.content-section__empty-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-secondary);
+  color: var(--color-text-primary);
+}
+
+.content-section__empty-title {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--color-text-primary);
+}
+
+.content-section__empty-text {
+  margin: 0;
+  max-width: 280px;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-text-secondary);
+}
+
+.content-section__empty-action {
+  margin-top: 8px;
+  height: 40px;
+  padding: 0 20px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-secondary);
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: 14px;
+  line-height: 16px;
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+.content-section__empty-action:hover {
+  background: var(--color-outline-default);
+}
+
+.content-section__empty-action:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 2px;
+}

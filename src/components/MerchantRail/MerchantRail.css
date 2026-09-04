@@ -1,0 +1,59 @@
+.merchant-rail {
+  display: flex;
+  align-items: center;
+  /* espaçamento de alinhamento "auto": os itens distribuem o espaço livre
+     entre si e ocupam a largura inteira do container */
+  justify-content: space-between;
+  overflow-x: auto;
+  /* respiro à direita do rail – o node "Categorias" carrega pr-16px */
+  padding-right: 16px;
+}
+
+/* Item = `<Link>` p/ a página da categoria: reseta sublinhado/cor de link do
+   UA (o rótulo mantém a própria cor) e vira alvo de toque. */
+.merchant-rail__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  width: 68px;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.merchant-rail__item:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.merchant-rail__thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-surface-secondary);
+  overflow: hidden;
+}
+
+.merchant-rail__img {
+  display: block;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.merchant-rail__label {
+  font-family: var(--font-brand);
+  font-weight: 700;
+  font-size: 10px;
+  line-height: normal;
+  letter-spacing: 0;
+  color: var(--color-text-secondary);
+  text-align: center;
+  white-space: nowrap;
+}

@@ -1,0 +1,190 @@
+/* OfferSection – bloco "Benefício pra você" (design 68:3801). */
+
+.offer-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.offer-section__title {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-title-md);
+  line-height: 24px;
+  color: var(--color-text-primary);
+}
+
+/* Componente cinza (68:3805) – superfície secundária, rounded-20, p 8px, coluna
+   com gap 16px: o carrossel de ofertas acima e o bloco "Ganhe também" abaixo. */
+.offer-section__offers {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 8px;
+  border-radius: 20px;
+  background: var(--color-surface-secondary);
+}
+
+/* Carrossel horizontal de ofertas (68:3806). Com o aceite de consistência, o
+   bloco anuncia UMA oferta – o card único estica até a largura do componente
+   cinza (o rail de vários cards só voltaria se houvesse mais de uma oferta; o
+   markup é preservado e a barra de rolagem fica oculta). O recuo de 8px na
+   borda esquerda vem do padding do componente cinza. */
+.offer-section__carousel {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+.offer-section__carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* Card de oferta – branco, 88px, rounded-18 (68:3807/68:3808). Com uma oferta
+   só, o `flex-grow` estica o card único até a largura do componente cinza
+   (respeitando o padding de 8px do rail). Em telas estreitas ele mantém a
+   largura-base de 312px. */
+.offer-card {
+  position: relative;
+  flex: 1 0 min(312px, 100%);
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 88px;
+  padding: 4px;
+  border-radius: 18px;
+  background: var(--color-page-bg);
+  overflow: hidden;
+}
+
+/* O card virou um `<Link>` para a página do benefício (95:6301). Como o
+   `.offer-card` já carrega todo o visual, aqui só limpamos o estilo de âncora:
+   sem sublinhado, sem cor de link e mantendo o cursor de clique. */
+.offer-card--link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.offer-card__photo {
+  flex-shrink: 0;
+  width: 77px;
+  height: 78px;
+  border-radius: 18px;
+  object-fit: cover;
+  /* Tile neutro enquanto a foto carrega (mesmo idioma do default de imagem
+     dos Cards da home). */
+  background: var(--color-surface-secondary);
+}
+
+.offer-card__content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.offer-card__title {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
+  line-height: 16px;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.offer-card__subtitle {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 14px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.offer-card__availability {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.offer-card__pill {
+  padding: 2px 6px;
+  border-radius: 99px;
+  background: var(--color-surface-secondary);
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: 10px;
+  line-height: 12px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+/* Bloco "Ganhe também" (design 68:3833) – rótulo + card com losango do Clube */
+.offer-section__club {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.offer-section__club-label {
+  margin: 0;
+  padding: 0 8px;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: var(--color-text-secondary);
+}
+
+/* "Bisnaga" do Clube (68:3830) – card branco de 42px, rounded-16, com o ícone
+   numa caixinha roxa clara (#faebff) à esquerda. `min-height` em vez de altura
+   fixa para o texto longo não clipar em telas estreitas. */
+.offer-section__club-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 12px;
+  border-radius: 16px;
+  background: var(--color-page-bg);
+  overflow: hidden;
+}
+
+/* Ícone do Clube – losango roxo #bc00f5 sobre a caixinha #faebff, 32px de
+   largura, preenchendo a altura do card (68:3832) */
+.offer-section__club-icon {
+  flex-shrink: 0;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  border-radius: 6px;
+  background: var(--color-bg-clube-strong);
+  color: var(--color-text-clube-strong);
+}
+
+.offer-section__club-text {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: var(--color-text-primary);
+}
+
+.offer-section__club-text strong {
+  font-weight: var(--font-weight-medium);
+}

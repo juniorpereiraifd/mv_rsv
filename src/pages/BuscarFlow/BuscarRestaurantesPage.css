@@ -1,0 +1,78 @@
+/* BuscarRestaurantesPage – resultados de busca (Figma 139:5390/5548). O topo
+   (campo autofocado + Cancelar) e a grade de resultados (ContentSection /
+   `.content-section__grid`) já vêm prontos; aqui vive o dropdown "Busca
+   recentes" do estado vazio/focado (5390). */
+
+/* Dropdown de recentes – coluna abaixo do toolbar. O design empilha as linhas
+   num painel branco sobre a home; aqui, num card de raio 16 com divisórias. */
+.buscar-recents {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+}
+
+.buscar-recents__title {
+  margin: 0 0 12px;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
+  line-height: 20px;
+  color: var(--color-text-primary);
+}
+
+.buscar-recents__list {
+  overflow: hidden;
+  border: 1px solid var(--color-outline-default);
+  border-radius: var(--radius-card-lg);
+  background: #fff;
+}
+
+/* Linha de termo recente (design): seta `chevron-down` 20px + termo 14px.
+   `<button>` de largura total com divisória entre linhas. Tocar preenche a
+   query (fake door – não há histórico real). */
+.buscar-recents__row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border: none;
+  border-bottom: 1px solid var(--color-outline-default);
+  background: #fff;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-body);
+  line-height: 20px;
+  color: var(--color-text-primary);
+  text-align: left;
+  cursor: pointer;
+}
+
+.buscar-recents__list > .buscar-recents__row:last-child {
+  border-bottom: none;
+}
+
+.buscar-recents__row:hover {
+  background: var(--color-surface-secondary);
+}
+
+.buscar-recents__row:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: -2px;
+}
+
+.buscar-recents__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+}
+
+.buscar-recents__term {
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,974 @@
+[
+  {
+    "slug": "mocoto",
+    "nome": "Mocotó",
+    "categoria": "Comida brasileira",
+    "cuisine": "Nordestina",
+    "notaMedia": "4.8",
+    "tempoEntregaEstimadoMin": 35,
+    "distanciaKm": "5,2",
+    "urlOrigem": "https://mocoto.com.br",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/mocoto/hero.jpg",
+        "origem": "https://mocoto.com.br/wp-content/uploads/carne2.jpg"
+      },
+      "galeria": [
+        {
+          "arquivo": "restaurantes/mocoto/gallery-1.jpg",
+          "origem": "https://mocoto.com.br/wp-content/uploads/bar2.jpg"
+        },
+        {
+          "arquivo": "restaurantes/mocoto/gallery-2.jpg",
+          "origem": "https://mocoto.com.br/wp-content/uploads/mural2.jpg"
+        },
+        {
+          "arquivo": "restaurantes/mocoto/gallery-3.jpg",
+          "origem": "https://sp-ao.shortpixel.ai/client/q_glossy,ret_img/https://mocoto.com.br/wp-content/uploads/2018/04/pudim.jpg"
+        }
+      ],
+      "logo": {
+        "arquivo": "restaurantes/mocoto/logo.png",
+        "origem": "https://mocoto.com.br/wp-content/uploads/mocoto.png"
+      }
+    },
+    "notas": "Site WordPress. Sem og:image; hero/gallery extraidos do slider (data-lazyload). pudim.jpg so servia via CDN shortpixel (URL direta retornava HTML). Logo mocoto.png PNG RGBA transparente 210x80."
+  },
+  {
+    "slug": "casa-do-porco",
+    "nome": "A Casa do Porco",
+    "categoria": "Comida brasileira",
+    "cuisine": "Brasileira",
+    "notaMedia": "4.8",
+    "tempoEntregaEstimadoMin": 30,
+    "distanciaKm": "2,6",
+    "urlOrigem": "https://acasadoporco.com.br",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/casa-do-porco/hero.jpg",
+        "origem": "https://www.theworlds50best.com/discovery/filestore/jpg/ACasadoPorco-SaoPaulo-Brazil-01.jpg"
+      },
+      "galeria": [
+        {
+          "arquivo": "restaurantes/casa-do-porco/gallery-1.jpg",
+          "origem": "https://www.estadao.com.br/resizer/v2/4CWX4BVJ5NL6NKBX6IEJMSMS4M.jpg?quality=80&auth=3b02df8ba454292dcaf3996fff77a2c445b7077184e6063590be2e51e156003e&width=1200&height=630&smart=true"
+        },
+        {
+          "arquivo": "restaurantes/casa-do-porco/gallery-2.jpg",
+          "origem": "https://www.theworlds50best.com/discovery/filestore/jpg/ACasadoPorco-SaoPaulo-Brazil-02.jpg"
+        },
+        {
+          "arquivo": "restaurantes/casa-do-porco/gallery-3.jpg",
+          "origem": "https://www.theworlds50best.com/discovery/filestore/jpg/ACasadoPorco-SaoPaulo-Brazil-03.jpg"
+        }
+      ],
+      "logo": {
+        "arquivo": "restaurantes/casa-do-porco/logo.png",
+        "origem": "https://acasadoporco.com.br/img/logo_desktop.png"
+      }
+    },
+    "notas": "Fotos reais via The World's 50 Best (página Discovery 'A Casa do Porco - São Paulo', imagens ACasadoPorco-SaoPaulo-Brazil-01/02/03, 920x600) + Estadão/Paladar (og:image da matéria 'Porco a San Zé', prato carro-chefe, 1200x630). Site oficial acasadoporco.com.br é landing mínima (sem fotos); snapshots Wayback 2017-2018 eram template genérico 'coming soon' (slide-1..4.jpg placeholder) e 2019 o domínio foi reaproveitado por um pub WordPress ('Porter Pub'), então não servem. Logo preservado (logo_desktop.png original)."
+  },
+  {
+    "slug": "jiquitaia",
+    "nome": "Jiquitaia",
+    "categoria": "Comida brasileira",
+    "cuisine": "Brasileira",
+    "notaMedia": "4.8",
+    "tempoEntregaEstimadoMin": 35,
+    "distanciaKm": "4,6",
+    "urlOrigem": "https://jiquitaia.com.br",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/jiquitaia/hero.jpg",
+        "origem": "https://jiquitaia.com.br/wp-content/uploads/2018/11/header.jpg"
+      },
+      "galeria": [
+        {
+          "arquivo": "restaurantes/jiquitaia/gallery-1.jpg",
+          "origem": "https://upload.wikimedia.org/wikipedia/commons/2/2b/O_Jiquitaia_%C3%A9_desses_restaurantes_de_ambienta%C3%A7%C3%A3o_%2828435839084%29.jpg"
+        }
+      ],
+      "logo": {
+        "arquivo": "restaurantes/jiquitaia/logo.png",
+        "origem": "https://jiquitaia.com.br/wp-content/uploads/2018/11/logo_center.png"
+      }
+    },
+    "notas": "Site oficial e jiquitaia.com.br (jiquitaia.com nao resolve). Site WordPress single-page: hero=header.jpg (banner 1440x890), logo=logo_center.png (700x140). Gallery-1 do Wikimedia Commons (CC BY 2.0, autor Shoichi Iwashita/Flickr, foto do ambiente/restaurante)."
+  },
+  {
+    "slug": "fogo-de-chao",
+    "nome": "Fogo de Chão",
+    "categoria": "Comida brasileira",
+    "cuisine": "Churrascaria",
+    "notaMedia": "4.7",
+    "tempoEntregaEstimadoMin": 35,
+    "distanciaKm": "4,2",
+    "urlOrigem": "https://fogodechao.com.br",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/fogo-de-chao/hero.jpg",
+        "origem": "https://media.fogodechao.com.br/wp-content/uploads/2025/03/06074953/Hero-image-meat-section.jpg"
+      },
+      "galeria": [
+        {
+          "arquivo": "restaurantes/fogo-de-chao/gallery-1.jpg",
+          "origem": "https://media.fogodechao.com.br/wp-content/uploads/2025/03/06093646/Section-image-3-1.jpg"
+        },
+        {
+          "arquivo": "restaurantes/fogo-de-chao/gallery-2.jpg",
+          "origem": "https://media.fogodechao.com.br/wp-content/uploads/2025/03/06093857/Section-image-5-2.jpg"
+        },
+        {
+          "arquivo": "restaurantes/fogo-de-chao/gallery-3.jpg",
+          "origem": "https://media.fogodechao.com.br/wp-content/uploads/2025/03/06093750/Section-image-4-2.jpg"
+        }
+      ],
+      "logo": {
+        "arquivo": "restaurantes/fogo-de-chao/logo.png",
+        "origem": "https://fogodechao.com.br/wp-content/themes/fogodechao/img/Fogo-de-Chao-Hrz-1C-rev.png"
+      }
+    },
+    "notas": "Imagens do site oficial (media.fogodechao.com.br). Logo horizontal oficial PNG transparente 1200x243 (variante branca '1C-rev' usada no header; existe tambem versao colorida fogo-logo.webp). og:image do site e apenas favicon."
+  },
+  {
+    "slug": "tordesilhas",
+    "nome": "Tordesilhas",
+    "categoria": "Comida brasileira",
+    "cuisine": "Brasileira",
+    "notaMedia": "4.7",
+    "tempoEntregaEstimadoMin": 30,
+    "distanciaKm": "2,8",
+    "urlOrigem": "https://tordesilhas.com",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/tordesilhas/hero.jpg",
+        "origem": "https://images.squarespace-cdn.com/content/v1/5edbe369723faa2b0d774e22/1591478227764-7J3Y1H38GVMXQOC586R2/Tord+Fachada-+Lais+Podesta.jpg"
+      },
+      "galeria": [
+        {
+          "arquivo": "restaurantes/tordesilhas/gallery-1.jpg",
+          "origem": "https://images.squarespace-cdn.com/content/v1/5edbe369723faa2b0d774e22/1591562177994-T9AG6QU4RNLD96RFW00R/FOTO+SITE+MARA.DEGA.jpg"
+        },
+        {
+          "arquivo": "restaurantes/tordesilhas/gallery-2.jpg",
+          "origem": "https://images.squarespace-cdn.com/content/v1/5edbe369723faa2b0d774e22/1591562678450-W04XOG0E5TVA2DBV7MZF/Comiss%C3%A3o+de+Frente+2014+IV.jpg"
+        },
+        {
+          "arquivo": "restaurantes/tordesilhas/gallery-3.jpg",
+          "origem": "https://images.squarespace-cdn.com/content/v1/5edbe369723faa2b0d774e22/1591805064731-6AYXVT9HFMKT09RXTWLK/sineta.jpg"
+        }
+      ],
+      "logo": {
+        "arquivo": "restaurantes/tordesilhas/logo.png",
+        "origem": "https://images.squarespace-cdn.com/content/v1/5edbe369723faa2b0d774e22/1591563068046-PKO916MDUU0LBU0Y9XYX/ilustracoes_tordesilhas.png"
+      }
+    },
+    "notas": "Site Squarespace. og:image e o logo (ilustracoes_tordesilhas.png). CDN servia WebP por negociacao; forcei Accept image/jpeg,image/png para obter JPEG/PNG. Hero = fachada (1500x1000). Fotos do proprio site (fachada por Lais Podesta)."
+  },
+  {
+    "slug": "jun-sakamoto",
+    "nome": "Jun Sakamoto",
+    "categoria": "Sushi / Japonesa",
+    "cuisine": "Japonesa",
+    "notaMedia": "4.9",
+    "tempoEntregaEstimadoMin": 30,
+    "distanciaKm": "3,4",
+    "urlOrigem": "https://www.junsakamoto.com.br",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/jun-sakamoto/hero.jpg",
+        "origem": "https://www.junsakamoto.com.br/static/reservas_index_static/images/1.jpg"
+      },
+      "galeria": [
+        {
+          "arquivo": "restaurantes/jun-sakamoto/gallery-1.jpg",
+          "origem": "https://www.junsakamoto.com.br/static/reservas_index_static/images/2.jpg"
+        },
+        {
+          "arquivo": "restaurantes/jun-sakamoto/gallery-2.jpg",
+          "origem": "https://www.junsakamoto.com.br/static/reservas_index_static/images/3.jpg"
+        },
+        {
+          "arquivo": "restaurantes/jun-sakamoto/gallery-3.jpg",
+          "origem": "https://www.junsakamoto.com.br/static/imagens_experiencias/jun.jpg"
+        }
+      ],
+      "logo": {
+        "arquivo": "restaurantes/jun-sakamoto/logo.png",
+        "origem": "https://www.junsakamoto.com.br/static/reservas_index_static/images/junlogo.png"
+      }
+    },
+    "notas": "Site oficial acessível via www (junsakamoto.com.br sem www retornou HTTP 000). Homepage 'Reservas' é um carrossel de fotos reais (1920x800). Logo oficial em PNG 218x61."
+  },
+  {
+    "slug": "kinoshita",
+    "nome": "Kinoshita",
+    "categoria": "Sushi / Japonesa",
+    "cuisine": "Japonesa",
+    "notaMedia": "4.8",
+    "tempoEntregaEstimadoMin": 30,
+    "distanciaKm": "3,1",
+    "urlOrigem": "https://restaurantekinoshita.com.br",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/kinoshita/hero.jpg",
+        "origem": "https://restaurantekinoshita.com.br/wp-content/uploads/2025/09/SUSHI.jpg"
+      },
+      "galeria": [
+        {
+          "arquivo": "restaurantes/kinoshita/gallery-1.jpg",
+          "origem": "https://restaurantekinoshita.com.br/wp-content/uploads/2025/09/LAGOSTA.jpg"
+        },
+        {
+          "arquivo": "restaurantes/kinoshita/gallery-2.jpg",
+          "origem": "https://restaurantekinoshita.com.br/wp-content/uploads/2025/09/CAVIAR.jpg"
+        },
+        {
+          "arquivo": "restaurantes/kinoshita/gallery-3.jpg",
+          "origem": "https://restaurantekinoshita.com.br/wp-content/uploads/2025/09/TACA.jpg"
+        }
+      ],
+      "logo": {
+        "arquivo": "restaurantes/kinoshita/logo.png",
+        "origem": "https://restaurantekinoshita.com.br/wp-content/uploads/2024/02/Logo-Kinoshita.png"
+      }
+    },
+    "notas": "Domínio-sugestão kinoshita.com.br NÃO é o restaurante; site oficial confirmado via WebSearch: restaurantekinoshita.com.br. Fotos reais de pratos (uploads/2025/09). Logo oficial em PNG transparente 1920x682."
+  },
+  {
+    "slug": "sushi-yassu",
+    "nome": "Sushi Yassu",
+    "categoria": "Sushi / Japonesa",
+    "cuisine": "Japonesa",
+    "notaMedia": "4.7",
+    "tempoEntregaEstimadoMin": 30,
+    "distanciaKm": "2,9",
+    "urlOrigem": "https://www.sushiyassu.com.br",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/sushi-yassu/hero.jpg",
+        "origem": "https://d2ggymwysgdto.cloudfront.net/1783110526777-10adefa8.jpg"
+      },
+      "galeria": [
+        {
+          "arquivo": "restaurantes/sushi-yassu/gallery-1.jpg",
+          "origem": "https://api.pico.com.br/storage/v1/object/public/uploads/google-photos/sushi-yassuh-liberdade-liberdade.jpg"
+        },
+        {
+          "arquivo": "restaurantes/sushi-yassu/gallery-2.jpg",
+          "origem": "https://api.pico.com.br/storage/v1/object/public/uploads/google-photos/sushi-yassuh-liberdade-liberdade-2.jpg"
+        },
+        {
+          "arquivo": "restaurantes/sushi-yassu/gallery-3.jpg",
+          "origem": "https://api.pico.com.br/storage/v1/object/public/uploads/google-photos/sushi-yassuh-liberdade-liberdade-3.jpg"
+        },
+        {
+          "arquivo": "restaurantes/sushi-yassu/gallery-4.jpg",
+          "origem": "https://api.pico.com.br/storage/v1/object/public/uploads/google-photos/sushi-yassuh-liberdade-liberdade-4.jpg"
+        }
+      ]
+    },
+    "notas": "Site oficial (sushiyassu.com.br) hoje é placeholder WordPress; snapshots antigos do Wayback Machine (2010-2014) existem em abundância no CDX, mas o acesso via curl retornou bloqueio anti-bot ('suspected abusive bot traffic') e o WebFetch não alcança web.archive.org. Fotos reais obtidas de terceiros: hero = foto principal do Sushi Yassuh Liberdade via espaces.com.br (CDN CloudFront, 1600x2133); galeria = 4 fotos do Google Photos do restaurante publicadas no pico.com.br (storage público da api.pico.com.br). restaurantsforkings.com exibe a mesma foto do salão (webp), duplicada do hero. Nenhum logo/letreiro isolado localizado em nenhuma fonte."
+  },
+  {
+    "slug": "nakka",
+    "nome": "Nakka",
+    "categoria": "Sushi / Japonesa",
+    "cuisine": "Japonesa",
+    "notaMedia": "4.7",
+    "tempoEntregaEstimadoMin": 30,
+    "distanciaKm": "3,2",
+    "urlOrigem": "https://restaurantenakka.com.br",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/nakka/hero.jpg",
+        "origem": "https://static.wixstatic.com/media/7cc15e_c07dd3da2df14e2fa1a420d7da69b926~mv2.jpg"
+      },
+      "galeria": [],
+      "logo": {
+        "arquivo": "restaurantes/nakka/logo.png",
+        "origem": "https://static.wixstatic.com/media/7cc15e_cc159b294bd44672a9d9452f68bc38c5~mv2.png"
+      }
+    },
+    "notas": "Domínio-sugestão nakka.com.br é 'Nakka Audio e Video' (empresa errada); site oficial confirmado via WebSearch: restaurantenakka.com.br (Wix). Homepage é landing única (hero + reservas), sem galeria de fotos — apenas 1 foto real (og:image, 1200x774) + logo PNG 700x365. gallery omitida por não existir."
+  },
+  {
+    "slug": "hinode",
+    "nome": "Hinodê",
+    "categoria": "Sushi / Japonesa",
+    "cuisine": "Japonesa",
+    "notaMedia": "4.6",
+    "tempoEntregaEstimadoMin": 30,
+    "distanciaKm": "3,0",
+    "urlOrigem": "https://www.estadao.com.br/paladar/restaurantes-e-bares/antigos-ilustres-hinode-oferece-tradicao-e-e-uma-das-casas-japonesas-mais-antigas-de-sao-paulo/",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/hinode/hero.jpg",
+        "origem": "https://static-madeinjapan.s3.amazonaws.com/wp-content/uploads/2015/05/hinode_fachada.jpg"
+      },
+      "galeria": [
+        {
+          "arquivo": "restaurantes/hinode/gallery-1.jpg",
+          "origem": "https://www.estadao.com.br/resizer/v2/475LXNCMGVAINC3KXM5F6CDUVY.jpg"
+        },
+        {
+          "arquivo": "restaurantes/hinode/gallery-2.jpg",
+          "origem": "https://static-madeinjapan.s3.amazonaws.com/wp-content/uploads/2015/05/sushi-bar_hinode.jpg"
+        },
+        {
+          "arquivo": "restaurantes/hinode/gallery-3.jpg",
+          "origem": "https://static-madeinjapan.s3.amazonaws.com/wp-content/uploads/2015/05/tempura-udon_hinode.jpg"
+        },
+        {
+          "arquivo": "restaurantes/hinode/gallery-4.jpg",
+          "origem": "https://itin-dev.wanderlogstatic.com/freeImageSmall/JMlybfgWhloMnEEkW09oDRCJ0dlG4qmk"
+        }
+      ]
+    },
+    "notas": "Sem site oficial próprio (hinode.com.br é a empresa de cosméticos, não usada). Fotos reais do restaurante obtidas de: matéria 'Hinode, a escolha pela tradição' (Hashitag / Made in Japan, 2015) — fachada (hero), sushi bar e tempura udon; Estadão Paladar 'Antigos Ilustres: Hinodê' (foto em alta 1920x1396); Wanderlog (foto 'Photo of HINODÊ in Sao Paulo'). Restaurante japonês mais antigo de SP (desde 1965), Rua Thomaz Gonzaga 62, Liberdade. Logo/letreiro isolado não localizado — a foto da fachada (hero) serve como marca visual; Wikimedia Commons sem resultados."
+  },
+  {
+    "slug": "braz-pizzaria",
+    "nome": "Bráz Pizzaria",
+    "categoria": "Pizza",
+    "cuisine": "Pizzaria",
+    "notaMedia": "4.7",
+    "tempoEntregaEstimadoMin": 30,
+    "distanciaKm": "3,8",
+    "urlOrigem": "https://brazpizzaria.com.br",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/braz-pizzaria/hero.png",
+        "origem": "https://familiabraz.com.br/wp-content/uploads/2024/05/Property-1Default.png"
+      },
+      "galeria": [
+        {
+          "arquivo": "restaurantes/braz-pizzaria/gallery-1.png",
+          "origem": "https://familiabraz.com.br/wp-content/uploads/2024/05/2.png"
+        },
+        {
+          "arquivo": "restaurantes/braz-pizzaria/gallery-2.png",
+          "origem": "https://familiabraz.com.br/wp-content/uploads/2024/10/Site_Land.Braz_Delivery_573X320PX.png"
+        },
+        {
+          "arquivo": "restaurantes/braz-pizzaria/gallery-3.png",
+          "origem": "https://familiabraz.com.br/wp-content/uploads/2024/10/Site_Land.Braz_Reservas_573X320PX.png"
+        }
+      ],
+      "logo": {
+        "arquivo": "restaurantes/braz-pizzaria/logo.png",
+        "origem": "https://familiabraz.com.br/wp-content/uploads/2024/04/BRAZ_SEMASSINATURA-01-1.png"
+      }
+    },
+    "notas": "HTTPS do domínio dá erro SSL (cert chain incompleto) — usei HTTP. brazpizzaria.com.br redireciona para familiabraz.com.br (grupo Família Bráz), de onde vêm os assets. Logo oficial é pequeno (166x84, único PNG disponível). Hero/gallery = imagens do slideshow de fundo da home (Property-1Default.png / 2.png, 1280x480)."
+  },
+  {
+    "slug": "leggera",
+    "nome": "Leggera Pizza Napoletana",
+    "categoria": "Pizza",
+    "cuisine": "Pizzaria",
+    "notaMedia": "4.7",
+    "tempoEntregaEstimadoMin": 35,
+    "distanciaKm": "4,3",
+    "urlOrigem": "https://www.pizzerialeggera.com.br",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/leggera/hero.jpg",
+        "origem": "https://www.pizzerialeggera.com.br/img/galeria2.jpg"
+      },
+      "galeria": [
+        {
+          "arquivo": "restaurantes/leggera/gallery-1.jpg",
+          "origem": "https://www.pizzerialeggera.com.br/img/galeria1.jpg"
+        },
+        {
+          "arquivo": "restaurantes/leggera/gallery-2.jpg",
+          "origem": "https://www.pizzerialeggera.com.br/img/galeria3.jpg"
+        }
+      ],
+      "logo": {
+        "arquivo": "restaurantes/leggera/logo.png",
+        "origem": "https://www.pizzerialeggera.com.br/Leggera_05.png"
+      }
+    },
+    "notas": "Fotos originais do site em alta resolução (Canon EOS R6, Adobe Lightroom — fotografia profissional real). galeria2.jpg (5472x3648, paisagem) escolhido como hero; galeria1/3 são retratos de pizza/ambiente. Logo Leggera_05.png (474x128, PNG RGBA)."
+  },
+  {
+    "slug": "pizzaria-veridiana",
+    "nome": "Pizzaria Veridiana",
+    "categoria": "Pizza",
+    "cuisine": "Pizzaria",
+    "notaMedia": "4.6",
+    "tempoEntregaEstimadoMin": 25,
+    "distanciaKm": "1,8",
+    "urlOrigem": "https://www.veridiana.com.br",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/pizzaria-veridiana/hero.jpg",
+        "origem": "https://www.veridiana.com.br/imagens/produtos/categorias/img_4132.jpg"
+      },
+      "galeria": [
+        {
+          "arquivo": "restaurantes/pizzaria-veridiana/gallery-1.jpg",
+          "origem": "https://www.veridiana.com.br/imagens/produtos/categorias/veridiana-app1520.jpg"
+        },
+        {
+          "arquivo": "restaurantes/pizzaria-veridiana/gallery-2.jpg",
+          "origem": "https://www.veridiana.com.br/imagens/produtos/categorias/veridiana-app1873.jpg"
+        },
+        {
+          "arquivo": "restaurantes/pizzaria-veridiana/gallery-3.jpg",
+          "origem": "https://www.veridiana.com.br/imagens/produtos/categorias/veridiana-app1986.jpg"
+        }
+      ],
+      "logo": {
+        "arquivo": "restaurantes/pizzaria-veridiana/logo.png",
+        "origem": "https://www.veridiana.com.br/imagens/logos/logo-veridiana-600x350.png"
+      }
+    },
+    "notas": "Domínio do hint (pizzariaveridiana.com.br) não resolve; oficial é veridiana.com.br. Site Redbit com body renderizado via JS — extraí as imagens da página /cardapio (imagens/produtos/categorias, 600x400). Uma categoria usava foto Unsplash (patrick-fore-...) — descartada por regra anti-banco genérico. Logo = og:image 600x350."
+  },
+  {
+    "slug": "speranza",
+    "nome": "Speranza",
+    "categoria": "Pizza",
+    "cuisine": "Pizzaria",
+    "notaMedia": "4.5",
+    "tempoEntregaEstimadoMin": 35,
+    "distanciaKm": "5,0",
+    "urlOrigem": "https://speranza.com.br",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/speranza/hero.jpg",
+        "origem": "https://pizzaria.com.br/wp-content/uploads/2020/09/Slide-1.jpg"
+      },
+      "galeria": [
+        {
+          "arquivo": "restaurantes/speranza/gallery-1.jpg",
+          "origem": "https://pizzaria.com.br/wp-content/uploads/2025/12/DHC_1506-Img-scaled-e1765548453656.jpg"
+        },
+        {
+          "arquivo": "restaurantes/speranza/gallery-2.jpg",
+          "origem": "https://pizzaria.com.br/wp-content/uploads/2022/08/ISR00192-1024x683.jpg"
+        },
+        {
+          "arquivo": "restaurantes/speranza/gallery-3.jpg",
+          "origem": "https://pizzaria.com.br/wp-content/uploads/2022/08/pizzaria_esperanza_unidade_moema_2022-4-1024x683.jpg"
+        }
+      ],
+      "logo": {
+        "arquivo": "restaurantes/speranza/logo.png",
+        "origem": "https://pizzaria.com.br/wp-content/uploads/2020/09/Pizzaria-Speranza-1.png"
+      }
+    },
+    "notas": "Domínio do hint (pizzariasperanza.com.br) não resolve (ENOTFOUND). Oficial é speranza.com.br (título 'Pizzaria Speranza'), que serve assets de pizzaria.com.br (WordPress do grupo). hero = og:image Slide-1.jpg (1920x945). speranza-margherita-menu.jpg retornou 404, substituída por DHC_1506 (2025). Logo Pizzaria-Speranza-1.png (228x158)."
+  },
+  {
+    "slug": "z-deli",
+    "nome": "Z Deli",
+    "categoria": "Hambúrguer",
+    "cuisine": "Hamburgueria",
+    "notaMedia": "4.8",
+    "tempoEntregaEstimadoMin": 25,
+    "distanciaKm": "2,0",
+    "urlOrigem": "https://zdeli.com.br",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/z-deli/hero.jpg",
+        "origem": "https://zdeli.com.br/images/carroussel1.jpg"
+      },
+      "galeria": [
+        {
+          "arquivo": "restaurantes/z-deli/gallery-1.jpg",
+          "origem": "https://zdeli.com.br/images/jardins.jpg"
+        },
+        {
+          "arquivo": "restaurantes/z-deli/gallery-2.jpg",
+          "origem": "https://zdeli.com.br/images/carroussel2.jpg"
+        },
+        {
+          "arquivo": "restaurantes/z-deli/gallery-3.jpg",
+          "origem": "https://zdeli.com.br/images/itaim.jpg"
+        }
+      ],
+      "logo": {
+        "arquivo": "restaurantes/z-deli/logo.png",
+        "origem": "https://zdeli.com.br/images/logo.png"
+      }
+    },
+    "notas": "Site oficial funcionou via curl. logo.png é PNG RGBA transparente (1176x308). Hero 3500x2333 (NIKON D810). A foto Z_DELI_piclesRECOR.jpg era grayscale e foi descartada."
+  },
+  {
+    "slug": "bullguer",
+    "nome": "Bullguer",
+    "categoria": "Hambúrguer",
+    "cuisine": "Hamburgueria",
+    "notaMedia": "4.7",
+    "tempoEntregaEstimadoMin": 25,
+    "distanciaKm": "2,4",
+    "urlOrigem": "https://bullguer.com.br",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/bullguer/hero.jpg",
+        "origem": "https://image-repository.harmo.me/local-landingpage/bullguer/cover_image.jpeg"
+      },
+      "galeria": [
+        {
+          "arquivo": "restaurantes/bullguer/gallery-1.jpg",
+          "origem": "https://image-repository.harmo.me/local-landingpage/bullguer/bg-seguncario.jpeg"
+        }
+      ],
+      "logo": {
+        "arquivo": "restaurantes/bullguer/logo.svg",
+        "origem": "https://image-repository.harmo.me/local-landingpage/bullguer/logo-bullguer-preto.svg"
+      }
+    },
+    "notas": "bullguer.com.br não resolve (DNS falha). Assets reais obtidos da plataforma oficial de pedidos Harmo (bullguer.harmo.me). Logo é SVG vetorial preto transparente (viewBox 122x60). Hero 1349x810; gallery é 602x419 (baixa resolução)."
+  },
+  {
+    "slug": "a-casa-do-hamburguer",
+    "nome": "A Casa do Hambúrguer",
+    "categoria": "Hambúrguer",
+    "cuisine": "Hamburgueria",
+    "notaMedia": "4.7",
+    "tempoEntregaEstimadoMin": 30,
+    "distanciaKm": "3,3",
+    "urlOrigem": "http://www.casadohamburguer.com.br/",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/a-casa-do-hamburguer/hero.jpg",
+        "origem": "https://static.saipos.com/saipos-estatico/site-data/57333/cover/7d0eb331b8500fad296e38da6b4dbc126c4e0240fbd796b1077416bedb31f10aDSC05350.jpg"
+      },
+      "galeria": [],
+      "logo": {
+        "arquivo": "restaurantes/a-casa-do-hamburguer/logo.jpeg",
+        "origem": "https://static.saipos.com/saipos-estatico/site-data/57333/logo/e2b548fede23d255dc24c781f09a0f464dfb4736a5264b35c72dfaaccd784555WhatsAppImage2025-02-27at09.28.47.jpeg"
+      }
+    },
+    "notas": "Site oficial (www.casadohamburguer.com.br) é página de pedidos Saipos com apenas 2 assets de marca reais: cover 850x250 (foto Sony DSC05350) e logo 150x147 (compressão WhatsApp). Resolução baixa; sem galeria extra. Endereço confirmado: Av. Água Fria, 1834, SP."
+  },
+  {
+    "slug": "lanchonete-da-cidade",
+    "nome": "Lanchonete da Cidade",
+    "categoria": "Hambúrguer",
+    "cuisine": "Hamburgueria",
+    "notaMedia": "4.5",
+    "tempoEntregaEstimadoMin": 30,
+    "distanciaKm": "2,1",
+    "urlOrigem": "https://lanchonetedacidade.com.br/",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/lanchonete-da-cidade/hero.jpg",
+        "origem": "https://lanchonetedacidade.com.br/wp-content/uploads/2025/10/@MarcosBacon-SOLC_SPH-30-09-25-385-scaled.jpg"
+      },
+      "galeria": [
+        {
+          "arquivo": "restaurantes/lanchonete-da-cidade/gallery-1.jpg",
+          "origem": "https://lanchonetedacidade.com.br/wp-content/uploads/2025/11/AndreFavilla_Lanchonete_Cidade_Higienopolis_2-scaled.jpg"
+        }
+      ],
+      "logo": {
+        "arquivo": "restaurantes/lanchonete-da-cidade/logo.png",
+        "origem": "https://lanchonetedacidade.com.br/wp-content/uploads/2025/10/AF_Logo_LC_2025.png"
+      }
+    },
+    "notas": "Site WordPress com muitas imagens. Logo colorida AF_Logo_LC_2025.png (verde #47704c + dourado #ffcb08 + preto, 1772x454, com transparência). Hero 2560x840 (foto @MarcosBacon, Canon EOS R6m2). gallery-1 2560x1703 (foto Andre Favilla, Canon 5DS R)."
+  },
+  {
+    "slug": "dom-restaurante",
+    "nome": "D.O.M.",
+    "categoria": "Michelin",
+    "cuisine": "Alta gastronomia",
+    "notaMedia": "4.9",
+    "tempoEntregaEstimadoMin": 35,
+    "distanciaKm": "4,5",
+    "urlOrigem": "https://domrestaurante.com.br",
+    "michelin": "2 estrelas",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/dom-restaurante/hero.jpg",
+        "origem": "https://domrestaurante.com.br/wp-content/uploads/2026/01/brejo-dom-set2025-18.webp"
+      },
+      "galeria": [
+        {
+          "arquivo": "restaurantes/dom-restaurante/gallery-1.png",
+          "origem": "https://domrestaurante.com.br/wp-content/uploads/2025/02/alex-atalla-dom-restaurante-e1739925279110.png"
+        },
+        {
+          "arquivo": "restaurantes/dom-restaurante/gallery-2.png",
+          "origem": "https://domrestaurante.com.br/wp-content/uploads/2025/04/eventos-restaurante-dom-01-e1743802570242.png"
+        }
+      ],
+      "logo": {
+        "arquivo": "restaurantes/dom-restaurante/logo.png",
+        "origem": "https://domrestaurante.com.br/wp-content/uploads/2025/04/LOGO_TRES_BRANCO-1-2.png"
+      }
+    },
+    "notas": "Logo branco transparente (LOGO_TRES_BRANCO-1-2.png, 382x176 RGBA). Hero = prato do menu Brejo (1500x2249, webp original convertido para JPG via sips para compatibilidade com Figma). Galeria = retrato do chef Alex Atala + eventos."
+  },
+  {
+    "slug": "evvai",
+    "nome": "Evvai",
+    "categoria": "Michelin",
+    "cuisine": "Contemporânea",
+    "notaMedia": "4.9",
+    "tempoEntregaEstimadoMin": 35,
+    "distanciaKm": "4,4",
+    "urlOrigem": "https://evvai.com.br",
+    "michelin": "1 estrela",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/evvai/hero.jpg",
+        "origem": "https://static.wixstatic.com/media/74e638_b513d3eef70c4cf398831f7cbddce6c0~mv2.jpg"
+      },
+      "galeria": [
+        {
+          "arquivo": "restaurantes/evvai/gallery-1.jpg",
+          "origem": "https://static.wixstatic.com/media/74e638_08aa0293276c47cda53fa6fca76e4eaf~mv2.jpg"
+        },
+        {
+          "arquivo": "restaurantes/evvai/gallery-2.jpg",
+          "origem": "https://static.wixstatic.com/media/74e638_25b61a1616e94c658fb64e3d1663146b~mv2.jpg"
+        },
+        {
+          "arquivo": "restaurantes/evvai/gallery-3.jpeg",
+          "origem": "https://static.wixstatic.com/media/74e638_da9a4f121d4943faa3e4cc04af606b9f~mv2.jpeg"
+        }
+      ],
+      "logo": {
+        "arquivo": "restaurantes/evvai/logo.png",
+        "origem": "https://static.wixstatic.com/media/a49b6b_ded0cf6a98b64aafab8f0753d1d5685e~mv2.png"
+      }
+    },
+    "notas": "Site Wix (evvai.com.br). Baixados os arquivos raw originais do wixstatic (sem /v1/fill); fotografia profissional tbfoto.com.br (Sony ILCE-9), hero 6000x4000."
+  },
+  {
+    "slug": "mani",
+    "nome": "Maní",
+    "categoria": "Michelin",
+    "cuisine": "Contemporânea",
+    "notaMedia": "4.8",
+    "tempoEntregaEstimadoMin": 30,
+    "distanciaKm": "3,7",
+    "urlOrigem": "https://www.restaurantemani.com.br",
+    "michelin": "1 estrela",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/mani/hero.jpg",
+        "origem": "https://www.restaurantemani.com.br/wp-content/uploads/2023/05/mani-img-vert_001.jpg"
+      },
+      "galeria": [
+        {
+          "arquivo": "restaurantes/mani/gallery-1.jpg",
+          "origem": "https://www.restaurantemani.com.br/wp-content/uploads/mani_segundo-salao-5_pedro-napolitano-prata.jpg"
+        },
+        {
+          "arquivo": "restaurantes/mani/gallery-2.jpg",
+          "origem": "https://www.restaurantemani.com.br/wp-content/uploads/mani_lingua-de-boi-berinjela-ora-pro-nobis-tucupi-e-molho-de-ervas-aromaticas-_-beef-tongue-eggplant-Barbados-gooseberry-leaves-tucupi-manioc-root-sauce-herbs-sauce2_juliana-primon.jpg"
+        },
+        {
+          "arquivo": "restaurantes/mani/gallery-3.jpg",
+          "origem": "https://www.restaurantemani.com.br/wp-content/uploads/mani_baba-rum-e-uva-_-baba-rum-grape3_victor-collor.jpg"
+        }
+      ],
+      "logo": {
+        "arquivo": "restaurantes/mani/logo.svg",
+        "origem": "https://www.restaurantemani.com.br/wp-content/uploads/2023/05/logo-mani.svg"
+      }
+    },
+    "notas": "Site oficial real é restaurantemani.com.br (manicomendaria.com.br não resolve). Logo SVG vetorial; hero vertical 800x1200; galeria = salão + pratos assinados (língua de boi, baba de rum)."
+  },
+  {
+    "slug": "tuju",
+    "nome": "Tuju",
+    "categoria": "Michelin",
+    "cuisine": "Contemporânea",
+    "notaMedia": "4.8",
+    "tempoEntregaEstimadoMin": 45,
+    "distanciaKm": "4,1",
+    "urlOrigem": "https://www.tuju.com.br",
+    "michelin": "1 estrela",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/tuju/hero.jpg",
+        "origem": "https://static.wixstatic.com/media/2f08f6_a3e8fbe85f5b4fae97504f32d4532090~mv2.jpg"
+      },
+      "galeria": [
+        {
+          "arquivo": "restaurantes/tuju/gallery-1.jpg",
+          "origem": "https://static.wixstatic.com/media/2f08f6_d00544d82f63495fb9ea069a407d5e71~mv2.jpg"
+        },
+        {
+          "arquivo": "restaurantes/tuju/gallery-2.jpg",
+          "origem": "https://static.wixstatic.com/media/2f08f6_ef8b4631514642dc9e611d6d93246298~mv2.jpg"
+        }
+      ],
+      "logo": {
+        "arquivo": "restaurantes/tuju/logo.png",
+        "origem": "https://static.wixstatic.com/media/2f08f6_0adcea214f474c42845ffc33d17fc20f~mv2.png"
+      }
+    },
+    "notas": "Site Wix. tuju.com.br sem www não resolve; www.tuju.com.br funciona. Hero 7008x4672 (copyright Rubens Tatibana). Logotipo wordmark 1316x493 RGBA; logo-symbol.png (900x900) mantido como alternativa."
+  },
+  {
+    "slug": "spot",
+    "nome": "Spot",
+    "categoria": "Contemporânea",
+    "cuisine": "Contemporânea",
+    "notaMedia": "4.7",
+    "tempoEntregaEstimadoMin": 30,
+    "distanciaKm": "3,9",
+    "urlOrigem": "http://www.restaurantespot.com.br",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/spot/hero.jpg",
+        "origem": "http://www.restaurantespot.com.br/wp-content/themes/spot-restaurante/assets/images/tu/ilustracao.jpg"
+      },
+      "galeria": [
+        {
+          "arquivo": "restaurantes/spot/gallery-1.jpg",
+          "origem": "http://www.restaurantespot.com.br/wp-content/uploads/2023/06/IMGP1472.jpg"
+        },
+        {
+          "arquivo": "restaurantes/spot/gallery-2.jpg",
+          "origem": "http://www.restaurantespot.com.br/wp-content/uploads/2022/11/BABY-BEEF.jpg"
+        },
+        {
+          "arquivo": "restaurantes/spot/gallery-3.jpg",
+          "origem": "http://www.restaurantespot.com.br/wp-content/uploads/2022/11/FUNDO-DE-ALCACHOFRA.jpg"
+        }
+      ],
+      "logo": {
+        "arquivo": "restaurantes/spot/logo.svg",
+        "origem": "http://www.restaurantespot.com.br/wp-content/themes/spot-restaurante/assets/images/logo-spot.svg"
+      }
+    },
+    "notas": "Domínio sugerido spotrestaurante.com.br estava fora do ar (HTTP 000); site oficial real é restaurantespot.com.br. hero = banner oficial do site (3920x1540, arquivo 'ilustracao' — banner de arte/marca). gallery-1 = foto interior real (IMGP), gallery-2/3 = pratos do cardápio. logo é SVG vetorial."
+  },
+  {
+    "slug": "skye",
+    "nome": "Skye",
+    "categoria": "Contemporânea",
+    "cuisine": "Contemporânea",
+    "notaMedia": "4.8",
+    "tempoEntregaEstimadoMin": 40,
+    "distanciaKm": "5,9",
+    "urlOrigem": "https://www.hotelunique.com/pt/skye-restaurante-bar",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/skye/hero.jpg",
+        "origem": "https://cdn.prod.website-files.com/68a37fe812fde78086e0bdad/68b71e3a7f200dc9278620fc_Hotel%20Unique%20Home%20Gastronomia%20o%20Chef.avif"
+      },
+      "galeria": [
+        {
+          "arquivo": "restaurantes/skye/gallery-1.jpg",
+          "origem": "https://cdn.prod.website-files.com/68a37fe812fde78086e0bdad/698f4fd37fea7c493d6d18e6_Espaco%20Skye%20Unique%203.avif"
+        },
+        {
+          "arquivo": "restaurantes/skye/gallery-2.jpg",
+          "origem": "https://cdn.prod.website-files.com/68a37fe812fde78086e0bdad/68c81444a7fced13a845bbd2_Skye%20Bar%2001.avif"
+        },
+        {
+          "arquivo": "restaurantes/skye/gallery-3.jpg",
+          "origem": "https://cdn.prod.website-files.com/68a37fe812fde78086e0bdad/68c81444437a46cd86e83a60_Skye%20Gastronomia%20brasileira%2001.avif"
+        }
+      ],
+      "logo": {
+        "arquivo": "restaurantes/skye/logo.png",
+        "origem": "https://cdn.prod.website-files.com/68a37fe812fde78086e0bdad/6925f995f22198470b7351bb_Webclip.png"
+      }
+    },
+    "notas": "Skye é o rooftop bar/restaurante do Hotel Unique. Imagens originais do site (Webflow) são AVIF e foram convertidas para JPG via sips para compatibilidade com Figma. Hero = 'Gastronomia o Chef' (chef Emmanuel Bassoleil, 1920x1080) da home do hotelunique.com — a única imagem >1200px do site (galeria do Skye é 650x433/500x500). NÃO existe logo standalone 'SKYE' no site (o wordmark é texto HTML); logo usado = apple-touch-icon do Hotel Unique (256x256 PNG)."
+  },
+  {
+    "slug": "vista-restaurante",
+    "nome": "Vista Restaurante",
+    "categoria": "Contemporânea",
+    "cuisine": "Contemporânea",
+    "notaMedia": "4.7",
+    "tempoEntregaEstimadoMin": 35,
+    "distanciaKm": "5,6",
+    "urlOrigem": "https://vistarestaurante.vistasaopaulo.com.br/",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/vista-restaurante/hero.jpg",
+        "origem": "https://vistarestaurante.vistasaopaulo.com.br/wp-content/uploads/2024/04/banner_site_vistaibirapuera_2024-3-scaled.jpg"
+      },
+      "galeria": [
+        {
+          "arquivo": "restaurantes/vista-restaurante/gallery-1.jpg",
+          "origem": "https://vistarestaurante.vistasaopaulo.com.br/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-04-at-18.10.18.jpeg"
+        },
+        {
+          "arquivo": "restaurantes/vista-restaurante/gallery-2.jpg",
+          "origem": "https://vistarestaurante.vistasaopaulo.com.br/wp-content/uploads/2022/06/MG_2609tratada.jpg"
+        },
+        {
+          "arquivo": "restaurantes/vista-restaurante/gallery-3.jpg",
+          "origem": "https://vistarestaurante.vistasaopaulo.com.br/wp-content/uploads/2022/09/VISTA_Foto_Cardapio.jpg"
+        }
+      ],
+      "logo": {
+        "arquivo": "restaurantes/vista-restaurante/logo.png",
+        "origem": "https://vistarestaurante.vistasaopaulo.com.br/wp-content/uploads/2019/11/logo-invertido.png"
+      }
+    },
+    "notas": "ATENÇÃO: o hint estava errado. 'Vista Restaurante' NÃO fica no Hotel Unique — é o restaurante na COBERTURA do MAC USP (Av. Pedro Álvares Cabral, 1301, Ibirapuera), recomendado pelo Guia Michelin 2024/2025. Site oficial real: vistarestaurante.vistasaopaulo.com.br (a cobertura do Hotel Unique é o Skye). hero = banner panorâmico 2560x927. logo = 'logo-invertido.png' (versão branca do wordmark, 104x120)."
+  },
+  {
+    "slug": "fasano",
+    "nome": "Fasano",
+    "categoria": "Contemporânea",
+    "cuisine": "Italiana contemporânea",
+    "notaMedia": "4.8",
+    "tempoEntregaEstimadoMin": 40,
+    "distanciaKm": "3,6",
+    "urlOrigem": "https://fasano.com.br/gastronomia/fasano-jardins/",
+    "notaSubstituicao": "Substitui 'Espaço 477' do catálogo do app (nome fictício — nenhum estabelecimento real encontrado). Fasano São Paulo (Jardins) é restaurante real de alta gastronomia.",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/fasano/hero.jpg",
+        "origem": "https://fasano.com.br/wp-content/uploads/2023/06/Fasano_Sao-Paulo-1.jpeg"
+      },
+      "galeria": [
+        {
+          "arquivo": "restaurantes/fasano/gallery-1.jpg",
+          "origem": "https://fasano.com.br/wp-content/uploads/2023/06/Fasano_Sao-Paulo-02.jpg"
+        },
+        {
+          "arquivo": "restaurantes/fasano/gallery-2.jpg",
+          "origem": "https://fasano.com.br/wp-content/uploads/2023/06/Fasano_Sao-Paulo-03.jpg"
+        },
+        {
+          "arquivo": "restaurantes/fasano/gallery-3.jpg",
+          "origem": "https://fasano.com.br/wp-content/uploads/2023/06/Fasano_Sao-Paulo-04.jpg"
+        }
+      ],
+      "logo": {
+        "arquivo": "restaurantes/fasano/logo.png",
+        "origem": "https://fasano.com.br/wp-content/themes/fasano/assets/images/logo.svg"
+      }
+    },
+    "notas": "Restaurante PRIMÁRIO (não foi necessário fallback). Site oficial fasano.com.br (WordPress) acessível; página gastronomia/fasano-jardins tem galeria própria (Fasano_Sao-Paulo-01..09, fotos profissionais Nikon D810 / Canon EOS 5D Mark IV). Hero = og:image (1440x900). Logotipo é SVG wordmark (logo.svg, 171x30, fill #695643) rasterizado para PNG transparente 1024x178 via sips (canvas escalado 6x). Fasano fica na Rua Vittorio Fasano 88, Jardins, SP."
+  },
+  {
+    "slug": "tan-tan",
+    "nome": "Tan Tan",
+    "categoria": "Bares",
+    "cuisine": "Bar",
+    "notaMedia": "4.6",
+    "tempoEntregaEstimadoMin": 35,
+    "distanciaKm": "3,5",
+    "urlOrigem": "http://tantannb.com.br",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/tan-tan/hero.png",
+        "origem": "http://tantannb.com.br/images/BackgroundTT.png"
+      },
+      "galeria": [],
+      "logo": {
+        "arquivo": "restaurantes/tan-tan/logo.png",
+        "origem": "http://tantannb.com.br/images/LogoTT.png"
+      }
+    },
+    "notas": "Site oficial tantannb.com.br (bar nipônico, R. Fradique Coutinho 153, Pinheiros). https retorna erro de cadeia SSL (IncompleteCertChain/websiteseguro), usado http. Template Nicepage com página única: só há logo (LogoTT.png) + background hero (BackgroundTT.png); sem galeria."
+  },
+  {
+    "slug": "subastor",
+    "nome": "SubAstor",
+    "categoria": "Bares",
+    "cuisine": "Bar",
+    "notaMedia": "4.4",
+    "tempoEntregaEstimadoMin": 35,
+    "distanciaKm": "2,9",
+    "urlOrigem": "https://barastor.com.br",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/subastor/hero.png",
+        "origem": "https://barastor.com.br/wp-content/uploads/2025/05/IMG_0320-HDR-2048x1365.png"
+      },
+      "galeria": [
+        {
+          "arquivo": "restaurantes/subastor/gallery-1.jpg",
+          "origem": "https://barastor.com.br/wp-content/uploads/2024/12/IMG_9112-HDR-2048x1365.jpg"
+        },
+        {
+          "arquivo": "restaurantes/subastor/gallery-2.jpg",
+          "origem": "https://barastor.com.br/wp-content/uploads/2025/05/89_astor_agosto_2023_lais_acsa-scaled.jpg"
+        }
+      ],
+      "logo": {
+        "arquivo": "restaurantes/subastor/logo.png",
+        "origem": "https://barastor.com.br/wp-content/uploads/2024/11/subastor-logo.png"
+      }
+    },
+    "notas": "SubAstor = porão do Bar Astor (R. Delfina 163, Vila Madalena); domínio oficial barastor.com.br (WordPress). Logo subastor-logo.png é pequeno (71x122). Alternativas maiores no site: astor-logo.png (172x96) e apple-touch-icon logo-site-barra-ASTOR-300x300.png."
+  },
+  {
+    "slug": "fel",
+    "nome": "Fel",
+    "categoria": "Bares",
+    "cuisine": "Bar",
+    "notaMedia": "4.5",
+    "tempoEntregaEstimadoMin": 30,
+    "distanciaKm": "4,7",
+    "urlOrigem": "https://www.instagram.com/fel.sp/",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/fel/hero.jpg",
+        "origem": "https://vejasp.abril.com.br/wp-content/uploads/2022/11/fel-132.jpg.jpg"
+      },
+      "galeria": [
+        {
+          "arquivo": "restaurantes/fel/gallery-1.jpg",
+          "origem": "https://scontent.cdninstagram.com/v/t51.82787-15/572276140_18291678091273788_6938280339380899623_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=yGC3wrFZAeIQ7kNvwGSXmMu&_nc_oc=Adr3qGi9vB3m7995iY9AMITPUBypuqtsfAx_pgUJUAQpjpJJnDD8KmQmLsxvK7s0TEE&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=FKwq2SGqEXUzLpAOppBKpQ&_nc_ss=7f60f&oh=00_AQKLAqWZoV2Gm2KYxmMxeFEiU5lzbqhuOiXlwRSN_9UMRQ&oe=6A9DF46C"
+        },
+        {
+          "arquivo": "restaurantes/fel/gallery-2.jpg",
+          "origem": "https://scontent.cdninstagram.com/v/t51.82787-15/572510690_18291676054273788_7543341492949145018_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=108&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=wwBvWb8zWuIQ7kNvwEimHQB&_nc_oc=AdqaWmnFRduTUvp3IhBUSdeeEZHEqj7WjrrfGyBBtzoTWhjhDYX9WTwzKw9KkqXM-TQ&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=FKwq2SGqEXUzLpAOppBKpQ&_nc_ss=7f60f&oh=00_AQJWUzpvv9WecZ7Cs30pCNc-cTERinqjEYskk5HNz5LsXA&oe=6A9DFCD1"
+        }
+      ],
+      "logo": {
+        "arquivo": "restaurantes/fel/logo.jpg",
+        "origem": "https://scontent.cdninstagram.com/v/t51.2885-19/36762343_972711749603767_154230415878520832_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=104&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy44MDAuQzMifQ%3D%3D&_nc_ohc=KS1aqOfQRaAQ7kNvwGCVJSL&_nc_oc=AdrTZPUkzx5U_ZDi7NwwuX3kS_HZSPPhv_N2AsZNU31eJ6vw_yRzvHsFy61-U_9xitE&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_ss=7f60f&oh=00_AQK6JDzCDwiZksjkLxPMMZy3w5ozagrRbF-f4AQjY0X9Hw&oe=6A9DD189"
+      }
+    },
+    "notas": "Fel não tem site próprio (bar de coquetelaria clássica no Edifício Copan, Av. Ipiranga 200 loja 69, República). Hero = foto do bar da Veja SP (matéria 'Fel, no Copan, apresenta bons motivos para uma nova visita', 2250x1500; original CMYK convertido para RGB). Galeria/logo ainda via Instagram @fel.sp (~640px)."
+  },
+  {
+    "slug": "bar-brahma",
+    "nome": "Bar Brahma",
+    "categoria": "Bares",
+    "cuisine": "Bar",
+    "notaMedia": "4.7",
+    "tempoEntregaEstimadoMin": 35,
+    "distanciaKm": "3,6",
+    "urlOrigem": "https://barbrahma.com.br",
+    "fotos": {
+      "hero": {
+        "arquivo": "restaurantes/bar-brahma/hero.jpg",
+        "origem": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/90/Bar_Brahma_%289327009785%29.jpg/1920px-Bar_Brahma_%289327009785%29.jpg"
+      },
+      "galeria": [
+        {
+          "arquivo": "restaurantes/bar-brahma/gallery-1.jpg",
+          "origem": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Bar_Brahma_%289327020643%29.jpg/1920px-Bar_Brahma_%289327020643%29.jpg"
+        },
+        {
+          "arquivo": "restaurantes/bar-brahma/gallery-2.jpg",
+          "origem": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Bar_Brahma_%289327081377%29.jpg/1920px-Bar_Brahma_%289327081377%29.jpg"
+        },
+        {
+          "arquivo": "restaurantes/bar-brahma/gallery-3.jpg",
+          "origem": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Bar_Brahma%2C_S%C3%A3o_Paulo%2C_SP%2C_Brasil.jpg"
+        }
+      ],
+      "logo": {
+        "arquivo": "restaurantes/bar-brahma/logo.jpg",
+        "origem": "https://scontent.cdninstagram.com/v/t51.82787-19/753534654_18618274117007547_5942321584319535658_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=100&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=kbmCoQAwp5QQ7kNvwEdzmDU&_nc_oc=AdqbWsjCX349KYgRbVVBdPSinxeWJf3bJMPH1KQH7oV3hYA8eYBUVBaGrgqlohSiNK4&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=oM86sjhYSSg6pDSik1Uv6Q&_nc_ss=7f60f&oh=00_AQLOO5IO2qp0I_SAOu4WjEQAbEVnsFuiqbD2e2nLVkbN-g&oe=6A9DC956"
+      }
+    },
+    "notas": "barbrahma.com.br está atrás de bot protection (Imperva 'Pardon Our Interruption'); https não respondeu. Fotos reais do Bar Brahma (Largo do Arouche / esquina Av. Ipiranga x São João) via Wikimedia Commons (arquivos de Dornicke e série Flickr 9327*, CC). Logo via Instagram @barbrahma (avatar 150x150)."
+  }
+]

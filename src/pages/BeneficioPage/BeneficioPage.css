@@ -1,0 +1,401 @@
+/* BeneficioPage – detalhe do benefício (Figma 95:6301 "Benefício").
+ * O design é um sheet modal de 393×856; virou página full-height full-bleed: o
+ * fundo (foto desfocada + overlay escuro) cobre a viewport inteira, largura e
+ * altura, e estica junto com o conteúdo. O conteúdo fica centralizado no meio
+ * da tela (como o sheet cobre a tela toda no design). Barra de status do iOS
+ * omitida (chrome de celular, mesmo desvio do RestaurantHero). */
+
+.beneficio-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* Corta o bleed de 48px do blur nas bordas – a foto "pega o fundo inteiro"
+   * sem sobrar foto para fora nem criar rolagem extra. */
+  overflow: hidden;
+}
+
+/* Fundo – foto do restaurante cobrindo o `.beneficio-page` inteiro (full-bleed:
+ * a página não tem max-width, então a foto estica por toda a largura e altura
+ * da viewport), ampliada 48px além da borda para o blur de 10px não revelar
+ * arestas. É um `<div>` com `background-image` + `background-size: cover`
+ * (e não um `<img>` com `object-fit`): o div estica pelo inset sem depender de
+ * width/height explícitos e o `cover` preenche a caixa em qualquer browser.
+ * `filter: blur` no div pelo mesmo efeito visual com menos engrenagem. */
+.beneficio-page__bg {
+  position: absolute;
+  top: -48px;
+  right: -48px;
+  bottom: -48px;
+  left: -48px;
+  background-size: cover;
+  background-position: center;
+  filter: blur(10px);
+  z-index: 0;
+}
+
+/* Overlay escuro translúcido (design 95:6769: rgba(34,34,34,0.3)) – dá
+ * contraste ao texto e ao ticket sobre a foto. */
+.beneficio-page__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(34, 34, 34, 0.3);
+  z-index: 0;
+}
+
+/* Conteúdo acima do fundo. O toolbar precisa de z-index maior que o bloco
+ * central: o `<main>` tem `flex: 1`, então a CAIXA dele cobre a página inteira
+ * (mesmo transparente, captura cliques). Com o mesmo z-index, ele pinta por
+ * cima do toolbar na ordem do DOM e interceptaria os cliques no botão de
+ * voltar. */
+.beneficio-page__toolbar {
+  position: relative;
+  z-index: 2;
+}
+
+.beneficio-page__content,
+.beneficio-page__footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* Botão de voltar (design 95:6811 "Btn"): círculo 40px, fundo preto 40% com
+ * blur, ícone Line 24px. `top 16px` em vez de 59px (a barra de status foi
+ * omitida; mesmo posicionamento do toolbar do RestaurantHero). */
+.beneficio-page__back {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 32px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Bloco central (design 95:6776 "Content") – centrado, coluna com gap 24px.
+ * O `padding` do topo respeita o botão de voltar; o da base afasta o footer. */
+.beneficio-page__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 72px 0 24px;
+}
+
+/* Texto "Benefícios pra você" + "Faça o check-in para…" (95:6777) */
+.beneficio-page__text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: min(337px, 100%);
+  text-align: center;
+}
+
+.beneficio-page__caption {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-body);
+  line-height: 24px;
+  color: rgba(255, 255, 255, 0.64);
+}
+
+.beneficio-page__heading {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-title-sm);
+  line-height: 24px;
+  color: #ffffff;
+}
+
+/* Ticket do benefício (95:6780 "Card", 337×364). O fundo é o SVG do design
+ * (shape de cupom recortado, branco) esticado no card; a foto fica no topo com
+ * 2px de respiro, o merchant no meio e o título/subtítulo da oferta embaixo –
+ * mesmas coordenadas absolutas do frame (24, 196, 288). */
+.beneficio-card {
+  position: relative;
+  flex-shrink: 0;
+  width: min(337px, 100%);
+  height: 364px;
+}
+
+.beneficio-card__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Foto (95:6805) – topo do ticket, 176px de altura, cantos 32px. É um `<div>`
+ * com `background-image` (mesma decisão do fundo da página): o div estica pelos
+ * insets laterais e o `background-size: cover` preenche a caixa, sem depender
+ * de width/height explícitos num elemento substituído. */
+.beneficio-card__photo {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  height: 176px;
+  border-radius: 32px;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Merchant (95:6788) – avatar 40px + nome/nota/distância */
+.beneficio-card__merchant {
+  position: absolute;
+  top: 196px;
+  left: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 40px;
+}
+
+/* Avatar 40px circular com o logo da loja em cantos 12px (95:6789/6791) */
+.beneficio-card__avatar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.beneficio-card__logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.beneficio-card__info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.beneficio-card__name {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: 700;
+  font-size: var(--font-size-body);
+  line-height: 1.2;
+  color: #333333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Linha de meta: Rating (estrela + nota + contagem) + "•" + distância */
+.beneficio-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.beneficio-card__dot {
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: var(--color-text-disabled);
+}
+
+.beneficio-card__distance {
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: var(--color-text-secondary);
+}
+
+/* Cupom (95:6785) – título 18px + condição 12px, colados na base do ticket */
+.beneficio-card__coupon {
+  position: absolute;
+  top: 288px;
+  left: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.beneficio-card__title {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-title-md);
+  line-height: 24px;
+  color: #171717;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.beneficio-card__subtitle {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: var(--color-text-secondary);
+}
+
+/* Tag de expiração do cupom no estado "Check-in realizado" (design 100:7853
+ * "expira") – pílula de 16px com fundo critical-secondary (#FFEBEB) e texto
+ * critical (#C00) 10px Bold, posicionada à direita do título do cupom (as
+ * coordenadas fixas 182×2 do frame). O título do cupom já truncaria com
+ * ellipsis antes de alcançar a tag. */
+.beneficio-card__expires {
+  position: absolute;
+  top: 2px;
+  left: 182px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 16px;
+  padding: 0 5px;
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-critical-secondary);
+  font-family: var(--font-brand);
+  font-weight: 700;
+  font-size: 10px;
+  line-height: normal;
+  color: var(--color-text-critical);
+  white-space: nowrap;
+}
+
+/* Rodapé (95:6770) – gradiente preto na base com as CTAs coladas embaixo:
+ * pílula branca "Fazer check-in" + link de texto "Ver detalhes e regras". */
+.beneficio-page__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  height: 160px;
+  padding: 48px 16px 8px;
+  background: linear-gradient(180deg, rgba(34, 34, 34, 0) 0%, #000000 100%);
+}
+
+.beneficio-page__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
+  line-height: 24px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* "Fazer check-in" – pílula branca com a sombra multi-camada do design (95:6772) */
+.beneficio-page__cta--checkin {
+  padding: 12px 32px;
+  border-radius: 32px;
+  background: #ffffff;
+  color: var(--color-text-primary);
+  filter: drop-shadow(0 4px 2px rgba(0, 0, 0, 0.25))
+    drop-shadow(0 84px 16.5px rgba(0, 0, 0, 0.02))
+    drop-shadow(0 47px 14px rgba(0, 0, 0, 0.08))
+    drop-shadow(0 21px 10.5px rgba(0, 0, 0, 0.13))
+    drop-shadow(0 5px 5.5px rgba(0, 0, 0, 0.15));
+}
+
+/* "Check-in realizado" (design 100:7845) – pós-check-in: fundo terciário
+ * (#E0E0E0) a 80% com check verde de sucesso e texto em tom desabilitado. O
+ * padding é assimétrico (24px à esquerda, 32px à direita) para centralizar o
+ * conjunto ícone+texto com o glow do check; `cursor: default` e `disabled`
+ * travam a interação. */
+.beneficio-page__cta--done {
+  gap: 10px;
+  padding: 12px 32px 12px 24px;
+  background: var(--color-surface-tertiary);
+  color: var(--color-text-disabled);
+  opacity: 0.8;
+  cursor: default;
+}
+
+/* "Ver detalhes e regras" – botão de texto branco (95:6774) */
+.beneficio-page__cta--details {
+  width: 190px;
+  padding: 12px 0;
+  border-radius: 32px;
+  background: transparent;
+  color: #ffffff;
+}
+
+/* Bottom sheet "Ver detalhes e regras" (design 97:6949) – só o texto mora aqui;
+ * o painel (alça, fundo 90% branco, raio 56px, slide-up, fechar fora/Escape) é
+ * o componente BottomSheet. O gap de 56px entre alça e conteúdo e o padding
+ * (8/24/68) vêm de lá. Título 16px/Medium centralizado, seções "Como usar" +
+ * "Regras" com título 14px/Medium e bullets 12px/Regular em list-disc com 18px
+ * de margem de início. */
+.rules-sheet__title {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-title-sm);
+  line-height: 24px;
+  color: var(--color-text-primary);
+  text-align: center;
+}
+
+.rules-sheet__sections {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+}
+
+.rules-sheet__section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rules-sheet__heading {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
+  line-height: 16px;
+  color: var(--color-text-primary);
+}
+
+.rules-sheet__list {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  list-style: disc;
+}
+
+.rules-sheet__list li {
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: var(--color-text-secondary);
+}

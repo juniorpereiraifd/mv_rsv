@@ -1,0 +1,4 @@
+.skeleton {
+  background-color: var(--color-skeleton);
+  flex-shrink: 0;
+}

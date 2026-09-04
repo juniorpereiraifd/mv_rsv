@@ -1,0 +1,29 @@
+{
+  "slug": "vista-restaurante",
+  "name": "Vista Restaurante",
+  "categoryGroup": "Contemporânea",
+  "officialUrl": "https://vistarestaurante.vistasaopaulo.com.br/",
+  "hero": {
+    "file": "restaurantes/vista-restaurante/hero.jpg",
+    "source": "https://vistarestaurante.vistasaopaulo.com.br/wp-content/uploads/2024/04/banner_site_vistaibirapuera_2024-3-scaled.jpg"
+  },
+  "gallery": [
+    {
+      "file": "restaurantes/vista-restaurante/gallery-1.jpg",
+      "source": "https://vistarestaurante.vistasaopaulo.com.br/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-04-at-18.10.18.jpeg"
+    },
+    {
+      "file": "restaurantes/vista-restaurante/gallery-2.jpg",
+      "source": "https://vistarestaurante.vistasaopaulo.com.br/wp-content/uploads/2022/06/MG_2609tratada.jpg"
+    },
+    {
+      "file": "restaurantes/vista-restaurante/gallery-3.jpg",
+      "source": "https://vistarestaurante.vistasaopaulo.com.br/wp-content/uploads/2022/09/VISTA_Foto_Cardapio.jpg"
+    }
+  ],
+  "logo": {
+    "file": "restaurantes/vista-restaurante/logo.png",
+    "source": "https://vistarestaurante.vistasaopaulo.com.br/wp-content/uploads/2019/11/logo-invertido.png"
+  },
+  "notes": "ATENÇÃO: o hint estava errado. 'Vista Restaurante' NÃO fica no Hotel Unique — é o restaurante na COBERTURA do MAC USP (Av. Pedro Álvares Cabral, 1301, Ibirapuera), recomendado pelo Guia Michelin 2024/2025. Site oficial real: vistarestaurante.vistasaopaulo.com.br (a cobertura do Hotel Unique é o Skye). hero = banner panorâmico 2560x927. logo = 'logo-invertido.png' (versão branca do wordmark, 104x120)."
+}

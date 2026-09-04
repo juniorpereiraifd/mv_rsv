@@ -1,0 +1,14 @@
+{
+  "slug": "hinode",
+  "name": "Hinodê",
+  "categoryGroup": "Sushi / Japonesa",
+  "officialUrl": "https://www.estadao.com.br/paladar/restaurantes-e-bares/antigos-ilustres-hinode-oferece-tradicao-e-e-uma-das-casas-japonesas-mais-antigas-de-sao-paulo/",
+  "hero": {"file": "restaurantes/hinode/hero.jpg", "source": "https://static-madeinjapan.s3.amazonaws.com/wp-content/uploads/2015/05/hinode_fachada.jpg"},
+  "gallery": [
+    {"file": "restaurantes/hinode/gallery-1.jpg", "source": "https://www.estadao.com.br/resizer/v2/475LXNCMGVAINC3KXM5F6CDUVY.jpg"},
+    {"file": "restaurantes/hinode/gallery-2.jpg", "source": "https://static-madeinjapan.s3.amazonaws.com/wp-content/uploads/2015/05/sushi-bar_hinode.jpg"},
+    {"file": "restaurantes/hinode/gallery-3.jpg", "source": "https://static-madeinjapan.s3.amazonaws.com/wp-content/uploads/2015/05/tempura-udon_hinode.jpg"},
+    {"file": "restaurantes/hinode/gallery-4.jpg", "source": "https://itin-dev.wanderlogstatic.com/freeImageSmall/JMlybfgWhloMnEEkW09oDRCJ0dlG4qmk"}
+  ],
+  "notes": "Sem site oficial próprio (hinode.com.br é a empresa de cosméticos, não usada). Fotos reais do restaurante obtidas de: matéria 'Hinode, a escolha pela tradição' (Hashitag / Made in Japan, 2015) — fachada (hero), sushi bar e tempura udon; Estadão Paladar 'Antigos Ilustres: Hinodê' (foto em alta 1920x1396); Wanderlog (foto 'Photo of HINODÊ in Sao Paulo'). Restaurante japonês mais antigo de SP (desde 1965), Rua Thomaz Gonzaga 62, Liberdade. Logo/letreiro isolado não localizado — a foto da fachada (hero) serve como marca visual; Wikimedia Commons sem resultados."
+}

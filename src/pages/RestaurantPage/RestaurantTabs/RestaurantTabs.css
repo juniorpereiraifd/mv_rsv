@@ -1,0 +1,51 @@
+/* RestaurantTabs – navegação de âncoras (design 68:3793). A borda inferior
+ * atravessa o corpo branco; a aba ativa ganha um underline de 2px. */
+
+.restaurant-tabs {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--color-outline-default);
+}
+
+.restaurant-tabs__tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
+  line-height: 16px;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.restaurant-tabs__tab:hover {
+  color: var(--color-text-primary);
+}
+
+.restaurant-tabs__tab--active {
+  color: var(--color-text-primary);
+}
+
+.restaurant-tabs__tab--active:focus-visible,
+.restaurant-tabs__tab:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: -2px;
+}
+
+/* Underline da aba ativa – sobrepõe a borda inferior do nav (design 68:3796) */
+.restaurant-tabs__line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--color-text-primary);
+}

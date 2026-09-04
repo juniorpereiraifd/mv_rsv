@@ -1,0 +1,14 @@
+{
+  "slug": "speranza",
+  "name": "Speranza",
+  "categoryGroup": "Pizza",
+  "officialUrl": "https://speranza.com.br",
+  "hero": {"file": "restaurantes/speranza/hero.jpg", "source": "https://pizzaria.com.br/wp-content/uploads/2020/09/Slide-1.jpg"},
+  "gallery": [
+    {"file": "restaurantes/speranza/gallery-1.jpg", "source": "https://pizzaria.com.br/wp-content/uploads/2025/12/DHC_1506-Img-scaled-e1765548453656.jpg"},
+    {"file": "restaurantes/speranza/gallery-2.jpg", "source": "https://pizzaria.com.br/wp-content/uploads/2022/08/ISR00192-1024x683.jpg"},
+    {"file": "restaurantes/speranza/gallery-3.jpg", "source": "https://pizzaria.com.br/wp-content/uploads/2022/08/pizzaria_esperanza_unidade_moema_2022-4-1024x683.jpg"}
+  ],
+  "logo": {"file": "restaurantes/speranza/logo.png", "source": "https://pizzaria.com.br/wp-content/uploads/2020/09/Pizzaria-Speranza-1.png"},
+  "notes": "Domínio do hint (pizzariasperanza.com.br) não resolve (ENOTFOUND). Oficial é speranza.com.br (título 'Pizzaria Speranza'), que serve assets de pizzaria.com.br (WordPress do grupo). hero = og:image Slide-1.jpg (1920x945). speranza-margherita-menu.jpg retornou 404, substituída por DHC_1506 (2025). Logo Pizzaria-Speranza-1.png (228x158)."
+}

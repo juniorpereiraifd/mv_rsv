@@ -1,0 +1,14 @@
+{
+  "slug": "fasano",
+  "name": "Fasano São Paulo",
+  "categoryGroup": "Italiana",
+  "officialUrl": "https://fasano.com.br/gastronomia/fasano-jardins/",
+  "hero": {"file": "restaurantes/fasano/hero.jpg", "source": "https://fasano.com.br/wp-content/uploads/2023/06/Fasano_Sao-Paulo-1.jpeg"},
+  "gallery": [
+    {"file": "restaurantes/fasano/gallery-1.jpg", "source": "https://fasano.com.br/wp-content/uploads/2023/06/Fasano_Sao-Paulo-02.jpg"},
+    {"file": "restaurantes/fasano/gallery-2.jpg", "source": "https://fasano.com.br/wp-content/uploads/2023/06/Fasano_Sao-Paulo-03.jpg"},
+    {"file": "restaurantes/fasano/gallery-3.jpg", "source": "https://fasano.com.br/wp-content/uploads/2023/06/Fasano_Sao-Paulo-04.jpg"}
+  ],
+  "logo": {"file": "restaurantes/fasano/logo.png", "source": "https://fasano.com.br/wp-content/themes/fasano/assets/images/logo.svg"},
+  "notes": "Restaurante PRIMÁRIO (não foi necessário fallback). Site oficial fasano.com.br (WordPress) acessível; página gastronomia/fasano-jardins tem galeria própria (Fasano_Sao-Paulo-01..09, fotos profissionais Nikon D810 / Canon EOS 5D Mark IV). Hero = og:image (1440x900). Logotipo é SVG wordmark (logo.svg, 171x30, fill #695643) rasterizado para PNG transparente 1024x178 via sips (canvas escalado 6x). Fasano fica na Rua Vittorio Fasano 88, Jardins, SP."
+}

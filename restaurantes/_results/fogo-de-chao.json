@@ -1,0 +1,14 @@
+{
+  "slug": "fogo-de-chao",
+  "name": "Fogo de Chão",
+  "categoryGroup": "Comida brasileira",
+  "officialUrl": "https://fogodechao.com.br",
+  "hero": {"file": "restaurantes/fogo-de-chao/hero.jpg", "source": "https://media.fogodechao.com.br/wp-content/uploads/2025/03/06074953/Hero-image-meat-section.jpg"},
+  "gallery": [
+    {"file": "restaurantes/fogo-de-chao/gallery-1.jpg", "source": "https://media.fogodechao.com.br/wp-content/uploads/2025/03/06093646/Section-image-3-1.jpg"},
+    {"file": "restaurantes/fogo-de-chao/gallery-2.jpg", "source": "https://media.fogodechao.com.br/wp-content/uploads/2025/03/06093857/Section-image-5-2.jpg"},
+    {"file": "restaurantes/fogo-de-chao/gallery-3.jpg", "source": "https://media.fogodechao.com.br/wp-content/uploads/2025/03/06093750/Section-image-4-2.jpg"}
+  ],
+  "logo": {"file": "restaurantes/fogo-de-chao/logo.png", "source": "https://fogodechao.com.br/wp-content/themes/fogodechao/img/Fogo-de-Chao-Hrz-1C-rev.png"},
+  "notes": "Imagens do site oficial (media.fogodechao.com.br). Logo horizontal oficial PNG transparente 1200x243 (variante branca '1C-rev' usada no header; existe tambem versao colorida fogo-logo.webp). og:image do site e apenas favicon."
+}

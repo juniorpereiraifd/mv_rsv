@@ -1,0 +1,580 @@
+/* MovePage – landing page do "Comer Fora"/iFood Move (Figma 103:7956 "Header").
+ * O design é um frame de 1306×640; a página vira full-height full-bleed: o hero
+ * (fundo vermelho + faixas) cobre a viewport inteira e estica junto com o
+ * conteúdo, e o card de experiências fica colado na base sobrepondo o hero
+ * (como no design, em que o card cobre a parte de baixo do frame).
+ *
+ * Estrutura:
+ *   .move-page            – página; flex column, min-height 100vh
+ *   .move-hero            – fundo absoluto inset:0 (full-bleed, sem cantos)
+ *   .move-page__frame     – coluna centralizada max-width:1306px (canvas do
+ *                           design) com altura natural; o `.move-page`
+ *                           centraliza o grupo verticalmente em telas altas
+ *   .move-hero__content   – lockup do logo + título/subtítulo (topo esquerdo)
+ *   .move-hero__image     – ilustração + decos (canto superior direito)
+ *   .move-experiences     – cardlist branca colada na base (margem de 4px) */
+
+.move-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* Telas altas: o conjunto inteiro (texto + cardlist + reset) mantém a altura
+   * natural e é centralizado verticalmente – sem o frame esticando (`flex: 1`),
+   * não sobra espaço pra dispersar o conteúdo entre topo e base. Em telas em
+   * que o conteúdo é mais alto que a viewport o `.move-page` cresce junto (a
+   * folga é zero e o `center` não tem efeito), então não há clipping. */
+  justify-content: center;
+}
+
+/* Fundo do hero (103:7957) – cobre a página inteira. O #eb0033 aparece só numa
+ * tira de 3px à esquerda; a camada "Faixas" (103:7958) pinta #f91c4c por cima
+ * de tudo. Sem cantos arredondados (pedido do usuário): o raio de 24px antigo
+ * deixava o fundo branco da app aparecer nas quinas. `overflow: hidden` segura
+ * as faixas (right negativo) dentro da página. */
+.move-hero {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--color-text-brand); /* #eb0033 */
+}
+
+/* Faixas (103:7958) – o container tem fundo próprio #f91c4c cobrindo o hero e
+ * duas faixas em SVG ancoradas à borda direita, fora do canvas em 1306px (o
+ * design as posiciona com right negativo); só aparecem em telas mais largas. */
+.move-hero__faixas {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: -3px;
+  background: #f91c4c;
+}
+
+.move-hero__faixa {
+  position: absolute;
+  display: block;
+}
+
+/* faixa-1 (103:7959): 1051×527, right:-486 top:-122, espelhada no eixo X via
+ * `rotate(180deg) scaleY(-1)` (mesmos transforms do design). */
+.move-hero__faixa--1 {
+  right: -486px;
+  top: -122px;
+  width: 1051px;
+  height: 527px;
+  transform: rotate(180deg) scaleY(-1);
+}
+
+/* faixa-2 (103:7960): 1226.7×557.3, right:-309.82 top:89.14 */
+.move-hero__faixa--2 {
+  right: -309.82px;
+  top: 89.14px;
+  width: 1226.7px;
+  height: 557.3px;
+  transform: rotate(-179.39deg) scaleY(-1);
+}
+
+/* Frame central – espelha o canvas do design (1306px), já centrado
+ * horizontalmente via `max-width` + `margin: auto`. `flex: none` mantém a
+ * ALTURA NATURAL do conteúdo (nada estica), então não existe folga sobrando pra
+ * empurrar o card pra longe do texto. A centralização vertical fica no
+ * `.move-page` (`justify-content: center`). */
+.move-page__frame {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1306px;
+  margin: 0 auto;
+  flex: none;
+}
+
+/* Ilustração do hero (103:7990) – grupo `display: contents`: a foto e os decos
+ * são posicionados absolutos em relação ao `.move-page__frame`. As coordenadas
+ * vêm do design (foto em x698 y20; decos em 740.58/744.58/766.58), convertidas
+ * para right/top. */
+.move-hero__image {
+  display: contents;
+}
+
+.move-hero__photo {
+  position: absolute;
+  /* `top` centraliza a ilustração no centro vertical do bloco de texto
+   * (título+subtítulo): o centro da arte fica a 324px do topo da caixa
+   * (216/408 de 612px) e o centro do texto em ≥1280 fica em y217 – logo
+   * top = 217 − 324 = −107px. Em viewports baixas (900px) a arte é alta
+   * demais para o espaço e o topo encosta na borda; em telas mais altas
+   * sobra espaço dos dois lados. */
+  top: -107px;
+  right: 55px;
+  /* 1.5× do tamanho original (era 553×408), a pedido do usuário. */
+  width: 829.5px;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Em ≥1280px a foto NÃO expande mais (pedido do usuário): preserva o mesmo
+ * tamanho/posição que tem abaixo de 1280px (o PNG virou retrato 568×610 e, na
+ * largura 829.5px do desktop, crescia demais e invadia o conteúdo). */
+@media (min-width: 1280px) {
+  .move-hero__photo {
+    top: 100px;
+    right: 24px;
+    width: 450px;
+    height: auto;
+  }
+}
+
+/* Decos em `mix-blend-multiply` sobre o vermelho do hero (design: se projetam
+ * à esquerda da foto, escurecendo o fundo). */
+.move-hero__deco {
+  position: absolute;
+  mix-blend-mode: multiply;
+}
+
+.move-hero__deco--1 {
+  top: 189.66px;
+  right: 108.42px;
+  width: 457px;
+  height: 232px;
+}
+
+.move-hero__deco--2 {
+  top: 158.66px;
+  right: 104.42px;
+  width: 457px;
+  height: 232px;
+}
+
+.move-hero__deco--3 {
+  top: 254.66px;
+  right: 136.42px;
+  width: 403px;
+  height: 187px;
+}
+
+/* Conteúdo do hero – lockup + texto, alinhado ao canto superior esquerdo
+ * (gap 48px entre os blocos, como no design: logo y48–72, texto y120).
+ * O `padding-bottom` garante o respiro mínimo de 64px antes do card. */
+.move-hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding: 48px 48px 64px;
+}
+
+/* Lockup do logo (103:7962): 127.48×24. Cada peça do SVG é posicionada
+ * absolutamente com as mesmas coordenadas de offset do design. */
+.move-hero__logo {
+  position: relative;
+  width: 127.48px;
+  height: 24px;
+}
+
+.move-hero__logo-mark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20.58px;
+  height: 24px;
+}
+
+.move-hero__logo-word {
+  position: absolute;
+}
+
+.move-hero__logo-word--1 {
+  left: 27.61px;
+  top: 6.19px;
+  width: 61.16px;
+  height: 11.87px;
+}
+
+.move-hero__logo-word--2 {
+  left: 91.87px;
+  top: 0.26px;
+  width: 35.61px;
+  height: 17.55px;
+}
+
+/* Texto (103:7978): título 40/48 Bold branco (w620) e subtítulo 16/24 Medium
+ * branco (w398), coluna com gap 20px. */
+.move-hero__text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.move-hero__title {
+  margin: 0;
+  max-width: 620px;
+  font-family: var(--font-brand);
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  color: #ffffff;
+}
+
+.move-hero__subtitle {
+  margin: 0;
+  max-width: 398px;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+}
+
+/* Card de experiências (103:7996) – branco, raio 24, com 4px de vermelho
+ * visível nas bordas (o design sobrepõe o card ao hero). O respiro antes do
+ * card vem do `padding-bottom: 64px` do `.move-hero__content`; sem
+ * `margin-top: auto` o card nunca descola do conteúdo quando sobra altura. */
+.move-experiences {
+  position: relative;
+  /* O card cobre a parte de baixo do grupo (intenção do design). Com a foto
+   * dobrada, o rodapé dela alcança o card; o z-index garante que o card branco
+   * fique na frente e a foto não pinte por cima. */
+  z-index: 1;
+  width: 100%;
+  padding: 0 4px 4px;
+}
+
+.move-experiences__card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  /* Altura fixa pedida pelo usuário (350px). O `.move-experiences__list` tem
+   * `flex: 1`, então os cards esticam para preencher o espaço entre o header
+   * e o padding da base. */
+  height: 350px;
+  padding: 32px 24px 16px;
+  border-radius: 24px;
+  background: #ffffff;
+}
+
+/* Cabeçalho (103:7997): h40, título 20/24 Titulos Medium com tracking -0.6. O
+ * "Como funciona" da direita no design está com opacidade 0 (invisível) – omitido. */
+.move-experiences__header {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 20px;
+}
+
+.move-experiences__title {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.6px;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+/* Cards (103:8013/8018): lado a lado (gap 8), cada um flex-1. Ícone 24 no topo
+ * + gap 32 + bloco de texto (título 16/24 Medium, descrição 14/16 Regular). */
+.move-experiences__list {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+  min-height: 0;
+}
+
+.move-experience {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* Conteúdo (ícone + texto) alinhado ao topo do card (pedido do usuário). */
+  justify-content: flex-start;
+  gap: 32px;
+  padding: 24px 20px;
+  border: 1px solid var(--color-outline-default);
+  border-radius: var(--radius-card-lg);
+  background: #ffffff;
+  /* Os dois cards são `<Link>` (cliente → home, restaurante → /salao); um `<a>`
+     herda sublinhado e cor de link do UA – remove ambos (mesmo padrão do
+     brand-header). */
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Card clicável (restaurante → /salao, cliente → home do Comer Fora): sombra
+ * suave no hover para indicar que é navegável. */
+.move-experience--link {
+  transition: box-shadow 0.2s ease;
+}
+
+.move-experience--link:hover,
+.move-experience--link:focus-visible {
+  box-shadow: var(--shadow-card-high);
+  outline: none;
+}
+
+.move-experience__icon {
+  color: var(--color-text-secondary);
+}
+
+.move-experience__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  width: 100%;
+}
+
+.move-experience__name {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-title-sm);
+  line-height: 24px;
+  color: var(--color-text-primary);
+}
+
+.move-experience__desc {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-body);
+  line-height: 16px;
+  color: var(--color-text-secondary);
+}
+
+/* Responsivo – abaixo de 1280px a composição texto-à-esquerda/imagem-à-direita
+ * não fecha (o título de 620px encostaria na foto); a ilustração é decorativa e
+ * some. Os cards de experiência seguem SEMPRE lado a lado (pedido explícito do
+ * usuário): em telas estreitas eles encolhem via `flex: 1 1 0`/`min-width: 0`
+ * e o texto da descrição quebra em mais linhas. Abaixo de 768px o padding e a
+ * tipografia encolhem para caber em telas de celular. */
+@media (max-width: 1279px) {
+  /* A ilustração NÃO é mais escondida abaixo de 1280px (pedido do usuário: o
+   * restaurante 3D deve aparecer junto das faixas, alinhado à direita e na
+   * frente delas). Em telas médias a foto encolhe e fica ancorada no topo
+   * direito; os decos (multiply) somem para não encostarem no texto, e o título
+   * estreita para não colidir com a foto. Em <768px continua oculta (o bloco de
+   * texto ocupa a largura toda em telas pequenas). */
+  .move-hero__deco {
+    display: none;
+  }
+
+  .move-hero__photo {
+    /* Centralização vertical até 800px: centro da arte a 176px do topo da
+     * caixa (216/408 de 332px) e centro do texto em 768–800 em y276 → top =
+     * 276 − 176 = 100px. Acima de 800px o bloco ">800px" abaixo eleva o PNG
+     * para `top: 0`. */
+    top: 100px;
+    right: 24px;
+    /* 1.5× do tamanho original (era 300px de largura), a pedido do usuário. */
+    width: 450px;
+    height: auto;
+  }
+
+  .move-hero__title {
+    /* Sem delimitação de largura nesta faixa: a quebra é controlada pelo
+     * `<br/>` do JSX (2 linhas equilibradas, ~438px e ~515px a 40px). A fonte
+     * cai para 34px entre 768–1024 (bloco próprio abaixo) para as linhas
+     * invadirem menos a foto; acima de 1024 segue 40px e cabe antes da foto. */
+    max-width: none;
+  }
+
+  .move-hero__subtitle {
+    max-width: 320px;
+  }
+}
+
+/* >800px o PNG sobe ~50px: com a âncora em `top: 100px` o topo da foto ficava
+ * abaixo do lockup do logo; a pedido do usuário, em larguras maiores que 800px
+ * o retângulo sobe para `top: 50px` (subiu 100px primeiro e recuou 50px por ter
+ * encostado demais no topo). Não afeta a faixa 768–799 (foto 315px) nem o
+ * mobile (foto oculta). */
+@media (min-width: 801px) {
+  .move-hero__photo {
+    top: 50px;
+  }
+}
+
+/* Tablet estreito (768–1024) – a 40px as duas linhas do copy novo avançam
+ * bastante sobre a ilustração (opaca, 450px à direita). Reduzir a fonte para
+ * 34/42 encurta as linhas (395px/464px a 36px → menor invasão) mantendo a
+ * quebra em 2 linhas do `<br/>`. Em ~1024px as linhas já ficam inteiras à
+ * esquerda da foto; abaixo disso o texto ainda cruza levemente a arte
+ * (composição aceita pelo usuário – o texto pinta por cima da foto). */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .move-hero__title {
+    font-size: 34px;
+    line-height: 42px;
+  }
+}
+
+/* Abaixo de 800px o retângulo opaco da foto (450px à direita) avança demais
+ * sobre o texto no tablet retrato. O PNG encolhe 30% (450 → 315px); com a
+ * âncora em `right: 24px`, a foto afina e recua para a direita, devolvendo
+ * coluna ao título. O título também cai para 28px (a 34px da faixa mais larga
+ * as linhas ainda cruzavam a foto). Só tem efeito onde a foto está visível:
+ * 768–799px (abaixo de 768px ela já some no bloco do mobile). */
+@media (min-width: 768px) and (max-width: 799px) {
+  .move-hero__photo {
+    width: 315px;
+  }
+
+  .move-hero__title {
+    font-size: 28px;
+    line-height: 36px;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Em telas pequenas o bloco de texto ocupa a largura toda; a foto de 300px
+   * cobriria o título. Mantém a ocultação da ilustração só no mobile. */
+  .move-hero__image {
+    display: none;
+  }
+
+  .move-hero__content {
+    gap: 40px;
+    padding: 40px 24px 56px;
+  }
+
+  .move-hero__title {
+    /* A foto some abaixo de 768px; sem delimitação de largura, a 32px cada
+     * frase cabe em uma linha em telas ≥ ~513px. Em celulares estreitos a
+     * quebra acontece naturalmente. */
+    max-width: none;
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  /* No celular o `<br/>` some (display:none remove a quebra) e a frase única
+   * flui em parágrafos compactos – forçar as 2 linhas do tablet aqui geraria
+   * 4 linhas curtas numa tela estreita. */
+  .move-hero__title br {
+    display: none;
+  }
+
+  .move-hero__subtitle {
+    max-width: none;
+  }
+
+  .move-experiences__card {
+    padding: 24px 16px 16px;
+  }
+
+  .move-experiences__title {
+    font-size: 18px;
+  }
+
+  .move-experience {
+    gap: 24px;
+  }
+}
+
+/* Rodapé de reset – único caminho para apagar os check-ins da demonstração.
+ * Discreto, sobre o vermelho do hero: pílula translúcida branca com ícone da
+ * marca (glyph `route`, família Line). O feedback (ok/erro) some sozinho. */
+.move-reset {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 0 28px;
+}
+
+.move-reset__button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.move-reset__button:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.move-reset__feedback {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: #ffffff;
+}
+
+.move-reset__feedback--error {
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Sheet de confirmação "Redefinir demonstração?" – título, aviso e duas CTAs
+ * lado a lado (cancelar na superfície secundária, redefinir em destaque
+ * destrutivo). Mesmo idioma dos sheets de regras do benefício. */
+.reset-sheet {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.reset-sheet__title {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-title-sm);
+  line-height: 24px;
+  color: var(--color-text-primary);
+  text-align: center;
+}
+
+.reset-sheet__desc {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-body);
+  line-height: 20px;
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+.reset-sheet__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.reset-sheet__button {
+  flex: 1;
+  height: 44px;
+  border: none;
+  border-radius: var(--radius-card-lg);
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
+  line-height: 16px;
+  cursor: pointer;
+}
+
+.reset-sheet__button--ghost {
+  background: var(--color-surface-secondary);
+  color: var(--color-text-primary);
+}
+
+.reset-sheet__button--danger {
+  background: var(--color-text-critical);
+  color: #ffffff;
+}

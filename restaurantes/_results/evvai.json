@@ -1,0 +1,14 @@
+{
+  "slug": "evvai",
+  "name": "Evvai",
+  "categoryGroup": "Michelin",
+  "officialUrl": "https://evvai.com.br",
+  "hero": {"file": "restaurantes/evvai/hero.jpg", "source": "https://static.wixstatic.com/media/74e638_b513d3eef70c4cf398831f7cbddce6c0~mv2.jpg"},
+  "gallery": [
+    {"file": "restaurantes/evvai/gallery-1.jpg", "source": "https://static.wixstatic.com/media/74e638_08aa0293276c47cda53fa6fca76e4eaf~mv2.jpg"},
+    {"file": "restaurantes/evvai/gallery-2.jpg", "source": "https://static.wixstatic.com/media/74e638_25b61a1616e94c658fb64e3d1663146b~mv2.jpg"},
+    {"file": "restaurantes/evvai/gallery-3.jpeg", "source": "https://static.wixstatic.com/media/74e638_da9a4f121d4943faa3e4cc04af606b9f~mv2.jpeg"}
+  ],
+  "logo": {"file": "restaurantes/evvai/logo.png", "source": "https://static.wixstatic.com/media/a49b6b_ded0cf6a98b64aafab8f0753d1d5685e~mv2.png"},
+  "notes": "Site Wix (evvai.com.br). Baixados os arquivos raw originais do wixstatic (sem /v1/fill); fotografia profissional tbfoto.com.br (Sony ILCE-9), hero 6000x4000."
+}

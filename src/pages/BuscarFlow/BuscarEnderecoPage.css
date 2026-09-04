@@ -1,0 +1,106 @@
+/* BuscarEnderecoPage – troca de endereço (Figma 139:5230). Fundo branco; o
+   topo (campo "Buscar endereço" + Cancelar) vem do BuscarFlow.css. Aqui vivem a
+   lista de 4 opções em cards com rádio single-select. */
+
+/* Lista de opções – coluna, gap 12 como o frame empilha os cards. Começa logo
+   abaixo do toolbar (o próprio .buscar-page__inner já traz o padding). */
+.buscar-addr__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* Card de opção – `<button role="radio">` estilizado como linha: ícone 24 à
+   esquerda, bloco de texto flexível e o disco do rádio à direita. Branco com
+   borda 1px #ebebeb e raio 16 (padding 14), como o frame. Reset de botão:
+   sem fundo próprio, texto alinhado à esquerda, cursor de clique. */
+.buscar-addr {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--color-outline-default);
+  border-radius: var(--radius-card-lg);
+  background: #fff;
+  font-family: var(--font-brand);
+  text-align: left;
+  cursor: pointer;
+}
+
+/* Ícone da opção (Line 24) – pin/casa/trabalho/localização na cor secundária
+   do design (#666), em vez do tom de marca. */
+.buscar-addr__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+}
+
+/* Bloco central: título + linhas de endereço empilhadas. Encolhe antes dos
+   outros filhos (o endereço custom tem título longo). */
+.buscar-addr__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.buscar-addr__title {
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
+  line-height: 20px;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.buscar-addr__line {
+  font-weight: 400;
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Disco do rádio – 24px, fundo #e0e0e0 (superfície terciária), como a variante
+   desmarcada exportada no frame. O ponto marcado é desenhado por um filho. */
+.buscar-addr__radio {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-surface-tertiary);
+}
+
+/* Variante marcada não foi exportada no frame – padrão de radio do iFood:
+   manter o disco #e0e0e0 e desenhar o ponto central na cor da marca. */
+.buscar-addr__radio-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-brand-primary);
+}
+
+/* Feedback de foco/clique do card-radio (acessibilidade além do aria-checked). */
+.buscar-addr:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 2px;
+}
+
+.buscar-addr:hover {
+  border-color: var(--color-text-disabled);
+}
+
+.buscar-addr[aria-checked='true'] {
+  border-color: var(--color-text-secondary);
+}

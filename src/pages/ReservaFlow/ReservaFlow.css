@@ -1,0 +1,101 @@
+/* ReservaFlow – casca compartilhada das duas telas do fluxo de confirmação
+   (revisão 125:12123 / sucesso 125:12026 do Figma cMhyOvWvhsuRtOjTLvFvDH).
+   Página branca no container da app (max-width 834, padrão do RestaurantPage),
+   com a coluna de conteúdo do design (393px) centralizada. Este arquivo só tem
+   a casca (página + footer/CTA); o conteúdo de cada tela vive no css da própria
+   página. Importado junto com o css de cada página – o Vite deduplica o CSS. */
+
+.reserva-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  background-color: var(--color-page-bg);
+}
+
+/* Área de conteúdo – cresce pra empurrar o rodapé pra baixo quando o conteúdo
+   é curto (o footer fixo não flutua no meio da tela). */
+.reserva-page__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Coluna do design (393px) centralizada na página; padding lateral 16px do
+   frame. Cada página ajusta o padding-top próprio. */
+.reserva-page__inner {
+  box-sizing: border-box;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: min(100%, 393px);
+  margin-inline: auto;
+  padding: 0 16px;
+}
+
+/* Rodapé fixo (padrão StickyFooter da loja): `sticky bottom:0` mantém a CTA
+   visível enquanto a página rola; superfície opaca branca (sem blur, porque é
+   opaca) com sombra suave separando do conteúdo. */
+.reserva-page__footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  padding: 8px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+  background: var(--color-page-bg);
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.reserva-page__footer-inner {
+  box-sizing: border-box;
+  width: min(100%, 393px);
+}
+
+/* CTA primária do fluxo – espelha o `.reserva-submit` do widget: h48, radius
+   16, vermelho da marca #eb0033 (a CTA de sucesso herda o texto "Ver minhas
+   reservas"). */
+.reserva-page__cta {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: 16px;
+  background: #eb0033;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
+  line-height: 16px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.reserva-page__cta:hover:not(:active) {
+  filter: brightness(0.97);
+}
+
+.reserva-page__cta:active {
+  filter: brightness(0.9);
+}
+
+.reserva-page__cta:focus-visible {
+  outline: 2px solid #eb0033;
+  outline-offset: 2px;
+}
+
+/* Reduced motion – encurta/desliga as animações decorativas do fluxo quando o
+   usuário pede menos movimento. O overlay nem chega a montar nesse caso (a
+   página de confirmação navega direto), mas os guards ficam aqui também para
+   as animações de entrada das páginas. */
+@media (prefers-reduced-motion: reduce) {
+  .reserva-overlay__spinner,
+  .reserva-overlay__done,
+  .reserva-overlay__confetto,
+  .reserva-success__mark {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

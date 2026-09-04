@@ -1,0 +1,15 @@
+{
+  "slug": "nakka",
+  "name": "Nakka",
+  "categoryGroup": "Sushi / Japonesa",
+  "officialUrl": "https://restaurantenakka.com.br",
+  "hero": {
+    "file": "restaurantes/nakka/hero.jpg",
+    "source": "https://static.wixstatic.com/media/7cc15e_c07dd3da2df14e2fa1a420d7da69b926~mv2.jpg"
+  },
+  "logo": {
+    "file": "restaurantes/nakka/logo.png",
+    "source": "https://static.wixstatic.com/media/7cc15e_cc159b294bd44672a9d9452f68bc38c5~mv2.png"
+  },
+  "notes": "Domínio-sugestão nakka.com.br é 'Nakka Audio e Video' (empresa errada); site oficial confirmado via WebSearch: restaurantenakka.com.br (Wix). Homepage é landing única (hero + reservas), sem galeria de fotos — apenas 1 foto real (og:image, 1200x774) + logo PNG 700x365. gallery omitida por não existir."
+}

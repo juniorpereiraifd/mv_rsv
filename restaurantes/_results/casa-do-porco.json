@@ -1,0 +1,14 @@
+{
+  "slug": "casa-do-porco",
+  "name": "A Casa do Porco",
+  "categoryGroup": "Comida brasileira",
+  "officialUrl": "https://acasadoporco.com.br",
+  "hero": {"file": "restaurantes/casa-do-porco/hero.jpg", "source": "https://www.theworlds50best.com/discovery/filestore/jpg/ACasadoPorco-SaoPaulo-Brazil-01.jpg"},
+  "gallery": [
+    {"file": "restaurantes/casa-do-porco/gallery-1.jpg", "source": "https://www.estadao.com.br/resizer/v2/4CWX4BVJ5NL6NKBX6IEJMSMS4M.jpg?quality=80&auth=3b02df8ba454292dcaf3996fff77a2c445b7077184e6063590be2e51e156003e&width=1200&height=630&smart=true"},
+    {"file": "restaurantes/casa-do-porco/gallery-2.jpg", "source": "https://www.theworlds50best.com/discovery/filestore/jpg/ACasadoPorco-SaoPaulo-Brazil-02.jpg"},
+    {"file": "restaurantes/casa-do-porco/gallery-3.jpg", "source": "https://www.theworlds50best.com/discovery/filestore/jpg/ACasadoPorco-SaoPaulo-Brazil-03.jpg"}
+  ],
+  "logo": {"file": "restaurantes/casa-do-porco/logo.png", "source": "https://acasadoporco.com.br/img/logo_desktop.png"},
+  "notes": "Fotos reais via The World's 50 Best (página Discovery 'A Casa do Porco - São Paulo', imagens ACasadoPorco-SaoPaulo-Brazil-01/02/03, 920x600) + Estadão/Paladar (og:image da matéria 'Porco a San Zé', prato carro-chefe, 1200x630). Site oficial acasadoporco.com.br é landing mínima (sem fotos); snapshots Wayback 2017-2018 eram template genérico 'coming soon' (slide-1..4.jpg placeholder) e 2019 o domínio foi reaproveitado por um pub WordPress ('Porter Pub'), então não servem. Logo preservado (logo_desktop.png original)."
+}

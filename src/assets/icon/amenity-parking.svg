@@ -1,0 +1,6 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Estacionamento – "P" em placa arredondada. Ícone de comodidade (seção "O que
+       você pode aproveitar"). Asset vetorial escuro sobre fundo claro. -->
+  <rect x="4.2" y="4.2" width="15.6" height="15.6" rx="4.5" stroke="#141414" stroke-width="1.7"/>
+  <path d="M9.5 17.5 L9.5 7 L13.2 7 C15.4 7 16 9 14.9 10.7 C14.2 11.7 12.7 12.2 11.2 12.2 L9.5 12.2" stroke="#141414" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

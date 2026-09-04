@@ -1,0 +1,13 @@
+{
+  "slug": "tuju",
+  "name": "Tuju",
+  "categoryGroup": "Michelin",
+  "officialUrl": "https://www.tuju.com.br",
+  "hero": {"file": "restaurantes/tuju/hero.jpg", "source": "https://static.wixstatic.com/media/2f08f6_a3e8fbe85f5b4fae97504f32d4532090~mv2.jpg"},
+  "gallery": [
+    {"file": "restaurantes/tuju/gallery-1.jpg", "source": "https://static.wixstatic.com/media/2f08f6_d00544d82f63495fb9ea069a407d5e71~mv2.jpg"},
+    {"file": "restaurantes/tuju/gallery-2.jpg", "source": "https://static.wixstatic.com/media/2f08f6_ef8b4631514642dc9e611d6d93246298~mv2.jpg"}
+  ],
+  "logo": {"file": "restaurantes/tuju/logo.png", "source": "https://static.wixstatic.com/media/2f08f6_0adcea214f474c42845ffc33d17fc20f~mv2.png"},
+  "notes": "Site Wix. tuju.com.br sem www não resolve; www.tuju.com.br funciona. Hero 7008x4672 (copyright Rubens Tatibana). Logotipo wordmark 1316x493 RGBA; logo-symbol.png (900x900) mantido como alternativa."
+}

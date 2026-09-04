@@ -1,0 +1,13 @@
+{
+  "slug": "dom-restaurante",
+  "name": "D.O.M.",
+  "categoryGroup": "Michelin",
+  "officialUrl": "https://domrestaurante.com.br",
+  "hero": {"file": "restaurantes/dom-restaurante/hero.jpg", "source": "https://domrestaurante.com.br/wp-content/uploads/2026/01/brejo-dom-set2025-18.webp"},
+  "gallery": [
+    {"file": "restaurantes/dom-restaurante/gallery-1.png", "source": "https://domrestaurante.com.br/wp-content/uploads/2025/02/alex-atalla-dom-restaurante-e1739925279110.png"},
+    {"file": "restaurantes/dom-restaurante/gallery-2.png", "source": "https://domrestaurante.com.br/wp-content/uploads/2025/04/eventos-restaurante-dom-01-e1743802570242.png"}
+  ],
+  "logo": {"file": "restaurantes/dom-restaurante/logo.png", "source": "https://domrestaurante.com.br/wp-content/uploads/2025/04/LOGO_TRES_BRANCO-1-2.png"},
+  "notes": "Logo branco transparente (LOGO_TRES_BRANCO-1-2.png, 382x176 RGBA). Hero = prato do menu Brejo (1500x2249, webp original convertido para JPG via sips para compatibilidade com Figma). Galeria = retrato do chef Alex Atala + eventos."
+}

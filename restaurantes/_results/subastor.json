@@ -1,0 +1,13 @@
+{
+  "slug": "subastor",
+  "name": "SubAstor",
+  "categoryGroup": "Bares",
+  "officialUrl": "https://barastor.com.br",
+  "hero": {"file": "restaurantes/subastor/hero.png", "source": "https://barastor.com.br/wp-content/uploads/2025/05/IMG_0320-HDR-2048x1365.png"},
+  "gallery": [
+    {"file": "restaurantes/subastor/gallery-1.jpg", "source": "https://barastor.com.br/wp-content/uploads/2024/12/IMG_9112-HDR-2048x1365.jpg"},
+    {"file": "restaurantes/subastor/gallery-2.jpg", "source": "https://barastor.com.br/wp-content/uploads/2025/05/89_astor_agosto_2023_lais_acsa-scaled.jpg"}
+  ],
+  "logo": {"file": "restaurantes/subastor/logo.png", "source": "https://barastor.com.br/wp-content/uploads/2024/11/subastor-logo.png"},
+  "notes": "SubAstor = porão do Bar Astor (R. Delfina 163, Vila Madalena); domínio oficial barastor.com.br (WordPress). Logo subastor-logo.png é pequeno (71x122). Alternativas maiores no site: astor-logo.png (172x96) e apple-touch-icon logo-site-barra-ASTOR-300x300.png."
+}

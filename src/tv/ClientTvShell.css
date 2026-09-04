@@ -1,0 +1,91 @@
+/* ClientTvShell – "Visão Cliente" em modo TV (viewport ≥ TV_BREAKPOINT_PX):
+ * fundo vermelho + mockup de iPhone 17 Pro centralizado. A "tela" do celular é
+ * um <iframe> com a mesma rota; este CSS desenha apenas a moldura (bezel),
+ * island e a saída para o menu. O conteúdo mobile roda no próprio documento do
+ * iframe — aqui não há regra de layout da página, só da apresentação do mockup. */
+
+.tv {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  /* Vermelho da marca. Trocar por #f91c4c caso o padrão seja o vermelho do
+     hero do Move (MovePage). */
+  background: var(--color-brand-primary);
+}
+
+/* Saída do mockup – navega o documento PAI para /move (fluido, fora do iframe). */
+.tv__exit {
+  position: absolute;
+  top: 28px;
+  left: 32px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.18);
+  font-family: var(--font-brand);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1;
+  color: #ffffff;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.tv__exit:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Celular gigante: caixa de layout no tamanho natural; o transform escala só o
+   visual (origem no centro) para preencher a TV. O `--tv-scale` é calculado em
+   JS (ResizeObserver) para caber em qualquer resolução. */
+.tv__phone {
+  --tv-scale: 1;
+  width: calc(402px + 16px * 2);
+  height: calc(874px + 16px * 2);
+  transform: scale(var(--tv-scale));
+}
+
+/* Moldura (bezel) do iPhone. */
+.tv__bezel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  border-radius: 64px;
+  background: #05050a;
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 255, 255, 0.07),
+    0 40px 90px rgba(0, 0, 0, 0.5);
+}
+
+/* Dynamic Island – decoração sobre o topo da "tela". O conteúdo do app não
+   reserva a faixa (o app omite a barra de status), então fica sobre o topo
+   decorativo do hero/header; descomente o `display: none` se atrapalhar. */
+.tv__island {
+  position: absolute;
+  top: 26px;
+  left: 50%;
+  width: 110px;
+  height: 30px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: #000;
+  z-index: 2;
+}
+
+/* "Tela" = o próprio app rodando num documento estreito. border-radius faz o
+   iframe respeitar os cantos arredondados da tela. */
+.tv__screen {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 52px;
+  background: var(--color-page-bg);
+  overflow: hidden;
+}

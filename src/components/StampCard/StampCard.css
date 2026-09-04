@@ -1,0 +1,255 @@
+/* StampCard – cartela de selos de fidelidade (Figma "-Move--Comer-Fora":
+ * 123:9266 vazio / 124:10513 em progresso e completa / 123:9785 recompensa).
+ * Card branco 337px de largura (limitada como o ticket de cupom que substitui
+ * na BeneficioPage de loja fidelidade), radius 34 e altura natural: a grade de
+ * selos + linha do merchant (cartela) ou a foto + conteúdo + merchant
+ * (recompensa). As duas faces alternam dentro do mesmo `<article>`. */
+
+.stamp-card {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  width: min(337px, 100%);
+  padding: 24px 0;
+  border-radius: 34px;
+  background: #ffffff;
+}
+
+/* ------------------------- Face cartela (123:9266/124:10513) ------------------------- */
+
+/* Grade 3×2 de selos – células de 48px com gaps de 20px, selos centralizados. */
+.stamp-card__grid {
+  margin: 0;
+  padding: 0 24px;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 48px);
+  column-gap: 20px;
+  row-gap: 20px;
+  justify-items: center;
+}
+
+.stamp-card__slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Selo 48×48. Vazio = anel sólido #EBEBEB 2px (o círculo r24/stroke 2 do Figma);
+ * preenchido = a logo da loja cobrindo o círculo (o "selo" carimbado). */
+.stamp-card__stamp {
+  box-sizing: border-box;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.stamp-card__stamp--empty {
+  border: 2px solid var(--color-outline-default);
+}
+
+.stamp-card__stamp--filled {
+  display: block;
+  object-fit: cover;
+}
+
+/* Linha do merchant – base compartilhada pelas duas faces (nome + status/pill,
+ * ou avatar + nome + pill na recompensa). */
+.stamp-card__row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 40px;
+  padding: 0 24px;
+  margin-top: 24px;
+}
+
+.stamp-card__info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stamp-card__name {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: 700;
+  font-size: var(--font-size-body);
+  line-height: 1.2;
+  color: #333333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Na face de recompensa o nome senta direto na linha (avatar à esquerda, pill à
+ * direita) e preenche o espaço entre eles. */
+.stamp-card__row--reward .stamp-card__name {
+  flex: 1;
+  min-width: 0;
+}
+
+.stamp-card__status {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: var(--color-text-secondary);
+}
+
+/* Pill de alternância das faces ("Ver recompensas" / "Ver cartela") – larguras
+ * fixas do design, fundo surface-secondary e texto 12px Medium. */
+.stamp-card__pill {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: 12px;
+  background: var(--color-surface-secondary);
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+.stamp-card__pill:active {
+  opacity: 0.7;
+}
+
+.stamp-card__pill--rewards {
+  width: 116px;
+}
+
+.stamp-card__pill--back {
+  width: 88px;
+}
+
+/* ------------------------- Face recompensa (123:9785) ------------------------- */
+
+/* Card com 2px de respiro no topo/laterais para a foto (mesma leitura do
+ * ticket de cupom) e 24px de base. */
+.stamp-card--reward {
+  padding: 2px 2px 24px;
+}
+
+.stamp-card__photo {
+  height: 176px;
+  border-radius: 32px;
+  background-size: cover;
+  background-position: center;
+}
+
+.stamp-card__reward-body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px 24px 0;
+}
+
+.stamp-card__reward-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.stamp-card__reward-title {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-title-md);
+  line-height: 24px;
+  color: #171717;
+}
+
+/* Pill de expiração (só quando a cartela está completa) – pílula critical
+ * secundária 16px com texto 10px Bold critical, igual à do ticket de cupom. */
+.stamp-card__expires {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 16px;
+  padding: 0 5px;
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-critical-secondary);
+  font-family: var(--font-brand);
+  font-weight: 700;
+  font-size: 10px;
+  line-height: normal;
+  color: var(--color-text-critical);
+  white-space: nowrap;
+}
+
+.stamp-card__reward-sub {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: var(--color-text-secondary);
+}
+
+.stamp-card__note {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stamp-card__note-title {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: var(--color-text-primary);
+}
+
+.stamp-card__bullets {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  list-style: disc;
+}
+
+.stamp-card__bullets li {
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: var(--color-text-disabled);
+}
+
+/* Avatar circular com a logo (mesmo padrão do `.beneficio-card__avatar`) usado
+ * na linha do merchant da face recompensa. */
+.stamp-card__avatar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.stamp-card__avatar-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  object-fit: cover;
+}

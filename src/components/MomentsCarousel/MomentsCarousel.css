@@ -1,0 +1,11 @@
+/* MomentsCarousel – rail horizontal de momentos compartilhados (design 68:3911):
+ * rail com snap, sem cabeçalho de seção (título/"Ver todos"). Vive dentro da
+ * seção "Avaliações" (`#avaliacoes`). */
+
+.moments-carousel__rail {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scroll-snap-type: x proximity;
+}

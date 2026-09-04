@@ -1,0 +1,27 @@
+# Dependências
+node_modules/
+.pnpm-store/
+
+# Build
+dist/
+*.tsbuildinfo
+
+# Ambiente e segredos
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+# Sistema / editor
+.DS_Store
+Thumbs.db
+
+# Aplicações irmãs fora do escopo deste repositório (B2C)
+b2b/
+Portal-B2B-main/
+
+# Vercel local
+.vercel/

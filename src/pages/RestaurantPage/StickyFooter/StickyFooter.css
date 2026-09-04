@@ -1,0 +1,197 @@
+/* StickyFooter – barra fixa na base da página (design 68:3832). */
+
+.sticky-footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  display: flex;
+  gap: 8px;
+  padding: 16px;
+  background: var(--color-bg-footer);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.sticky-footer__action {
+  flex: 1;
+  height: 44px;
+  border: none;
+  border-radius: 16px;
+  background: var(--color-surface-secondary);
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
+  line-height: 16px;
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+/* "Fazer check-in" – estado habilitado: CTA primária na cor da marca. */
+.sticky-footer__action--checkin {
+  background: var(--color-brand-primary);
+  color: #ffffff;
+}
+
+/* "Check-in realizado" – estado concluído: superfície de sucesso + texto verde,
+   desabilitado (o check-in persiste no fake back-end). Ícone + texto centralizados. */
+.sticky-footer__action--checkin--done {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: var(--color-bg-success-secondary);
+  color: var(--color-text-success);
+}
+
+.sticky-footer__action:hover:not(:disabled) {
+  filter: brightness(0.98);
+}
+
+.sticky-footer__action:disabled {
+  cursor: default;
+}
+
+/* ---------------------------------------------------------------------------
+   Bottom sheet de confirmação do check-in (Figma 129-14434) e o estado de
+   validação de localização (129-14456). O conteúdo é coluna centralizada: o
+   sheet do app já traz o drawer handle; aqui entram logo → texto → ações.
+   --------------------------------------------------------------------------- */
+
+.checkin-sheet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+}
+
+/* Slot do logo da loja (72×72, raio 24, sombra do design 129-14438). O fundo
+   branco da sheet dispensa a borda translúcida do Figma (invisível no branco). */
+.checkin-sheet__logo {
+  display: flex;
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.checkin-sheet__logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 24px;
+}
+
+.checkin-sheet__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.checkin-sheet__title {
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-title-sm);
+  line-height: normal;
+  color: var(--color-text-primary);
+  text-align: center;
+}
+
+.checkin-sheet__subtitle {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  line-height: 16px;
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+/* Botões lado a lado (44px, raio 12): "Cancelar" secundário + "Sim, confirmar"
+   primário escuro (#141414), como no design. */
+.checkin-sheet__actions {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.checkin-sheet__action {
+  flex: 1;
+  min-width: 0;
+  height: 44px;
+  border: none;
+  border-radius: 12px;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
+  line-height: 16px;
+  cursor: pointer;
+}
+
+.checkin-sheet__action--ghost {
+  background: var(--color-surface-secondary);
+  color: var(--color-text-primary);
+}
+
+.checkin-sheet__action--primary {
+  background: var(--color-text-primary);
+  color: #ffffff;
+}
+
+.checkin-sheet__action:hover:not(:disabled) {
+  filter: brightness(0.98);
+}
+
+.checkin-sheet__action:active:not(:disabled) {
+  filter: brightness(0.92);
+}
+
+.checkin-sheet__action:focus-visible {
+  outline: 2px solid var(--color-text-primary);
+  outline-offset: 2px;
+}
+
+/* Estado de validação de localização: o mesmo slot do logo (72×72) vira o
+   loading e só o texto "Estamos validando sua localização..." (129-14456). A
+   sheet fica travada (sem descartar) até o redirecionamento. */
+.checkin-sheet--validating {
+  gap: 40px;
+}
+
+/* Anel de spinner – CÍRCULO (border-radius 50%) no estilo do loading das
+   reservas (ReservaOverlay): trilho translúcido + topo vermelho da marca
+   #eb0033, giro 1s linear. Antes era um quadrado arredondado (radius 24, herança
+   do slot do logo) – fora de sintonia com a linguagem de loading da marca. */
+.checkin-sheet__loading {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 4px solid rgba(235, 0, 51, 0.2);
+  border-top-color: #eb0033;
+  animation: checkin-sheet-spin 1s linear infinite;
+}
+
+.checkin-sheet__status {
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-title-sm);
+  line-height: normal;
+  color: var(--color-text-primary);
+  text-align: center;
+}
+
+@keyframes checkin-sheet-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .checkin-sheet__loading {
+    animation-duration: 0.01ms;
+  }
+}

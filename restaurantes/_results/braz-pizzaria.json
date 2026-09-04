@@ -1,0 +1,14 @@
+{
+  "slug": "braz-pizzaria",
+  "name": "Bráz Pizzaria",
+  "categoryGroup": "Pizza",
+  "officialUrl": "https://brazpizzaria.com.br",
+  "hero": {"file": "restaurantes/braz-pizzaria/hero.png", "source": "https://familiabraz.com.br/wp-content/uploads/2024/05/Property-1Default.png"},
+  "gallery": [
+    {"file": "restaurantes/braz-pizzaria/gallery-1.png", "source": "https://familiabraz.com.br/wp-content/uploads/2024/05/2.png"},
+    {"file": "restaurantes/braz-pizzaria/gallery-2.png", "source": "https://familiabraz.com.br/wp-content/uploads/2024/10/Site_Land.Braz_Delivery_573X320PX.png"},
+    {"file": "restaurantes/braz-pizzaria/gallery-3.png", "source": "https://familiabraz.com.br/wp-content/uploads/2024/10/Site_Land.Braz_Reservas_573X320PX.png"}
+  ],
+  "logo": {"file": "restaurantes/braz-pizzaria/logo.png", "source": "https://familiabraz.com.br/wp-content/uploads/2024/04/BRAZ_SEMASSINATURA-01-1.png"},
+  "notes": "HTTPS do domínio dá erro SSL (cert chain incompleto) — usei HTTP. brazpizzaria.com.br redireciona para familiabraz.com.br (grupo Família Bráz), de onde vêm os assets. Logo oficial é pequeno (166x84, único PNG disponível). Hero/gallery = imagens do slideshow de fundo da home (Property-1Default.png / 2.png, 1280x480)."
+}
