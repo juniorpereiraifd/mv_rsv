@@ -53,6 +53,12 @@
   font-size: 14px;
   cursor: default;
 }
+/* Cadeado de bloqueio – empurrado para a direita do item. */
+.tagme-reserva__nav-lock {
+  margin-left: auto;
+  color: #7f9a96;
+  opacity: 0.9;
+}
 .tagme-reserva__nav-item--active {
   background: #ee7936;
   color: #fff;
@@ -295,6 +301,142 @@
   color: var(--color-text-secondary);
   font-size: 13px;
   line-height: 18px;
+}
+
+/* --------------------------- Painel Hostess --------------------------- */
+
+/* Abas Reserva × Salão */
+.tagme-reserva__tabs {
+  display: flex;
+  gap: 8px;
+  padding: 8px 20px 0;
+}
+.tagme-reserva__tab {
+  padding: 8px 16px;
+  border: 1px solid var(--color-outline-default);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--color-text-secondary);
+  font-family: var(--font-brand);
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+}
+.tagme-reserva__tab--active {
+  background: #eef1f1;
+  border-color: #244242;
+  color: #244242;
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Seletor de dia + Filtros */
+.tagme-reserva__daypicker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tagme-reserva__day-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--color-outline-default);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+.tagme-reserva__day-next {
+  display: inline-flex;
+  transform: rotate(180deg);
+}
+.tagme-reserva__day-label {
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+.tagme-reserva__link {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: #c95c1a;
+  font-weight: var(--font-weight-medium);
+  font-family: var(--font-brand);
+  font-size: 12px;
+  cursor: pointer;
+}
+.tagme-reserva__filter--filtros {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+/* Aba Salão (ocupação) */
+.tagme-reserva__body--salao {
+  display: block;
+}
+.tagme-reserva__saloon-sub {
+  margin: 0 0 16px;
+  color: var(--color-text-secondary);
+  font-size: 13px;
+}
+
+/* Toast de sucesso (confirmação de ação) */
+.tagme-reserva__toast {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 400;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  max-width: 380px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: #1fad68;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  font-family: var(--font-brand);
+  animation: tagme-toast-in 220ms ease-out;
+}
+.tagme-reserva__toast strong {
+  font-size: 14px;
+}
+.tagme-reserva__toast p {
+  margin: 2px 0 0;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.tagme-reserva__toast-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  font-size: 14px;
+}
+.tagme-reserva__toast button {
+  border: 0;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  padding: 2px;
+}
+@keyframes tagme-toast-in {
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 /* Responsivo básico – empilha painel abaixo da lista em telas estreitas. */

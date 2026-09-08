@@ -1,22 +1,88 @@
+import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../../components/Icon/Icon'
+import { LockIcon } from './novaReserva/icons'
+import NovaReservaDrawer, {
+  type ReservaConfirmada,
+} from './novaReserva/NovaReservaDrawer'
+import {
+  AceitarSentar,
+  AdicionarTagPainel,
+  CancelarReserva,
+  NotificarCliente,
+} from './painel/actions/ReservaActions'
+import FiltrosPainel from './painel/FiltrosPainel'
+import { ReservaLista, type AcaoCard } from './painel/ReservaLista'
+import {
+  FILTROS_VAZIOS,
+  filtrarReservas,
+  RESERVAS_PAINEL,
+  type FiltrosPainelState,
+  type ReservaPainel,
+} from './painel/painelModel'
 import './TagmeReservaPage.css'
+
+/** Aba ativa do painel (Hostess): Reserva (lista) ou Salão (ocupação). */
+type AbaPainel = 'reserva' | 'salao'
+
+/** Overlay de ação aberto + reserva alvo. */
+type AcaoAberta = { acao: AcaoCard; reserva: ReservaPainel } | null
+
+/** Mensagem de sucesso exibida após confirmar uma ação. */
+interface SucessoInfo {
+  titulo: string
+  texto: string
+}
 
 /**
  * TagmeReservaPage – Painel do app "Reserva" do portal TagMe (print "image (64)").
  *
- * Tela cheia (rota `/tagme/reservas`), alcançada pelo card "Reserva" da tela de
- * acesso do TagMe. Replica o layout do Painel do print: barra superior com o
- * seletor de loja e ações rápidas, busca/filtros, coluna de reservas (cards) e
- * painel lateral de ocupação do salão. A sidebar escura traz os grupos de menu
- * do portal; neste fluxo feliz apenas o "Painel" é navegável (está ativo) e os
- * demais itens ficam sem ação (não há telas implementadas para eles).
- *
- * Botão "Voltar" no topo → tela de acesso do TagMe (`/tagme`). Elementos cujo
- * fluxo não está nos prints (Nova reserva, Escanear QR, etc.) ficam estáticos,
- * reproduzindo o visual sem inventar navegação.
+ * Tela cheia (rota `/tagme/reservas`). Reproduz o layout do "Painel - Hostess"
+ * do Figma (171-11753) sobre a estrutura já existente: sidebar do portal,
+ * barra superior, toolbar da loja, filtros e o corpo com a lista de Reservas
+ * (aba ativa) + painel lateral de ocupação. A lista é dirigida por dados
+ * (`RESERVAS_PAINEL`) e cada card oferece as ações do hostess — aceitar/RSVP,
+ * sentar cliente, cancelar, notificar e adicionar tag — em overlays; os filtros
+ * e o seletor de dia filtram a lista, e o estado vazio avisa quando não há
+ * reservas no dia.
  */
 export default function TagmeReservaPage() {
+  const [aba, setAba] = useState<AbaPainel>('reserva')
+  const [abrirReserva, setAbrirReserva] = useState(false)
+  const [novasReservas, setNovasReservas] = useState<ReservaConfirmada[]>([])
+  const [reservas, setReservas] = useState<ReservaPainel[]>(RESERVAS_PAINEL)
+  const [filtros, setFiltros] = useState<FiltrosPainelState>(FILTROS_VAZIOS)
+  const [abrirFiltros, setAbrirFiltros] = useState(false)
+  const [acaoAberta, setAcaoAberta] = useState<AcaoAberta>(null)
+  const [sucesso, setSucesso] = useState<SucessoInfo | null>(null)
+
+  // Dia em exibição (só o rótulo; a seed é de 8 mai. 2025; dia alternativo vazio).
+  const [diaHoje] = useState('8 de maio de 2025')
+  const [diaAlternativo, setDiaAlternativo] = useState<string | null>(null)
+  const diaAtual = diaAlternativo ?? diaHoje
+  const ehHoje = diaAlternativo === null
+
+  const filtradas = useMemo(
+    () => filtrarReservas([...reservas, ...novasHostess(novasReservas)], filtros),
+    [reservas, filtros, novasReservas],
+  )
+  // Num dia "alternativo" a lista fica vazia (estado "Quando não tiver reserva").
+  const diaVazio = diaAlternativo !== null
+
+  const atualizarReserva = (id: string, patch: Partial<ReservaPainel>) =>
+    setReservas((lista) => lista.map((r) => (r.id === id ? { ...r, ...patch } : r)))
+
+  const confirmarAcao = (acao: NonNullable<AcaoAberta>['acao'], reserva: ReservaPainel) => {
+    // Encaminhamento de sucesso acontece no próprio overlay (antes de fechar),
+    // então aqui só tratamos os que mudam o card sem overlay de confirmação.
+    if (acao === 'rejeitar') {
+      atualizarReserva(reserva.id, { status: 'Cancelada' })
+      setSucesso({ titulo: 'Reserva rejeitada', texto: `A reserva de ${reserva.cliente} foi rejeitada.` })
+    }
+  }
+
+  const fecharSucesso = () => setSucesso(null)
+
   return (
     <div className="tagme-reserva">
       {/* Sidebar escura do portal */}
@@ -31,43 +97,23 @@ export default function TagmeReservaPage() {
             <Icon name="home" style="Line" size={18} />
             Painel
           </span>
-          {/* Demais grupos – sem tela no fluxo feliz, renderizados como itens
-              inertes (o print mostra o menu completo). */}
-          <span className="tagme-reserva__nav-item">
+          {/* Demais itens – sem tela no fluxo feliz; cadeado à direita indica
+              que estão bloqueados (o print mostra o menu completo). */}
+          <span className="tagme-reserva__nav-item" title="Bloqueado">
             <Icon name="calendar" style="Line" size={18} />
             Reservas
+            <LockIcon className="tagme-reserva__nav-lock" size={14} />
           </span>
-          <span className="tagme-reserva__nav-item">
+          <span className="tagme-reserva__nav-item" title="Bloqueado">
             <Icon name="clock" style="Line" size={18} />
             Passantes
+            <LockIcon className="tagme-reserva__nav-lock" size={14} />
           </span>
-          <span className="tagme-reserva__nav-item">
+          <span className="tagme-reserva__nav-item" title="Bloqueado">
             <Icon name="route" style="Line" size={18} />
             Comunicações
+            <LockIcon className="tagme-reserva__nav-lock" size={14} />
           </span>
-
-          <div className="tagme-reserva__nav-group">
-            <span className="tagme-reserva__nav-item">
-              <Icon name="user" style="Line" size={18} />
-              Operações
-            </span>
-            <span className="tagme-reserva__nav-item">
-              <Icon name="location" style="Line" size={18} />
-              Identidade e acesso
-            </span>
-            <span className="tagme-reserva__nav-item">
-              <Icon name="pin" style="Line" size={18} />
-              Venues e espaços
-            </span>
-            <span className="tagme-reserva__nav-item">
-              <Icon name="star" style="Line" size={18} />
-              Plataforma
-            </span>
-            <span className="tagme-reserva__nav-item">
-              <Icon name="loyalty" style="Line" size={18} />
-              Configuração
-            </span>
-          </div>
         </nav>
       </aside>
 
@@ -90,107 +136,290 @@ export default function TagmeReservaPage() {
           </div>
 
           <div className="tagme-reserva__actions">
-            <button type="button" className="tagme-reserva__btn tagme-reserva__btn--primary">
+            <button
+              type="button"
+              className="tagme-reserva__btn tagme-reserva__btn--primary"
+              onClick={() => setAbrirReserva(true)}
+            >
               + Nova reserva
             </button>
-            <button type="button" className="tagme-reserva__btn">
-              Escanear QR
-            </button>
-            <button type="button" className="tagme-reserva__btn">
-              Passantes
-            </button>
-            <button type="button" className="tagme-reserva__btn">
-              Exportar CSV
-            </button>
           </div>
         </div>
 
-        {/* Busca e filtros */}
-        <div className="tagme-reserva__filters">
-          <div className="tagme-reserva__search">
-            <Icon name="search" style="Line" size={16} />
-            <span>Buscar cliente</span>
+        {/* Abas do painel: Reserva × Salão */}
+        <div className="tagme-reserva__tabs" role="tablist" aria-label="Visão do painel">
+          <button
+            type="button"
+            role="tab"
+            aria-selected={aba === 'reserva'}
+            className={`tagme-reserva__tab${aba === 'reserva' ? ' tagme-reserva__tab--active' : ''}`}
+            onClick={() => setAba('reserva')}
+          >
+            Reserva
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={aba === 'salao'}
+            className={`tagme-reserva__tab${aba === 'salao' ? ' tagme-reserva__tab--active' : ''}`}
+            onClick={() => setAba('salao')}
+          >
+            Salão
+          </button>
+        </div>
+
+        {/* Seletor de dia + Filtros (aba Reserva) */}
+        {aba === 'reserva' && (
+          <div className="tagme-reserva__filters">
+            <div className="tagme-reserva__daypicker">
+              <button
+                type="button"
+                className="tagme-reserva__day-nav"
+                aria-label="Dia anterior"
+                onClick={() => setDiaAlternativo(ehHoje ? '7 de maio de 2025' : null)}
+              >
+                <Icon name="back" style="Line" size={14} />
+              </button>
+              <span className="tagme-reserva__day-label">{diaAtual}</span>
+              <button
+                type="button"
+                className="tagme-reserva__day-nav"
+                aria-label="Próximo dia"
+                onClick={() => setDiaAlternativo(ehHoje ? '9 de maio de 2025' : null)}
+              >
+                <span className="tagme-reserva__day-next">
+                  <Icon name="back" style="Line" size={14} />
+                </span>
+              </button>
+              {!ehHoje && (
+                <button type="button" className="tagme-reserva__link" onClick={() => setDiaAlternativo(null)}>
+                  Voltar para hoje
+                </button>
+              )}
+            </div>
+
+            <button
+              type="button"
+              className="tagme-reserva__filter tagme-reserva__filter--filtros"
+              onClick={() => setAbrirFiltros(true)}
+            >
+              <Icon name="filter" size={16} />
+              Filtros
+            </button>
           </div>
-          <div className="tagme-reserva__filter">Todos ▾</div>
-          <div className="tagme-reserva__filter">Pendentes</div>
-          <div className="tagme-reserva__filter">Em aberto</div>
-          <div className="tagme-reserva__filter tagme-reserva__filter--muted">Todos os status ▾</div>
-          <div className="tagme-reserva__filter tagme-reserva__filter--muted">Origem ▾</div>
-          <div className="tagme-reserva__filter tagme-reserva__filter--muted">Salão ▾</div>
-          <div className="tagme-reserva__filter tagme-reserva__filter--muted">Pessoas ▾</div>
-          <div className="tagme-reserva__filter tagme-reserva__filter--muted">Horário · pessoas ▾</div>
-        </div>
+        )}
 
-        {/* Corpo: coluna de reservas + painel lateral */}
-        <div className="tagme-reserva__body">
-          {/* Coluna de reservas */}
-          <section className="tagme-reserva__reservas">
-            <h2 className="tagme-reserva__section-title">Reservas</h2>
+        {/* Corpo: lista de reservas (aba Reserva) OU ocupação (aba Salão) */}
+        {aba === 'reserva' ? (
+          <div className="tagme-reserva__body tagme-reserva__body--reserva">
+            <section className="tagme-reserva__reservas">
+              <h2 className="tagme-reserva__section-title">Reservas</h2>
+              <ReservaLista
+                reservas={diaVazio ? [] : filtradas}
+                onAcao={(reserva, acao) => {
+                  if (acao === 'rejeitar') {
+                    confirmarAcao(acao, reserva)
+                    return
+                  }
+                  setAcaoAberta({ acao, reserva })
+                }}
+              />
+            </section>
 
-            {/* Card de reserva – Casamento */}
-            <article className="tagme-reserva__card">
-              <div className="tagme-reserva__card-head">
-                <span className="tagme-reserva__badge tagme-reserva__badge--confirmado">CONFIRMADO</span>
-                <span className="tagme-reserva__card-name">Casamento Julyana E Silvson</span>
-                <span className="tagme-reserva__card-event">EVENTO RECEPÇÃO DE CASAMENTO</span>
-                <button type="button" className="tagme-reserva__card-close" aria-label="Fechar">
-                  <Icon name="close" size={14} />
-                </button>
-              </div>
-              <div className="tagme-reserva__card-tags">
-                <span className="tagme-reserva__chip tagme-reserva__chip--rsvp">RSVP</span>
-                <span className="tagme-reserva__chip">WhatsApp</span>
-                <span className="tagme-reserva__chip">Salão Principal</span>
-              </div>
-              <div className="tagme-reserva__card-row">
-                <span className="tagme-reserva__card-time">12:00</span>
-                <span className="tagme-reserva__card-pax">26 pessoas</span>
-              </div>
-              <div className="tagme-reserva__card-contact">
-                <span className="tagme-reserva__contact-name">Rodrigo Lima Lima</span>
-                <span className="tagme-reserva__contact-code">CBA4H2726</span>
-              </div>
-            </article>
-
-            {/* Card de reserva – Reserva online */}
-            <article className="tagme-reserva__card">
-              <div className="tagme-reserva__card-head">
-                <span className="tagme-reserva__badge tagme-reserva__badge--novo">NOVO</span>
-                <span className="tagme-reserva__card-name">Rodrigo Lima Lima</span>
-                <span className="tagme-reserva__card-code">CBA4H2726</span>
-                <button type="button" className="tagme-reserva__card-close" aria-label="Fechar">
-                  <Icon name="close" size={14} />
-                </button>
-              </div>
-              <div className="tagme-reserva__card-tags">
-                <span className="tagme-reserva__chip">Reserva online</span>
-                <span className="tagme-reserva__chip">Salão Principal</span>
-                <button type="button" className="tagme-reserva__add-tag">+ Adicionar tag</button>
-              </div>
-              <div className="tagme-reserva__card-row">
-                <span className="tagme-reserva__card-time">17:00</span>
-                <span className="tagme-reserva__card-pax">6 pessoas</span>
-              </div>
-              <div className="tagme-reserva__card-contact">
-                <span className="tagme-reserva__contact-name">Paula Amaral</span>
-                <span className="tagme-reserva__contact-code">CBAA9076E</span>
-                <span className="tagme-reserva__contact-note">att. Valéria</span>
-              </div>
-            </article>
-          </section>
-
-          {/* Painel lateral de ocupação */}
-          <aside className="tagme-reserva__panel">
-            <h3 className="tagme-reserva__panel-title">Salão Principal</h3>
-            <p className="tagme-reserva__panel-occupancy">
-              <strong>87</strong> | 885 lugares · <strong>798</strong> livres
-            </p>
-            <p className="tagme-reserva__panel-note">
-              Este salão não tem mesas numeradas — configure numerações no admin para exibir o mapa de mesas.
-            </p>
-          </aside>
-        </div>
+            {/* Painel lateral de ocupação */}
+            <aside className="tagme-reserva__panel">
+              <h3 className="tagme-reserva__panel-title">Salão Principal</h3>
+              <p className="tagme-reserva__panel-occupancy">
+                <strong>87</strong> | 885 lugares · <strong>798</strong> livres
+              </p>
+              <p className="tagme-reserva__panel-note">
+                Este salão não tem mesas numeradas — configure numerações no admin para exibir o mapa de mesas.
+              </p>
+            </aside>
+          </div>
+        ) : (
+          <div className="tagme-reserva__body tagme-reserva__body--salao">
+            <section className="tagme-reserva__saloon">
+              <h2 className="tagme-reserva__section-title">Salão principal</h2>
+              <p className="tagme-reserva__saloon-sub">6 / 46 lugares · 20 / 518 reservas</p>
+              <aside className="tagme-reserva__panel">
+                <h3 className="tagme-reserva__panel-title">Ocupação do salão</h3>
+                <p className="tagme-reserva__panel-occupancy">
+                  <strong>87</strong> | 885 lugares · <strong>798</strong> livres
+                </p>
+                <p className="tagme-reserva__panel-note">
+                  Este salão não tem mesas numeradas — configure numerações no admin para exibir o mapa de mesas.
+                </p>
+              </aside>
+            </section>
+          </div>
+        )}
       </div>
+
+      {/* Drawer "Nova reserva" – fluxo completo */}
+      <NovaReservaDrawer
+        open={abrirReserva}
+        onClose={() => setAbrirReserva(false)}
+        onConfirmada={(reserva) =>
+          setNovasReservas((atual) => [reserva, ...atual])
+        }
+      />
+
+      {/* Overlays de ação do Painel Hostess */}
+      {acaoAberta && (
+        <AcaoHostessOverlays
+          acao={acaoAberta.acao}
+          reserva={acaoAberta.reserva}
+          onClose={() => setAcaoAberta(null)}
+          onSucesso={(s) => {
+            setAcaoAberta(null)
+            setSucesso(s)
+          }}
+          onPatchReserva={(patch) => atualizarReserva(acaoAberta.reserva.id, patch)}
+        />
+      )}
+
+      {/* Filtros */}
+      <FiltrosPainel
+        open={abrirFiltros}
+        onClose={() => setAbrirFiltros(false)}
+        aplicados={filtros}
+        onAplicar={(f) => {
+          setFiltros(f)
+          setAbrirFiltros(false)
+        }}
+        count={(f) => filtrarReservas(reservas, f).length}
+      />
+
+      {/* Sucesso (banner/overlay verde) */}
+      {sucesso && (
+        <div className="tagme-reserva__toast" role="status">
+          <span className="tagme-reserva__toast-mark" aria-hidden="true">✓</span>
+          <div>
+            <strong>{sucesso.titulo}</strong>
+            <p>{sucesso.texto}</p>
+          </div>
+          <button type="button" aria-label="Fechar" onClick={fecharSucesso}>
+            <Icon name="close" size={16} />
+          </button>
+        </div>
+      )}
     </div>
   )
+}
+
+/** Converte reservas criadas pelo drawer "+ Nova reserva" no modelo do painel. */
+function novasHostess(novas: ReservaConfirmada[]): ReservaPainel[] {
+  return novas.map((r) => ({
+    id: `nova-${r.clienteId}-${r.data}-${r.horario}`,
+    cliente: r.clienteNome,
+    tag: 'Nova reserva',
+    horario: r.horario ?? '12:00',
+    pessoas: r.pessoas,
+    status: 'Nova' as const,
+    origem: r.origem,
+  }))
+}
+
+/** Overlays de ação por card do Painel Hostess (aceitar/sentar/cancelar/notificar/tag). */
+function AcaoHostessOverlays({
+  acao,
+  reserva,
+  onClose,
+  onSucesso,
+  onPatchReserva,
+}: {
+  acao: AcaoCard
+  reserva: ReservaPainel
+  onClose: () => void
+  onSucesso: (s: SucessoInfo) => void
+  onPatchReserva: (patch: Partial<ReservaPainel>) => void
+}) {
+  if (acao === 'aceitar') {
+    return (
+      <AceitarSentar
+        open
+        reserva={reserva}
+        aceitar
+        onClose={onClose}
+        onConfirmar={(mesa) => {
+          onPatchReserva({ status: 'Confirmada', mesa: mesa.replace('Mesa ', ''), rsvp: false })
+          onSucesso({
+            titulo: 'Reserva aceita',
+            texto: `${reserva.cliente} foi encaminhado para a mesa ${mesa}.`,
+          })
+        }}
+      />
+    )
+  }
+
+  if (acao === 'sentar') {
+    return (
+      <AceitarSentar
+        open
+        reserva={reserva}
+        aceitar={false}
+        onClose={onClose}
+        onConfirmar={(mesa, obs) => {
+          onPatchReserva({ status: 'Sentado', mesa: mesa.replace('Mesa ', ''), observacao: obs || undefined })
+          onSucesso({
+            titulo: 'Cliente sentado',
+            texto: `${reserva.cliente} foi acomodado na mesa ${mesa}.`,
+          })
+        }}
+      />
+    )
+  }
+
+  if (acao === 'cancelar') {
+    return (
+      <CancelarReserva
+        open
+        reserva={reserva}
+        onClose={onClose}
+        onConfirmar={(motivo) => {
+          onPatchReserva({ status: 'Cancelada' })
+          onSucesso({
+            titulo: 'Reserva cancelada',
+            texto: `A reserva de ${reserva.cliente} foi cancelada (${motivo.toLowerCase()}).`,
+          })
+        }}
+      />
+    )
+  }
+
+  if (acao === 'notificar') {
+    return (
+      <NotificarCliente
+        open
+        reserva={reserva}
+        onClose={onClose}
+        onConfirmar={() => {
+          onSucesso({
+            titulo: 'Cliente notificado',
+            texto: `Mensagem enviada para ${reserva.cliente}.`,
+          })
+        }}
+      />
+    )
+  }
+
+  if (acao === 'tag') {
+    return (
+      <AdicionarTagPainel
+        open
+        reserva={reserva}
+        onClose={onClose}
+        onConfirmar={(tag) => {
+          onPatchReserva({ tag })
+          onSucesso({
+            titulo: 'Tag adicionada',
+            texto: `Tag "${tag}" adicionada à reserva de ${reserva.cliente}.`,
+          })
+        }}
+      />
+    )
+  }
+
+  return null
 }
