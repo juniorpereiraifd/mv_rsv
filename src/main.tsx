@@ -8,6 +8,8 @@ import MovePage from './pages/MovePage/MovePage'
 import BuscarEnderecoPage from './pages/BuscarFlow/BuscarEnderecoPage'
 import BuscarRestaurantesPage from './pages/BuscarFlow/BuscarRestaurantesPage'
 import PerfilPage from './pages/PerfilPage/PerfilPage'
+import MensagensPage from './pages/MensagensFlow/MensagensPage'
+import ChatPage from './pages/MensagensFlow/ChatPage'
 import ReservasPage from './pages/ReservasPage/ReservasPage'
 import ReservasLandingPage from './pages/ReservasLandingPage/ReservasLandingPage'
 import TagMeAccessPage from './pages/TagMeAccessPage/TagMeAccessPage'
@@ -73,6 +75,14 @@ createRoot(document.getElementById('root')!).render(
             <Route path="/loja/:slug/reserva/sucesso" element={<ClientFrame><ReservaSuccessPage /></ClientFrame>} />
             <Route path="/loja/:slug/beneficio/:offerIndex" element={<ClientFrame><BeneficioPage /></ClientFrame>} />
             <Route path="/perfil" element={<ClientFrame><PerfilPage /></ClientFrame>} />
+            {/* Fluxo de Mensagens 1:1 (fake door, Figma 163:3456/3877/4192): o
+                entrypoint fica no toolbar do Perfil (balão de chat + badge) e
+                abre a caixa de entrada; cada conversa (loja real do catálogo)
+                leva ao chat com o card de benefício. Fake door: sem backend de
+                mensagens – a lista e o `unread` são seeds estáticos (ver
+                data/messages.ts). */}
+            <Route path="/mensagens" element={<ClientFrame><MensagensPage /></ClientFrame>} />
+            <Route path="/mensagens/:slug" element={<ClientFrame><ChatPage /></ClientFrame>} />
             {/* Fluxo de busca (fake door, Figma 139:3692/5230/5390-5548): o hub
                 "Buscar em" deixou de ser uma rota – a pílula do BrandHeader abre
                 um OVERLAY sobre a home viva (App/BuscarSheet, ver lá). Aqui só

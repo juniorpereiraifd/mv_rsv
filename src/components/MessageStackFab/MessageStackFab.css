@@ -1,0 +1,97 @@
+/* MessageStackFab – FAB de mensagens 1:1 (Figma cMhyOvWvhsuRtOjTLvFvDH,
+   nó 163:4420 "Motion"). Pilha flutuante de avatares de restaurantes no canto
+   inferior direito, sobreposta ao conteúdo do Perfil, com profundidade e um
+   ciclo que troca o avatar da frente (ver componente). */
+
+/* Contêiner – absoluto sobre o `.perfil-page` (relative), canto inferior
+   direito. `fixed` quebraria o mockup de TV (o iframe do celular rola dentro
+   do viewport) – `absolute` ancora no fim da página e acompanha a rolagem. */
+.msg-fab {
+  position: absolute;
+  right: 20px;
+  bottom: 24px;
+  width: 64px;
+  height: 64px;
+}
+
+/* Cada avatar é absoluto dentro do contêiner (mesmo tamanho), então eles se
+   empilham. Transição suave de posição/escala/opacidade quando o `layer` muda
+   a cada ciclo. Só o da frente é clicável (`pointer-events`). */
+.msg-fab__avatar {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  /* Anel branco + sombra: descola o avatar do fundo da página (depth). */
+  border: 2px solid #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+  background: var(--color-surface-secondary);
+  text-decoration: none;
+  transition:
+    transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 0.45s ease;
+  transform-origin: bottom right;
+}
+
+.msg-fab__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Camadas (layer) – a frente em escala cheia e opaca; as de trás recuam e
+   deslocam pro canto, criando a profundidade. Como o CSS aplica o `transition`
+   no `transform`, quando o componente troca os `layer` dos avatares no ciclo a
+   pilha anima (o que estava atrás desliza pra frente). */
+.msg-fab__avatar--l0 {
+  transform: translate(0, 0) scale(1);
+  opacity: 1;
+}
+
+/* 1º de trás – ~12px acima/à esquerda, levemente menor. */
+.msg-fab__avatar--l1 {
+  transform: translate(-10px, -12px) scale(0.88);
+  opacity: 0.95;
+}
+
+/* 2º de trás – mais recuado. */
+.msg-fab__avatar--l2 {
+  transform: translate(-20px, -22px) scale(0.78);
+  opacity: 0.85;
+}
+
+/* Os demais colapsam no fundo (mesmo spot do l2) – profundidade falsa com a
+   pilha limitada a ~3 níveis visíveis. */
+.msg-fab__avatar--l3,
+.msg-fab__avatar--l4 {
+  transform: translate(-20px, -22px) scale(0.78);
+  opacity: 0.85;
+}
+
+/* Só o avatar da frente recebe clique; os de trás são decorativos (o alvo do
+   FAB é o chat mais recente; os demais giram pra frente ao longo do ciclo). */
+.msg-fab__avatar--l0 {
+  pointer-events: auto;
+}
+
+.msg-fab__avatar:not(.msg-fab__avatar--l0) {
+  pointer-events: none;
+}
+
+/* Hover/foco na frente – leve elevação indica que é clicável. */
+.msg-fab__avatar--l0:hover,
+.msg-fab__avatar--l0:focus-visible {
+  transform: translate(0, 0) scale(1.06);
+  outline: none;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
+}
+
+/* Reduced motion – sem timer o layer não muda, mas o foco ainda eleva. */
+@media (prefers-reduced-motion: reduce) {
+  .msg-fab__avatar {
+    transition: none;
+  }
+}

@@ -47,6 +47,57 @@
   cursor: pointer;
 }
 
+/* Entrypoint de Mensagens (design 163:3456 "Btn") – círculo 44px espelhando o
+   voltar, mas no canto SUPERIOR DIREITO (o Figma põe o par voltar+mensagens no
+   toolbar: x16 e x333). Mesmo fundo claro, ícone chat/balão Line 24. O círculo
+   é `position: relative` pra badge ancorar no canto do próprio botão. */
+.perfil-page__messages {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(227, 227, 227, 0.3);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Badge numérica (163:3458) – pill ~17px na cor da marca (#eb0033), texto
+   branco 10 Bold, ancorada no canto superior direito do botão (transborda um
+   pouco, como no frame). */
+.perfil-page__messages-badge {
+  position: absolute;
+  top: -1px;
+  right: -2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  border-radius: 100px;
+  background: #eb0033;
+  font-family: var(--font-brand);
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 1;
+  color: #ffffff;
+}
+
+.perfil-page__messages:hover {
+  background: rgba(227, 227, 227, 0.55);
+}
+
+.perfil-page__messages:focus-visible {
+  outline: 2px solid #eb0033;
+  outline-offset: 1px;
+}
+
 /* Conteúdo – coluna com o gap de 32px entre os blocos do frame (112:8340). O
  * `padding-top` de 76px deixa o botão de voltar flutuar sem encostar no
  * título; px 16 espelha a grade do frame (coluna de conteúdo a 16px da borda);

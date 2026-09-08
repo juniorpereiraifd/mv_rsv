@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../../components/Icon/Icon'
 import Rating from '../../components/Rating/Rating'
+import MessageStackFab from '../../components/MessageStackFab/MessageStackFab'
 import type { Merchant, Offer } from '../../data/merchants'
 import { getMerchantUI, MERCHANTS_UI } from '../../data/merchants.ui'
 import { localDateISO, reservaDateLabel } from '../../data/reserva'
@@ -9,6 +10,7 @@ import { useCheckins } from '../../context/CheckinProvider'
 import { useReservas } from '../../context/ReservaProvider'
 import type { Checkin } from '../../services/checkins'
 import type { Reserva } from '../../services/reservas'
+import { unreadCount } from '../../data/messages'
 import './PerfilPage.css'
 
 /**
@@ -264,6 +266,16 @@ export default function PerfilPage() {
         <Icon name="back" style="Line" size={24} />
       </Link>
 
+      {/* Mensagens (163:3456) – entrypoint do fluxo 1:1 no canto sup. direito do
+          toolbar, espelhando o botão de voltar. Ícone chat/balão Line 24 + badge
+          numérica de não lidas (vitrine fixa – ver data/messages.ts). */}
+      <Link to="/mensagens" className="perfil-page__messages" aria-label="Mensagens">
+        <Icon name="chat" style="Line" size={24} />
+        <span className="perfil-page__messages-badge" aria-hidden="true">
+          {unreadCount()}
+        </span>
+      </Link>
+
       <main className="perfil-page__content">
         {/* Saudação (112:8351) – vitrine fixa */}
         <h1 className="perfil-page__greeting">Olá, Mariana</h1>
@@ -369,6 +381,12 @@ export default function PerfilPage() {
           </div>
         </section>
       </main>
+
+      {/* FAB de mensagens (163:4420 "Motion") – pilha flutuante de avatares no
+          canto inferior direito, sobreposta à página. Ao contrário do entrypoint
+          do topo (que abre a lista geral), o clique num avatar leva DIRETO ao
+          chat 1:1 daquele restaurante. A pilha gira sozinha (ver componente). */}
+      <MessageStackFab />
     </div>
   )
 }

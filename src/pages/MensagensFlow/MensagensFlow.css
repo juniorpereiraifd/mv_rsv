@@ -1,0 +1,89 @@
+/* MensagensFlow – casca compartilhada do fluxo de mensagens 1:1 restaurante ↔
+   cliente (Figma cMhyOvWvhsuRtOjTLvFvDH: lista 163:3877, chat 163:4192). Mesma
+   convenção das outras cascas de fluxo (Reserva/BuscarFlow): página branca no
+   container da app (max-width 834) com a coluna do design (393px) centralizada.
+   O toolbar com o botão de voltar é comum às telas de lista e de chat; o
+   conteúdo de cada uma vive no css da própria página. */
+
+.mensagens-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  background-color: var(--color-page-bg);
+}
+
+.mensagens-page__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Coluna do design (393px) centralizada; padding lateral 16px do frame. Cada
+   tela ajusta o próprio padding/gap para o que vem depois do toolbar. */
+.mensagens-page__inner {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 393px);
+  margin-inline: auto;
+  padding: 0 16px 24px;
+}
+
+/* Toolbar (163:3993/163:4237): círculo de voltar à esquerda (44px,
+   rgba(227,227,227,.3), radius 100) e, na lista, o título "Mensagens"
+   centralizado. Mesma régua do `.reserva-confirm__toolbar`: `padding-top: 48px`
+   reserva a faixa superior do frame (status bar/island omitida), `::after`
+   simétrico de 44px mantém o título no centro da largura toda. */
+.mensagens-toolbar {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: min(100%, 393px);
+  margin-inline: auto;
+  padding: 48px 16px 32px;
+}
+
+/* Espelho do círculo de voltar no lado direito – coluna morta que mantém o
+   título centralizado com o back no fluxo (sem position:absolute). No chat o
+   ::after é substituído pelo bloco "Detalhes" do lado direito (css da página). */
+.mensagens-toolbar::after {
+  content: '';
+  flex: 0 0 44px;
+}
+
+.mensagens-toolbar__back {
+  flex: 0 0 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 100px;
+  background: rgba(227, 227, 227, 0.3);
+  color: var(--color-text-primary);
+  text-decoration: none; /* o voltar é um <Link>; o <a> herda sublinhado do UA */
+}
+
+.mensagens-toolbar__back:hover {
+  background: rgba(227, 227, 227, 0.55);
+}
+
+.mensagens-toolbar__back:focus-visible {
+  outline: 2px solid #eb0033;
+  outline-offset: 1px;
+}
+
+.mensagens-toolbar__title {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-title-sm);
+  line-height: 24px;
+  text-align: center;
+  color: var(--color-text-primary);
+}

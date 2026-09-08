@@ -1,0 +1,186 @@
+/* ChatPage – chat 1:1 (Figma cMhyOvWvhsuRtOjTLvFvDH 163:4192). A casca e o
+   toolbar vivem no MensagensFlow.css; aqui fica o header específico do chat
+   (avatar central + pill "Detalhes") e a mensagem recebida (bolha + card). */
+
+/* Header do chat (163:4237) – mesma régua do toolbar, mas os dois lados são
+   reais: voltar (44) à esquerda e o pill "Detalhes" (~62) à direita. O `::after`
+   do `.mensagens-toolbar` é neutralizado (vira o próprio pill). O avatar 40
+   centraliza na sobra. */
+.mensagens-toolbar--chat::after {
+  content: none;
+}
+
+/* Bloco central – o avatar do restaurante (logo 40 redondo com ring branco de
+   2px, empilhado sobre o fundo claro da página), centralizado no espaço entre
+   o voltar e o pill. Largura mínima espelha a do pill pra manter o centro. */
+.chat-header {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.chat-header__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  background: var(--color-surface-secondary);
+  object-fit: cover;
+}
+
+/* Pill "Detalhes" (163:4248 ".baseButton") – fundo rgba(227,227,227,.3), raio
+   100, texto 12 Medium #141414 com padding 13px lateral, altura 40. */
+.chat-header__details {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 13px;
+  border-radius: 100px;
+  background: rgba(227, 227, 227, 0.3);
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  text-decoration: none; /* o <a> herda sublinhado do UA */
+}
+
+.chat-header__details:hover {
+  background: rgba(227, 227, 227, 0.55);
+}
+
+.chat-header__details:focus-visible {
+  outline: 2px solid #eb0033;
+  outline-offset: 1px;
+}
+
+/* Área de conteúdo do chat – respiro do toolbar ao primeiro balão. A primeira
+   mensagem recebida começa a 32px do toolbar (régua do frame). */
+.chat-page {
+  padding-top: 32px;
+}
+
+/* Mensagem recebida (163:4193) – linha com o avatar 24 do restaurante à
+   esquerda, ancorado na BASE da bolha (align-items: flex-end), e a bolha com o
+   card ao lado. O card tem raio 20 nos cantos superiores e inferior direito e
+   raio 4 no canto inferior esquerdo (a cauda apontando pro avatar). */
+.chat-bubble {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  width: 100%;
+}
+
+.chat-bubble__avatar {
+  flex-shrink: 0;
+  display: inline-flex;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--color-outline-default);
+  overflow: hidden;
+  background: var(--color-surface-secondary);
+}
+
+.chat-bubble__avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Card "Oportunidade" (163:4198 ". Base / Loyalt Card") – superfície #f5f5f5
+   com borda 1px #f2f2f2, radius 20 (canto inferior esquerdo 4), padding 16 e
+   coluna com gap 20 entre o cabeçalho da tag e o corpo. */
+.chat-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: min(100%, 263px);
+  padding: 16px;
+  border: 1px solid #f2f2f2;
+  border-radius: 20px;
+  border-bottom-left-radius: 4px;
+  background: var(--color-surface-secondary);
+}
+
+/* Tag "Oportunidade" (163:4201) – fire Filled 12 na cor da marca + rótulo 10
+   Bold #eb0033, mesma gramática da pill de cupom do frame. */
+.chat-card__head {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chat-card__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  align-self: flex-start;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-semibold);
+  font-size: 10px;
+  line-height: 16px;
+  color: var(--color-text-brand);
+  white-space: nowrap;
+}
+
+.chat-card__tag .icon {
+  color: var(--color-text-brand);
+}
+
+/* Corpo do card – título 14 Regular + subtítulo 14 Regular #666. No frame o
+   título é o "recado" e a linha de validade vem 12 #666; aqui anunciamos a
+   oferta real da loja (título + subtítulo), no lugar do mock fixo de
+   check-ins/validade que o catálogo não modela. */
+.chat-card__title {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-body);
+  line-height: 20px;
+  color: var(--color-text-primary);
+}
+
+.chat-card__subtitle {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: var(--color-text-secondary);
+}
+
+/* CTA "Conferir benefício" (163:4231) – painel branco radius 12, padding 9/12,
+   texto 12 Medium centralizado. Vira um Link pra BeneficioPage (a oferta real). */
+.chat-card__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 70px;
+  padding: 9px 12px;
+  border-radius: 12px;
+  background: var(--color-page-bg);
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  color: var(--color-text-primary);
+  text-decoration: none; /* o <a> herda sublinhado do UA */
+}
+
+.chat-card__cta:hover {
+  background: var(--color-surface-tertiary);
+}
+
+.chat-card__cta:focus-visible {
+  outline: 2px solid #eb0033;
+  outline-offset: 1px;
+}

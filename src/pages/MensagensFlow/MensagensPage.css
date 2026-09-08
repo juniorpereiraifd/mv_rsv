@@ -1,0 +1,149 @@
+/* MensagensPage – caixa de entrada (Figma cMhyOvWvhsuRtOjTLvFvDH 163:3877).
+   Abaixo do toolbar ("Mensagens") vêm o campo de busca e a lista de conversas. */
+
+/* Campo de busca (163:3880) – pill 40px #f5f5f5 radius 16 com a lupa Line 16 na
+   cor secundária à esquerda e o input flexível. O frame começa a lista a 40px
+   do topo do conteúdo; o respiro inferior da busca é o gap até o 1º item. */
+.mensagens-search {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  height: 40px;
+  padding: 8px 11px;
+  border-radius: 16px;
+  background: var(--color-surface-secondary);
+}
+
+.mensagens-search__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+}
+
+.mensagens-search__input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  padding: 0;
+  background: none;
+  outline: none;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-body);
+  line-height: 20px;
+  color: var(--color-text-primary);
+}
+
+.mensagens-search__input::placeholder {
+  color: var(--color-text-secondary);
+}
+
+/* Lista de conversas – coluna vertical, gap 20px entre as linhas (régua do
+   frame 163:3887). Cada item é um `<li>` que embrulha a linha clicável. */
+.mensagens-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Linha de conversa (163:3888 "_base section Header") – logo 48 à esquerda,
+   bloco central (nome 14 Medium + preview 14 Regular #666) e o dot vermelho de
+   não lida à direita (só quando `unread`). O frame não tem borda/raio no item –
+   a linha é só o conteúdo espaçado. */
+.mensagens-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  color: inherit;
+  text-decoration: none; /* o <a> herda sublinhado/cor de link do UA */
+}
+
+.mensagens-row__logo {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-card-lg);
+  background: var(--color-surface-secondary);
+  object-fit: cover;
+}
+
+.mensagens-row__body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.mensagens-row__name {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
+  line-height: 16px;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Preview (163:3894) – "Enviou uma mensagem" 14 Regular #666, um "•" e o tempo
+   relativo. Mesma gramática do mock: quem escreveu por último é o restaurante,
+   então o texto é fixo. */
+.mensagens-row__preview {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-brand);
+  font-size: var(--font-size-body);
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.mensagens-row__preview-text {
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mensagens-row__preview-dot {
+  flex-shrink: 0;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-disabled);
+}
+
+.mensagens-row__preview-time {
+  flex-shrink: 0;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+}
+
+/* Dot de não lida (163:3902 Badge dot) – círculo 8px na cor da marca, à direita
+   da linha. Sem `aria-hidden`: o `aria-label="Não lida"` no span descreve. */
+.mensagens-row__unread {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-text-brand);
+}
+
+/* Estado vazio da busca – linha de ajuda discreta (mesmo tom do Perfil). */
+.mensagens-empty {
+  margin: 20px 0 0;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: var(--font-size-body);
+  line-height: 20px;
+  color: var(--color-text-disabled);
+}

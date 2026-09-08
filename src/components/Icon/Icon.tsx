@@ -51,6 +51,11 @@ const FONT_ICONS = {
  * usados com `<Icon style="Line"/>`. */
 const LINE_ICONS = {
   back: '', // seta/chevron de voltar – botão à esquerda do toolbar (design 64:2636)
+  chat: '', // icon-chat (U+E812, unicode-mapv2.54) – balão de conversa. Botão de
+  // mensagens do toolbar do Perfil (design 163:3457 "icon", mesmo desenho do nó
+  // 112:8181 chat/chat-default). O nó de texto do Figma está rotulado "icon-alert",
+  // mas o caractere dele é U+E812 = chat (o sino/alert é U+E804) – balão é o certo
+  // pro entrypoint de mensagens 1:1.
   route: '', // icon-directions – botão "Como chegar" e linha de endereço (design 68:3789)
   'chevron-right': '', // chevron de "ver mais" (design 68:4058)
   'chevron-down': '', // chevron apontando para BAIXO – cabeçalhos expansíveis da
