@@ -21,15 +21,17 @@
   width: 100%;
 }
 
-/* Coluna do design (393px) centralizada; padding lateral 16px do frame. Cada
-   tela ajusta o padding/`gap` próprio para o que vem depois do toolbar. */
+/* Coluna do design (393px) centralizada; padding lateral 16px do frame.
+   `padding-top: 48px` reserva a faixa superior do frame (status bar/island,
+   mesma régua das outras telas de fluxo, ex. ReservaConfirmPage). Cada tela
+   ajusta o padding/`gap` próprio para o que vem depois do toolbar. */
 .buscar-page__inner {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   width: min(100%, 393px);
   margin-inline: auto;
-  padding: 16px 16px 24px;
+  padding: 48px 16px 24px;
 }
 
 /* Topo das telas de endereço/resultados (design 139:5230/5548): o campo
