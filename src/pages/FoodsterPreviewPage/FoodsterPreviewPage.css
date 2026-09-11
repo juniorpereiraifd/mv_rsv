@@ -1,0 +1,580 @@
+/* FoodsterPreviewPage – prévia da página do Foodster (Figma 193:15184
+ * "Background") reconstruída na identidade "Comer Fora". O design original é um
+ * hero escuro (#191a18) com acento lima (#a6d02c); aqui o mesmo layout vira um
+ * hero vermelho full-height igual ao das outras landings (/move,
+ * /reservas/visao-geral): fundo #eb0033 + camada #f91c4c, texto branco, realce
+ * creme (#fff7c3) no lugar do lima e o mockup de chat em tema claro (bolhas da
+ * I.A. em vermelho da marca).
+ *
+ * O chat é animado: altura fixa de 560px (como o frame do design), corpo com
+ * auto-scroll controlado por JS, bolhas que entram com pop, indicador de
+ * "digitando" e status "online agora" pulsando. Ver FoodsterChat no TSX.
+ *
+ * Estrutura:
+ *   .foodster            – página; flex column, min-height 100vh
+ *   .foodster__hero      – fundo absoluto inset:0 (full-bleed)
+ *   .foodster__frame     – coluna centralizada max-width:1200px
+ *   .foodster__back      – pílula "Voltar" fixa no topo esquerdo
+ *   .foodster__content   – duas colunas: texto à esquerda, chat à direita
+ *   .foodster__copy      – lockup + headline + subtítulo + legenda
+ *   .foodster__phone     – coluna do mockup de chat
+ *   .foodster-chat       – cartão do chat (header + corpo + input)
+ *   .foodster__features  – fileira de 4 chips de recurso colada na base */
+
+.foodster {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* Telas altas: o conjunto (conteúdo + recursos) mantém a altura natural e é
+   * centralizado verticalmente – mesmo comportamento da /move. */
+  justify-content: center;
+}
+
+/* Fundo do hero – cobre a página inteira. O #eb0033 aparece só na tira de 3px à
+ * esquerda; a camada de faixas pinta #f91c4c por cima de tudo. */
+.foodster__hero {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--color-text-brand); /* #eb0033 */
+}
+
+.foodster__faixas {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: -3px;
+  background: #f91c4c;
+}
+
+/* Frame central – espelha o canvas do design (1200px), centrado via max-width +
+ * margin auto. `flex: none` mantém a altura natural do conteúdo. */
+.foodster__frame {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex: none;
+}
+
+/* Voltar para /move – fixo no topo esquerdo do frame (mesmo idioma das outras
+ * landings: pílula translúcida sobre o vermelho). Remove sublinhado/cor de link
+ * do UA por ser um `<Link>`. */
+.foodster__back {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-caption);
+  line-height: 16px;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.foodster__back:hover,
+.foodster__back:focus-visible {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.6);
+  outline: none;
+}
+
+.foodster__back-icon {
+  color: #ffffff;
+}
+
+.foodster__back-label {
+  white-space: nowrap;
+}
+
+/* Conteúdo em duas colunas – texto à esquerda, mockup do chat à direita. O
+ * padding-top (104px) abre espaço para a pílula "Voltar" fixa no topo. */
+.foodster__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 56px;
+  padding: 104px 48px 64px;
+}
+
+/* Coluna de texto – lockup, headline, subtítulo e legenda de público-alvo,
+ * alinhados à esquerda. */
+.foodster__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1 1 520px;
+  max-width: 540px;
+  min-width: 0;
+}
+
+/* Lockup do Foodster – símbolo de garfo dentro de um círculo branco, ao lado do
+ * wordmark em texto na fonte da marca. O garfo (SVG inline, `currentColor`)
+ * herda o vermelho da marca do container. */
+.foodster__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.foodster__logo-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.foodster__logo-mark {
+  display: block;
+  width: 24px;
+  height: 18px;
+  color: var(--color-text-brand); /* #eb0033 – garfo vermelho sobre o círculo */
+}
+
+.foodster__logo-word {
+  font-family: var(--font-brand);
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 32px;
+  color: #ffffff;
+  letter-spacing: -0.4px;
+}
+
+/* Headline (193:15190) – 4 linhas, branco com as palavras-chave (perder,
+ * reservas, lotou) em realce creme, o equivalente "Comer Fora" do lima do
+ * design. */
+.foodster__title {
+  margin: 40px 0 0;
+  font-family: var(--font-brand);
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -1px;
+  color: #ffffff;
+}
+
+.foodster__title-accent {
+  color: var(--color-brand-text); /* #fff7c3 – realce creme sobre o vermelho */
+}
+
+/* Subtítulo (193:15193) – descrição do produto em branco levemente atenuado. */
+.foodster__subtitle {
+  margin: 24px 0 0;
+  max-width: 470px;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: 16px;
+  line-height: 26px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Legenda de público-alvo (193:15199) – aviso discreto, mais esmaecido e com um
+ * respiro maior que separa do subtítulo (como no design). */
+.foodster__audience {
+  margin: 48px 0 0;
+  max-width: 320px;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: 14px;
+  line-height: 22px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Coluna do mockup do chat – largura do frame do design (420px). */
+.foodster__phone {
+  flex: 0 0 auto;
+  width: 420px;
+  max-width: 100%;
+}
+
+/* Cartão do chat – tema claro, altura fixa de 560px (como o frame 420×560 do
+ * design). Coluna flex: header e input fixos, corpo flexível com scroll interno. */
+.foodster-chat {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 560px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28), 0 0 35px rgba(245, 7, 59, 0.08);
+  overflow: hidden;
+}
+
+/* Header do chat – avatar (círculo vermelho com o garfo branco), nome + status
+ * "online agora" e menu de 3 pontos. */
+.foodster-chat__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 auto;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--color-outline-default);
+}
+
+.foodster-chat__avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--color-brand-primary); /* #f5073b */
+}
+
+/* O garfo (SVG inline, `currentColor`) herda o branco do container – garfo
+ * branco sobre o círculo vermelho da marca. */
+.foodster-chat__avatar-mark {
+  display: block;
+  width: 24px;
+  height: 18px;
+  color: #ffffff;
+}
+
+.foodster-chat__who {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.foodster-chat__name {
+  font-family: var(--font-brand);
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 20px;
+  color: var(--color-text-primary);
+}
+
+.foodster-chat__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: 12px;
+  line-height: 14px;
+  color: var(--color-text-success); /* #007a3f */
+}
+
+.foodster-chat__status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-text-success);
+  animation: foodster-pulse 2s ease-in-out infinite;
+}
+
+@keyframes foodster-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+/* Menu de 3 pontos (decorativo) */
+.foodster-chat__menu {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 4px;
+}
+
+.foodster-chat__menu i {
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-text-secondary);
+}
+
+/* Corpo da conversa – scroll interno controlado por JS (sem barra), com o
+ * separador de dia no topo e a fileira de mensagens abaixo. */
+.foodster-chat__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  padding: 16px 14px 8px;
+}
+
+.foodster-chat__daysep {
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.foodster-chat__daysep span {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: var(--color-surface-secondary);
+  color: var(--color-text-secondary);
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: 11.5px;
+  line-height: 14px;
+}
+
+.foodster-chat__stream {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Mensagem – cliente à esquerda, I.A. à direita. */
+.foodster-chat__msg {
+  display: flex;
+}
+
+.foodster-chat__msg--in {
+  justify-content: flex-start;
+}
+
+.foodster-chat__msg--out {
+  justify-content: flex-end;
+}
+
+/* Bolha – cartão arredondado com o texto + timestamp. O canto "pontudo" fica
+ * perto da borda oposta (inferior-esquerdo no recebido, inferior-direito no
+ * enviado), como no WhatsApp. Entra com pop; a URL longa quebra dentro da bolha. */
+.foodster-chat__bubble {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: 76%;
+  padding: 10px 13px 7px;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: 14px;
+  line-height: 20px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  opacity: 0;
+  transform: translateY(8px) scale(0.98);
+  animation: foodster-pop 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes foodster-pop {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.foodster-chat__msg--in .foodster-chat__bubble {
+  background: var(--color-surface-secondary); /* #f5f5f5 */
+  color: var(--color-text-primary);
+  border-radius: 16px 16px 16px 5px;
+}
+
+.foodster-chat__msg--out .foodster-chat__bubble {
+  background: var(--color-brand-primary); /* #f5073b */
+  color: #ffffff;
+  border-radius: 16px 16px 5px 16px;
+}
+
+/* Link do cardápio (mensagem da I.A.) – em negrito e sublinhado. */
+.foodster-chat__link {
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Timestamp + confirmação de leitura – alinhado à direita da bolha, esmaecido
+ * (no balão vermelho usa um branco translúcido). */
+.foodster-chat__meta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  margin-top: 3px;
+  font-size: 10.5px;
+  line-height: 12px;
+  color: var(--color-text-secondary);
+}
+
+.foodster-chat__msg--out .foodster-chat__meta {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Confirmação de leitura – SVG inline, herda a cor do timestamp via currentColor. */
+.foodster-chat__check {
+  width: 14px;
+  height: 8px;
+  flex-shrink: 0;
+}
+
+/* Indicador "digitando" – três pontos que sobem e descem antes da resposta da
+ * I.A. (mesma bolha de entrada, em cinza). */
+.foodster-chat__typing {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border-bottom-left-radius: 5px;
+  background: var(--color-surface-secondary);
+}
+
+.foodster-chat__typing i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-text-disabled);
+  animation: foodster-typing 1.2s infinite ease-in-out;
+}
+
+.foodster-chat__typing i:nth-child(2) { animation-delay: 0.18s; }
+.foodster-chat__typing i:nth-child(3) { animation-delay: 0.36s; }
+
+@keyframes foodster-typing {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-5px); opacity: 1; }
+}
+
+/* Barra de input (decorativa) – ícone de clipe + hint + ícone de microfone. Os
+ * SVGs (currentColor) e o hint herdam o cinza do container. */
+.foodster-chat__input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+  padding: 14px 16px;
+  border-top: 1px solid var(--color-outline-default);
+  color: var(--color-text-disabled);
+}
+
+.foodster-chat__input-icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.foodster-chat__input-hint {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: 14px;
+  line-height: 16px;
+  color: var(--color-text-disabled);
+}
+
+/* Fileira de recursos (193:15200/15209/15214/15217) – 4 chips translúcidos
+ * colados na base, cada um com ícone + rótulo. */
+.foodster__features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 0 48px 40px;
+}
+
+.foodster-feature {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 0;
+  min-width: 200px;
+  padding: 16px 20px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.foodster-feature__icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.foodster-feature__label {
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: 14px;
+  line-height: 18px;
+  color: #ffffff;
+}
+
+/* Acessibilidade – sem animação para quem prefere movimento reduzido: as bolhas
+ * ficam visíveis e estáticas e os indicadores param. */
+@media (prefers-reduced-motion: reduce) {
+  .foodster-chat__bubble {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .foodster-chat__status-dot,
+  .foodster-chat__typing i {
+    animation: none;
+  }
+}
+
+/* Responsivo – em telas estreitas a coluna dupla empilha: texto em cima, chat
+ * embaixo (centralizado) e os chips de recurso seguem quebrando linha. */
+@media (max-width: 960px) {
+  .foodster__content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 96px 24px 48px;
+  }
+
+  .foodster__copy {
+    max-width: none;
+  }
+
+  .foodster__phone {
+    align-self: center;
+  }
+
+  .foodster__features {
+    padding: 0 24px 32px;
+  }
+}
+
+@media (max-width: 767px) {
+  .foodster__back {
+    top: 16px;
+    left: 16px;
+  }
+
+  .foodster__content {
+    padding: 80px 20px 40px;
+  }
+
+  .foodster__title {
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -0.5px;
+  }
+
+  .foodster__subtitle {
+    line-height: 24px;
+  }
+
+  /* Em celulares o cartão do chat acompanha a largura e reduz a altura. */
+  .foodster-chat {
+    height: 520px;
+  }
+
+  .foodster__features {
+    padding: 0 20px 28px;
+  }
+
+  .foodster-feature {
+    flex: 1 1 100%;
+  }
+}

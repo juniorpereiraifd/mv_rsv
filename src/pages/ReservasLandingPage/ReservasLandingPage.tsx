@@ -75,13 +75,17 @@ export default function ReservasLandingPage() {
 
           {/* CTAs de prévia – "Get In" abre o portal externo embutido (/reservas,
               iframe); "Tagme" abre o fluxo próprio do TagMe (tela de acesso
-              /tagme → Painel do Reserva). */}
+              /tagme → Painel do Reserva); "Foodster" abre a reconstrução da
+              página do atendente de I.A. (/foodster). */}
           <div className="reservas-landing__cta-group">
             <Link to="/reservas" className="reservas-landing__cta">
               Prévia Get In
             </Link>
             <Link to="/tagme" className="reservas-landing__cta">
               Prévia Tagme
+            </Link>
+            <Link to="/foodster" className="reservas-landing__cta">
+              Prévia Foodster
             </Link>
           </div>
         </div>

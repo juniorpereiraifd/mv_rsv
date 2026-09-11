@@ -13,6 +13,7 @@ import ChatPage from './pages/MensagensFlow/ChatPage'
 import ReservasPage from './pages/ReservasPage/ReservasPage'
 import ReservasLandingPage from './pages/ReservasLandingPage/ReservasLandingPage'
 import TagmePreviewPage from './pages/TagmePreviewPage/TagmePreviewPage'
+import FoodsterPreviewPage from './pages/FoodsterPreviewPage/FoodsterPreviewPage'
 import ReservaConfirmPage from './pages/ReservaFlow/ReservaConfirmPage'
 import ReservaSuccessPage from './pages/ReservaFlow/ReservaSuccessPage'
 import RestaurantPage from './pages/RestaurantPage/RestaurantPage'
@@ -59,6 +60,12 @@ createRoot(document.getElementById('root')!).render(
                 Reservas" embutido em iframe (ver TagmePreviewPage), fora do
                 ClientFrame – tela cheia. */}
             <Route path="/tagme" element={<TagmePreviewPage />} />
+
+            {/* Foodster (fluxo "Prévia Foodster" da landing): reconstrução da
+                página do Foodster (Figma 193:15184) na identidade "Comer Fora" –
+                hero vermelho + mockup de chat do atendente de I.A. Tela cheia,
+                fora do ClientFrame, como as demais prévias. */}
+            <Route path="/foodster" element={<FoodsterPreviewPage />} />
 
             {/* Visão Cliente: cada rota é envolvida pelo ClientFrame, que abaixo
                 do breakpoint de tablet renderiza normal e, em telas grandes/TV,
