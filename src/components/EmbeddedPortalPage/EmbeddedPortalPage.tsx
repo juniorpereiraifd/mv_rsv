@@ -15,15 +15,24 @@ interface EmbeddedPortalPageProps {
   src: string
   /** Título exibido na barra (ex.: "Visão do restaurante"). */
   title: string
+  /** Rota de destino do botão "Voltar" (padrão: `/move`, o menu principal). */
+  backTo?: string
+  /** Rótulo do botão "Voltar" (padrão: "Voltar"). */
+  backLabel?: string
 }
 
-export default function EmbeddedPortalPage({ src, title }: EmbeddedPortalPageProps) {
+export default function EmbeddedPortalPage({
+  src,
+  title,
+  backTo = '/move',
+  backLabel = 'Voltar',
+}: EmbeddedPortalPageProps) {
   return (
     <div className="portal-experience">
       <header className="portal-experience__toolbar">
-        <Link to="/move" className="portal-experience__back">
+        <Link to={backTo} className="portal-experience__back">
           <Icon name="back" style="Line" size={20} />
-          <span className="portal-experience__back-label">Voltar</span>
+          <span className="portal-experience__back-label">{backLabel}</span>
         </Link>
         <h1 className="portal-experience__title">{title}</h1>
       </header>

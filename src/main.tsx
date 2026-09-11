@@ -12,8 +12,7 @@ import MensagensPage from './pages/MensagensFlow/MensagensPage'
 import ChatPage from './pages/MensagensFlow/ChatPage'
 import ReservasPage from './pages/ReservasPage/ReservasPage'
 import ReservasLandingPage from './pages/ReservasLandingPage/ReservasLandingPage'
-import TagMeAccessPage from './pages/TagMeAccessPage/TagMeAccessPage'
-import TagmeReservaPage from './pages/TagmeReserva/TagmeReservaPage'
+import TagmePreviewPage from './pages/TagmePreviewPage/TagmePreviewPage'
 import ReservaConfirmPage from './pages/ReservaFlow/ReservaConfirmPage'
 import ReservaSuccessPage from './pages/ReservaFlow/ReservaSuccessPage'
 import RestaurantPage from './pages/RestaurantPage/RestaurantPage'
@@ -55,10 +54,11 @@ createRoot(document.getElementById('root')!).render(
                 /salao, com barra "Voltar" para /move (ver ReservasPage). */}
             <Route path="/reservas" element={<ReservasPage />} />
 
-            {/* TagMe (fluxo "Prévia Tagme" da landing): tela de acesso + Painel
-                do app Reserva – telas fluidas próprias, fora do ClientFrame. */}
-            <Route path="/tagme" element={<TagMeAccessPage />} />
-            <Route path="/tagme/reservas" element={<TagmeReservaPage />} />
+            {/* TagMe (fluxo "Prévia Tagme" da landing): substitui a antiga tela
+                de acesso + Painel do app Reserva pelo protótipo "Gestão de
+                Reservas" embutido em iframe (ver TagmePreviewPage), fora do
+                ClientFrame – tela cheia. */}
+            <Route path="/tagme" element={<TagmePreviewPage />} />
 
             {/* Visão Cliente: cada rota é envolvida pelo ClientFrame, que abaixo
                 do breakpoint de tablet renderiza normal e, em telas grandes/TV,

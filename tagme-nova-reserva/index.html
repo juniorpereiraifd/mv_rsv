@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tagme — Gestão de Reservas (Protótipo)</title>
+<meta name="description" content="Protótipo navegável do fluxo de Nova Reserva — Tagme" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ============================================================
+     Sprite de ícones (estilo outline, aproximando os ícones do
+     Figma — não foi possível baixar os SVGs originais por
+     restrição de rede neste ambiente de geração; ver README).
+     ============================================================ -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+<defs>
+<symbol viewBox="0 0 24 24" id="i-chevron-down" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-chevron-left" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-chevron-right" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-x" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-search" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-qr" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><line x1="14" y1="14" x2="14" y2="21"/><line x1="21" y1="14" x2="21" y2="14.01"/><line x1="14" y1="21" x2="21" y2="21"/><line x1="17.5" y1="17.5" x2="17.5" y2="17.51"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-download" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-more" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-sort" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11"/><path d="M3 12h7"/><path d="M3 17h4"/><path d="M17 4v16"/><path d="M13 17l4 4 4-4"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-tag" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 12 22l-9-9V3h10l7.59 8.59a2 2 0 0 1 0 2.82z"/><circle cx="7.5" cy="7.5" r="1.5"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-clock" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-users" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-user" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-edit" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.83 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-chair" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v5"/><path d="M6 10h12v6H6z"/><path d="M6 16l-1 6"/><path d="M18 16l1 6"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-calendar" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-phone" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.78.65 2.62a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.46-1.22a2 2 0 0 1 2.11-.45c.84.31 1.72.53 2.62.65A2 2 0 0 1 22 16.92z"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-mail" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-flag" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="3"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-plus" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-minus" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-check" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-check-circle" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-table" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="9" x2="9" y2="21"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-store" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9a2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0"/><path d="M4 9v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9"/><path d="M9 21v-6h6v6"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-home" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-book" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-layers" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-panel" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-sliders" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-arrow-left" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-message" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-shield" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-star" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-grid" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-chevrons-left" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></symbol>
+<symbol viewBox="0 0 24 24" id="i-device" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="18" r="0.6" fill="currentColor" stroke="none"/></symbol>
+</defs>
+</svg>
+
+<div class="app">
+
+  <!-- ===================== Sidebar ===================== -->
+  <aside class="sidebar" id="sidebar">
+
+    <!-- Estado recolhido (rail de ícones) -->
+    <div class="sidebar-rail" id="sidebar-rail">
+      <button class="sidebar-toggle" id="btn-sidebar-expand" aria-label="Expandir menu" title="Expandir menu"><span class="icon"><svg class="icon-svg"><use href="#i-panel"/></svg></span></button>
+      <nav class="sidebar-nav" aria-label="Navegação principal">
+        <button class="sidebar-link" title="Início"><span class="icon"><svg class="icon-svg"><use href="#i-home"/></svg></span></button>
+        <button class="sidebar-link active" title="Gestão de Reservas"><span class="icon"><svg class="icon-svg"><use href="#i-calendar"/></svg></span></button>
+        <button class="sidebar-link" title="Cardápio"><span class="icon"><svg class="icon-svg"><use href="#i-book"/></svg></span></button>
+        <button class="sidebar-link" title="Outros módulos"><span class="icon"><svg class="icon-svg"><use href="#i-layers"/></svg></span></button>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="sidebar-link" title="Modo do menu" style="width:32px"><span class="icon"><svg class="icon-svg"><use href="#i-sliders"/></svg></span></button>
+      </div>
+    </div>
+
+    <!-- Estado expandido (menu com rótulos e navegação aninhada) -->
+    <div class="sidebar-full" id="sidebar-full" hidden>
+      <div class="sb-header">
+        <span class="sb-logo">tagme</span>
+        <button class="sb-toggle" id="btn-sidebar-collapse" aria-label="Recolher menu" title="Recolher menu"><span class="icon"><svg class="icon-svg"><use href="#i-chevrons-left"/></svg></span></button>
+      </div>
+      <nav class="sb-nav" aria-label="Navegação principal">
+        <a class="sb-link" href="#"><span class="icon"><svg class="icon-svg"><use href="#i-grid"/></svg></span>Painel</a>
+
+        <div class="sb-group">
+          <button type="button" class="sb-link sb-parent active">
+            <span class="icon"><svg class="icon-svg"><use href="#i-grid"/></svg></span>Produto
+            <span class="sb-chev icon"><svg class="icon-svg"><use href="#i-chevron-right"/></svg></span>
+          </button>
+          <div class="sb-children">
+            <div class="sb-group">
+              <button type="button" class="sb-link sb-parent active">
+                <span class="icon"><svg class="icon-svg"><use href="#i-book"/></svg></span>Reservas
+                <span class="sb-chev icon"><svg class="icon-svg"><use href="#i-chevron-right"/></svg></span>
+              </button>
+              <div class="sb-children">
+                <a class="sb-link active" href="#"><span class="icon"><svg class="icon-svg"><use href="#i-device"/></svg></span>Gestão</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="sb-footer">
+        <button type="button" class="sb-admin">
+          <span class="icon"><svg class="icon-svg"><use href="#i-grid"/></svg></span>Admin
+          <span class="icon"><svg class="icon-svg"><use href="#i-chevron-down"/></svg></span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===================== Header ===================== -->
+  <header class="topbar">
+    <button class="topbar-pill" id="btn-restaurant">
+      <span class="status-dot" title="Atualizações em tempo real conectadas"></span>
+      <span class="restaurant-name">QuatroEstilos</span>
+      <span class="icon"><svg class="icon-svg"><use href="#i-chevron-down"/></svg></span>
+    </button>
+  </header>
+
+  <!-- ===================== Conteúdo principal ===================== -->
+  <main class="main-content">
+    <h1 class="page-title">Gestão de Reservas</h1>
+
+    <div class="toolbar-card">
+      <div class="toolbar-row1">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div class="tabs-visualizar">
+            <button class="tab-btn" id="tab-salao">Salão</button>
+            <button class="tab-btn active" id="tab-reserva">Reserva</button>
+          </div>
+          <span class="pill-badge">127 lugares</span>
+        </div>
+        <div class="toolbar-actions">
+          <button class="btn btn-primary" id="btn-nova-reserva">Nova reserva</button>
+          <button class="btn"><span class="icon"><svg class="icon-svg"><use href="#i-qr"/></svg></span>Escanear QR</button>
+          <button class="btn"><span class="icon"><svg class="icon-svg"><use href="#i-download"/></svg></span>Exportar CSV</button>
+          <button class="btn" aria-label="Mais opções"><span class="icon"><svg class="icon-svg"><use href="#i-more"/></svg></span></button>
+        </div>
+      </div>
+      <div class="filters-row">
+        <button class="chip chip-search" id="btn-buscar-cliente"><span class="icon"><svg class="icon-svg"><use href="#i-search"/></svg></span>Buscar cliente</button>
+        <button class="chip active" data-filter="todos">Todos <span class="icon"><svg class="icon-svg"><use href="#i-chevron-down"/></svg></span></button>
+        <button class="chip" data-filter="aguardando">Pendentes</button>
+        <button class="chip" data-filter="aberto">Em aberto</button>
+        <button class="chip">Todos os status <span class="icon"><svg class="icon-svg"><use href="#i-chevron-down"/></svg></span></button>
+        <button class="chip">Origem <span class="icon"><svg class="icon-svg"><use href="#i-chevron-down"/></svg></span></button>
+        <button class="chip">Salão <span class="icon"><svg class="icon-svg"><use href="#i-chevron-down"/></svg></span></button>
+        <button class="chip">Pessoas <span class="icon"><svg class="icon-svg"><use href="#i-chevron-down"/></svg></span></button>
+        <button class="chip chip-sort"><span class="icon"><svg class="icon-svg"><use href="#i-sort"/></svg></span>Horário ↑, pessoas ↑</button>
+      </div>
+    </div>
+
+    <section class="reservations-panel" id="reservations-panel">
+      <div class="reservations-head">
+        <div>
+          <h2>Reservas</h2>
+          <div class="sub" id="res-count">3 / 3 Reservas</div>
+        </div>
+      </div>
+      <hr class="res-divider" />
+      <div id="reservations-list">
+        <!-- linhas geradas via JS a partir de dados de exemplo, ver app.js -->
+      </div>
+    </section>
+
+    <section class="salao-panel" id="salao-panel" hidden>
+      <button class="salao-head" id="salao-toggle">
+        <span>Mapa de mesa</span>
+        <span class="icon"><svg class="icon-svg"><use href="#i-chevron-down"/></svg></span>
+      </button>
+      <div class="salao-body" id="salao-body">
+        <!-- grupos de capacidade gerados via JS -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <div class="footer-pill">
+      <span class="logo">tagme</span>
+      <span class="copy">© 2026 Tagme. Todos os direitos reservados. Versão 1.4.0</span>
+    </div>
+  </footer>
+
+  <div class="date-float">
+    <div class="date-float-handle"><span></span></div>
+    <div class="date-float-body">
+      <button class="date-nav-btn" aria-label="Dia anterior"><span class="icon"><svg class="icon-svg"><use href="#i-chevron-left"/></svg></span></button>
+      <div class="date-float-label">
+        <div class="date" id="float-date">11 set. 2026</div>
+        <button class="today">Hoje</button>
+      </div>
+      <button class="date-nav-btn" aria-label="Próximo dia"><span class="icon"><svg class="icon-svg"><use href="#i-chevron-right"/></svg></span></button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== Overlay: Buscar cliente (dialog) ===================== -->
+<div class="overlay center" id="overlay-search">
+  <div class="dialog-card">
+    <div class="dialog-head">
+      <h3>Buscar cliente</h3>
+      <input type="text" class="dialog-search-input" id="search-input" placeholder="Nome, telefone, e-mail ou código" autocomplete="off" />
+      <div class="dialog-hint">A busca usa só o estabelecimento selecionado.</div>
+    </div>
+    <div class="dialog-body" id="search-results">
+      <div class="dialog-empty">Digite pelo menos 2 caracteres.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== Overlay: Drawer "Adicionar reserva" ===================== -->
+<div class="overlay right" id="overlay-drawer">
+  <div class="drawer">
+    <div class="drawer-head">
+      <h3 id="drawer-title">Adicionar reserva</h3>
+      <button class="drawer-close" id="btn-close-drawer" aria-label="Fechar"><span class="icon"><svg class="icon-svg"><use href="#i-x"/></svg></span></button>
+    </div>
+    <hr class="rule" />
+    <div class="drawer-scroll">
+
+      <!-- PASSO 1: identificar cliente -->
+      <div data-step="identify">
+        <div class="form-section" style="padding-top:16px;">
+          <div class="field-row" style="margin-bottom:8px;">
+            <div class="field-main">
+              <div style="display:flex; gap:8px; margin-bottom:10px;">
+                <button class="chip" data-search-mode="phone" style="border-color:var(--border);background:#fff;">Telefone</button>
+                <button class="chip" data-search-mode="name" style="border-color:var(--border);background:#fff;">Nome ou email</button>
+              </div>
+              <input type="text" class="text-input" id="drawer-search-input" placeholder="11 96123-4567" />
+              <div class="field-hint">Digite pelo menos 2 caracteres para buscar.</div>
+            </div>
+          </div>
+          <div id="drawer-search-results" style="margin-top:8px;"></div>
+        </div>
+      </div>
+
+      <!-- PASSO 2: adicionar novo cliente -->
+      <div data-step="add-client" hidden>
+        <div class="drawer-subhead">
+          <button class="back-btn" data-back-to="identify"><span class="icon"><svg class="icon-svg"><use href="#i-arrow-left"/></svg></span>Voltar</button>
+          <h4>Adicionar novo cliente</h4>
+        </div>
+        <div class="form-section">
+          <div class="field-row">
+            <div class="field-main">
+              <label class="field-label">Telefone</label>
+              <input type="tel" class="text-input" id="nc-telefone" placeholder="+55 11 96123-4567" />
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-main">
+              <label class="field-label">Nome</label>
+              <input type="text" class="text-input" id="nc-nome" placeholder="Digite o nome" />
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-main">
+              <label class="field-label">Sobrenome</label>
+              <input type="text" class="text-input" id="nc-sobrenome" placeholder="Digite o sobrenome" />
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-main">
+              <label class="field-label">Email (Opcional)</label>
+              <input type="email" class="text-input" id="nc-email" placeholder="Digite o email" />
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-main">
+              <label class="field-label">Gênero (Opcional)</label>
+              <div class="select-wrap">
+                <select class="select-input" id="nc-genero">
+                  <option value="">Selecionar</option>
+                  <option>Feminino</option>
+                  <option>Masculino</option>
+                  <option>Prefiro não dizer</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-main">
+              <label class="field-label">Aniversário (Opcional)</label>
+              <input type="text" class="text-input" id="nc-aniversario" placeholder="Digite a data de nascimento" />
+            </div>
+          </div>
+          <div class="field-row" style="align-items:center;">
+            <div class="field-main" style="display:flex; align-items:center; justify-content:space-between;">
+              <label class="field-label" style="margin:0;">VIP</label>
+              <button class="switch" id="nc-vip" type="button"><span class="knob"></span></button>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-main">
+              <label class="field-label">Observação (Opcional)</label>
+              <textarea class="textarea-input" id="nc-observacao" placeholder="Digite a observação"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PASSO 3: formulário principal da reserva -->
+      <div data-step="reservation" hidden>
+        <div class="client-summary">
+          <div class="avatar" id="client-avatar">A</div>
+          <div class="info">
+            <div class="name-row"><b id="client-name">Anna Cabral</b></div>
+            <div class="phone-row"><span class="icon"><svg class="icon-svg"><use href="#i-phone"/></svg></span><span id="client-phone">5521969773856</span></div>
+            <button class="trocar-cliente" data-back-to="identify">Trocar cliente</button>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div class="section-title">Dados da reserva</div>
+
+          <div class="field-row stepper-priority-row" style="margin-bottom:24px;">
+            <div class="field-icon icon"><svg class="icon-svg"><use href="#i-users"/></svg></div>
+            <div class="field-block">
+              <label class="small-label">Pessoas</label>
+              <div class="stepper">
+                <button type="button" data-step-qty="-1" aria-label="Diminuir"><svg class="icon-svg" style="width:16px;height:16px"><use href="#i-minus"/></svg></button>
+                <input type="text" id="qty-pessoas" value="2" inputmode="numeric" />
+                <button type="button" data-step-qty="1" aria-label="Aumentar"><svg class="icon-svg" style="width:16px;height:16px"><use href="#i-plus"/></svg></button>
+              </div>
+            </div>
+            <div class="field-block" style="flex:0 0 auto;">
+              <label class="small-label">Prioridade</label>
+              <button type="button" class="priority-btn" id="btn-prioridade" title="Marcar como prioritária"><svg class="icon-svg" style="width:16px;height:16px"><use href="#i-flag"/></svg></button>
+            </div>
+          </div>
+
+          <div class="field-row" id="row-status">
+            <div class="field-icon icon"><svg class="icon-svg"><use href="#i-check-circle"/></svg></div>
+            <div class="field-main">
+              <label class="field-label">Status</label>
+              <div class="select-wrap">
+                <select class="select-input" id="f-status">
+                  <option value="Novo">Novo</option>
+                  <option value="Aguardando">Aguardando aprovação</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="field-row" id="row-data">
+            <div class="field-icon icon"><svg class="icon-svg"><use href="#i-calendar"/></svg></div>
+            <div class="field-main">
+              <label class="field-label">Data da reserva</label>
+              <div class="calendar-box">
+                <div class="calendar-inner">
+                  <div class="calendar-nav">
+                    <button type="button" id="cal-prev"><svg class="icon-svg" style="width:12px;height:12px"><use href="#i-chevron-left"/></svg></button>
+                    <span class="month-label" id="cal-month-label">Setembro, 2026</span>
+                    <button type="button" id="cal-next"><svg class="icon-svg" style="width:12px;height:12px"><use href="#i-chevron-right"/></svg></button>
+                  </div>
+                  <div class="calendar-grid" id="cal-grid"><!-- gerado via JS --></div>
+                </div>
+              </div>
+              <div class="field-error">Selecione a data da reserva.</div>
+            </div>
+          </div>
+
+          <div class="field-row" id="row-salao">
+            <div class="field-icon icon"><svg class="icon-svg"><use href="#i-store"/></svg></div>
+            <div class="field-main">
+              <label class="field-label">Salão</label>
+              <div class="select-wrap">
+                <select class="select-input" id="f-salao">
+                  <option value="">Selecionar salão</option>
+                  <option>Salão principal</option>
+                  <option>Terraço</option>
+                  <option>Área externa</option>
+                </select>
+              </div>
+              <div class="field-error">Selecione o salão.</div>
+            </div>
+          </div>
+
+          <div class="field-row" id="row-origem">
+            <div class="field-icon icon"><svg class="icon-svg"><use href="#i-tag"/></svg></div>
+            <div class="field-main">
+              <label class="field-label">Origem</label>
+              <div class="select-wrap">
+                <select class="select-input" id="f-origem">
+                  <option>Reserva online</option>
+                  <option>Telefone</option>
+                  <option>Walk-in</option>
+                  <option>WhatsApp</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="field-row" id="row-horario" style="flex-direction:column;">
+            <div style="display:flex; gap:4px; width:100%;">
+              <div class="field-icon icon"><svg class="icon-svg"><use href="#i-clock"/></svg></div>
+              <div class="field-main">
+                <label class="field-label">Horário</label>
+                <div class="time-grid" id="time-grid"><!-- gerado via JS --></div>
+                <button type="button" class="time-toggle-more" id="time-toggle-more">Ver mais horários</button>
+                <div class="field-error">Selecione um horário.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="field-row" id="row-mesa">
+            <div class="field-icon icon"><svg class="icon-svg"><use href="#i-chair"/></svg></div>
+            <div class="field-main">
+              <label class="field-label">Número da mesa</label>
+              <button type="button" class="mesa-btn" id="btn-escolher-mesa">
+                <span id="mesa-btn-label">Escolher mesa(s)</span>
+                <span class="icon"><svg class="icon-svg" style="width:16px;height:16px"><use href="#i-chevron-right"/></svg></span>
+              </button>
+              <div class="mesa-chip-row" id="mesa-chip-row" style="margin-top:8px;"></div>
+            </div>
+          </div>
+
+          <div class="section-title" style="margin-top:8px;">Informações opcionais</div>
+
+          <div class="field-row">
+            <div class="field-icon icon"><svg class="icon-svg"><use href="#i-user"/></svg></div>
+            <div class="field-main">
+              <label class="field-label">Responsável pela reserva</label>
+              <input type="text" class="text-input" id="f-responsavel" placeholder="Nome do responsável" />
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field-icon icon"><svg class="icon-svg"><use href="#i-tag"/></svg></div>
+            <div class="field-main">
+              <label class="field-label">Tag de evento</label>
+              <input type="text" class="text-input" id="f-tag-evento" placeholder="Ex.: aniversário, casal, negócios" />
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field-icon icon"><svg class="icon-svg"><use href="#i-message"/></svg></div>
+            <div class="field-main">
+              <label class="field-label">Notas do cliente</label>
+              <textarea class="textarea-input" id="f-notas" placeholder="Notas do cliente para esta reserva"></textarea>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field-icon icon"><svg class="icon-svg"><use href="#i-shield"/></svg></div>
+            <div class="field-main">
+              <label class="field-label">Observação interna</label>
+              <textarea class="textarea-input" id="f-obs-interna" placeholder="Observação interna da hostess"></textarea>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="drawer-footer" id="drawer-footer" hidden>
+      <button class="btn-save" id="btn-salvar-reserva">Salvar reserva</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== Overlay: escolher mesa ===================== -->
+<div class="overlay center" id="overlay-mesa">
+  <div class="dialog-card" style="width:420px;">
+    <div class="dialog-head" style="border-bottom:1px solid var(--border);">
+      <h3 style="margin-bottom:0;">Vincular mesa</h3>
+    </div>
+    <div class="mesa-picker" id="mesa-picker-root">
+      <!-- gerado via JS -->
+    </div>
+  </div>
+</div>
+
+<!-- ===================== Overlay: RSVP ===================== -->
+<div class="overlay center" id="overlay-rsvp">
+  <div class="dialog-card dlg-wide">
+    <div class="dlg-head">
+      <div>
+        <h3>RSVP</h3>
+        <p class="dlg-subtitle">Veja abaixo as informações do email:</p>
+      </div>
+      <button class="dlg-close" id="btn-close-rsvp" aria-label="Fechar"><span class="icon"><svg class="icon-svg"><use href="#i-x"/></svg></span></button>
+    </div>
+    <div class="dlg-body">
+      <div class="dlg-info-row"><span class="icon"><svg class="icon-svg"><use href="#i-user"/></svg></span><div><div class="dlg-info-label">Nome e sobrenome</div><div class="dlg-info-value" id="rsvp-name">—</div></div></div>
+      <div class="dlg-info-row"><span class="icon"><svg class="icon-svg"><use href="#i-calendar"/></svg></span><div><div class="dlg-info-label">Data da reserva</div><div class="dlg-info-value" id="rsvp-date">—</div></div></div>
+      <div class="dlg-info-row"><span class="icon"><svg class="icon-svg"><use href="#i-users"/></svg></span><div><div class="dlg-info-label">Quantidade de pessoas</div><div class="dlg-info-value" id="rsvp-pessoas">—</div></div></div>
+      <div class="dlg-info-row"><span class="icon"><svg class="icon-svg"><use href="#i-clock"/></svg></span><div><div class="dlg-info-label">Horário</div><div class="dlg-info-value" id="rsvp-horario">—</div></div></div>
+      <div class="dlg-info-row"><span class="icon"><svg class="icon-svg"><use href="#i-store"/></svg></span><div><div class="dlg-info-label">Salão</div><div class="dlg-info-value" id="rsvp-salao">—</div></div></div>
+      <div class="dlg-info-row dlg-info-row-note"><span class="icon"><svg class="icon-svg"><use href="#i-flag"/></svg></span><p>Para sua comodidade, evite o atraso. Após o horário, sujeito à espera</p></div>
+    </div>
+    <div class="dlg-footer">
+      <button class="dlg-btn dlg-btn-ghost" id="btn-rsvp-cancelar">Cancelar</button>
+      <button class="dlg-btn dlg-btn-whatsapp" id="btn-rsvp-whatsapp"><span class="icon"><svg class="icon-svg"><use href="#i-message"/></svg></span>Whatsapp</button>
+      <button class="dlg-btn dlg-btn-primary" id="btn-rsvp-enviar">Enviar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== Overlay: Sentar cliente ===================== -->
+<div class="overlay center" id="overlay-sentar">
+  <div class="dialog-card dlg-medium">
+    <div class="dlg-head">
+      <h3>Sentar cliente</h3>
+      <button class="dlg-close" id="btn-close-sentar" aria-label="Fechar"><span class="icon"><svg class="icon-svg"><use href="#i-x"/></svg></span></button>
+    </div>
+    <div class="dlg-body">
+      <div class="dlg-info-row">
+        <span class="icon"><svg class="icon-svg"><use href="#i-user"/></svg></span>
+        <div><div class="dlg-info-label">Nome e sobrenome</div><div class="dlg-info-value" id="sentar-name">—</div></div>
+        <span class="dlg-badge">Reserva de mesa</span>
+      </div>
+      <div class="dlg-info-row"><span class="icon"><svg class="icon-svg"><use href="#i-calendar"/></svg></span><div><div class="dlg-info-label">Data da reserva</div><div class="dlg-info-value" id="sentar-date">—</div></div></div>
+      <div class="dlg-info-row"><span class="icon"><svg class="icon-svg"><use href="#i-users"/></svg></span><div><div class="dlg-info-label">Quantidade de pessoas</div><div class="dlg-info-value" id="sentar-pessoas">—</div></div></div>
+      <div class="field-row" style="margin-top:16px;margin-bottom:16px;">
+        <div class="field-main">
+          <label class="field-label">Número da mesa</label>
+          <div class="mesa-btn" style="cursor:default;height:42px;"><span id="sentar-mesa" style="font-weight:600;color:var(--text-body);font-size:16px;">—</span><span class="icon"><svg class="icon-svg" style="width:16px;height:16px"><use href="#i-chevron-down"/></svg></span></div>
+        </div>
+      </div>
+      <div class="field-row" style="margin-bottom:0;">
+        <div class="field-main">
+          <label class="field-label">Observação</label>
+          <textarea class="textarea-input" id="sentar-obs" placeholder="Observação"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="dlg-footer">
+      <button class="dlg-btn dlg-btn-ghost" id="btn-sentar-cancelar">Cancelar</button>
+      <button class="dlg-btn dlg-btn-primary" id="btn-sentar-confirmar">Sentar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== Overlay: Cancelar reserva ===================== -->
+<div class="overlay center" id="overlay-cancelar">
+  <div class="dialog-card dlg-narrow">
+    <div class="dlg-head">
+      <h3>Cancelar reserva</h3>
+      <button class="dlg-close" id="btn-close-cancelar" aria-label="Fechar"><span class="icon"><svg class="icon-svg"><use href="#i-x"/></svg></span></button>
+    </div>
+    <div class="dlg-body">
+      <p class="dlg-confirm-text">Você gostaria de cancelar a reserva da mesa <span id="cancelar-mesa">—</span> do cliente <b id="cancelar-name">—</b>?</p>
+      <div class="field-row" style="margin-top:24px;margin-bottom:0;">
+        <div class="field-main">
+          <label class="field-label">Motivo</label>
+          <div class="select-wrap">
+            <select class="select-input" id="cancelar-motivo" style="height:36px;">
+              <option value="">Selecionar</option>
+              <option value="Cliente solicitou cancelamento">Cliente solicitou cancelamento</option>
+              <option value="Cliente não compareceu">Cliente não compareceu</option>
+              <option value="Erro no cadastro">Erro no cadastro</option>
+              <option value="Mesa indisponível">Mesa indisponível</option>
+              <option value="Outro">Outro</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dlg-footer">
+      <button class="dlg-btn dlg-btn-ghost" id="btn-cancelar-voltar">Cancelar</button>
+      <button class="dlg-btn dlg-btn-primary" id="btn-cancelar-excluir" disabled>Excluir</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== Overlay: informações da mesa (mapa de mesa) ===================== -->
+<div class="overlay center" id="overlay-mesa-info">
+  <div class="dialog-card" style="width:320px;">
+    <div class="dlg-head">
+      <h3 id="mesa-info-title">Mesa —</h3>
+      <button class="dlg-close" id="btn-close-mesa-info" aria-label="Fechar"><span class="icon"><svg class="icon-svg"><use href="#i-x"/></svg></span></button>
+    </div>
+    <div class="dlg-body" id="mesa-info-body"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast">
+  <span class="icon"><svg class="icon-svg"><use href="#i-check-circle"/></svg></span>
+  <span id="toast-text">Reserva criada com sucesso.</span>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
