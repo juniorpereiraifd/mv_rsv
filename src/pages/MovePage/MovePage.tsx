@@ -126,7 +126,7 @@ export default function MovePage() {
                   <h3 className="move-experience__name">Visão do cliente</h3>
                   <p className="move-experience__desc">
                     Veja como é fácil para nossos usuários encontrarem sua loja,
-                    fazerem o check-in na mesa e resgatarem benefícios. Simule a jornada.
+                    fazerem a reserva e resgatarem benefícios. Simule a jornada.
                   </p>
                 </div>
               </Link>
