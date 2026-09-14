@@ -165,38 +165,17 @@
   padding: 48px 48px 64px;
 }
 
-/* Lockup do logo (103:7962): 127.48×24. Cada peça do SVG é posicionada
- * absolutamente com as mesmas coordenadas de offset do design. */
+/* Lockup do logo (Figma 202:6989 "image 9195"): full lockup "iFood Move" em
+ * imagem única (408×105.5 no design; o PNG é 2x = 816×211). Renderiza em 1x. */
 .move-hero__logo {
-  position: relative;
-  width: 127.48px;
-  height: 24px;
+  width: 204px;
+  height: auto;
 }
 
-.move-hero__logo-mark {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 20.58px;
-  height: 24px;
-}
-
-.move-hero__logo-word {
-  position: absolute;
-}
-
-.move-hero__logo-word--1 {
-  left: 27.61px;
-  top: 6.19px;
-  width: 61.16px;
-  height: 11.87px;
-}
-
-.move-hero__logo-word--2 {
-  left: 91.87px;
-  top: 0.26px;
-  width: 35.61px;
-  height: 17.55px;
+.move-hero__logo-img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 /* Texto (103:7978): título 40/48 Bold branco (w620) e subtítulo 16/24 Medium

@@ -10,9 +10,7 @@ import heroPhotoUrl from '../../../bgmv.png'
 import deco1Url from '../../assets/move/deco-1.svg'
 import deco2Url from '../../assets/move/deco-2.svg'
 import deco3Url from '../../assets/move/deco-3.svg'
-import logoMarkUrl from '../../assets/move/logo-mark.svg'
-import logoWord1Url from '../../assets/move/logo-word-1.svg'
-import logoWord2Url from '../../assets/move/logo-word-2.svg'
+import logoUrl from '../../assets/move/logo.png'
 import './MovePage.css'
 
 /**
@@ -25,8 +23,9 @@ import './MovePage.css'
  *  1. Hero (103:7957): fundo vermelho #f91c4c (camada "Faixas" 103:7958 pinta
  *     por cima do #eb0033) com duas faixas em SVG ancoradas à borda direita –
  *     fora do canvas em 1306px, entram só em telas muito largas.
- *  2. Lockup do logo (103:7962) + título "Traga a força do iFood direto para a
- *     sua mesa." e subtítulo, alinhados ao canto superior esquerdo.
+ *  2. Lockup do logo (Figma 202:6989, full lockup "iFood Move" em imagem única)
+ *     + título "Traga a força do iFood direto para a sua mesa." e subtítulo,
+ *     alinhados ao canto superior esquerdo.
  *  3. Ilustração do hero (103:7990) com os 3 decos em `mix-blend-multiply`,
  *     ancorada no canto superior direito.
  *  4. Cardlist "Explore nossas experiências" (103:7996), branco, colado na base
@@ -89,12 +88,10 @@ export default function MovePage() {
           <img className="move-hero__photo" src={heroPhotoUrl} alt="" />
         </div>
 
-        {/* Lockup do logo (103:7962) + texto (103:7978) */}
+        {/* Lockup do logo (Figma 202:6989) + texto (103:7978) */}
         <div className="move-hero__content">
           <div className="move-hero__logo" aria-hidden="true">
-            <img className="move-hero__logo-mark" src={logoMarkUrl} alt="" />
-            <img className="move-hero__logo-word move-hero__logo-word--1" src={logoWord1Url} alt="" />
-            <img className="move-hero__logo-word move-hero__logo-word--2" src={logoWord2Url} alt="" />
+            <img className="move-hero__logo-img" src={logoUrl} alt="" />
           </div>
 
           <div className="move-hero__text">
