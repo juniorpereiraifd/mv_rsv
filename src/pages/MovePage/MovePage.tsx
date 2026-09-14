@@ -105,6 +105,16 @@ export default function MovePage() {
               com facilidade e vivam a experiência completa que só o seu
               atendimento presencial oferece.
             </p>
+
+            {/* CTA "Cadastrar meu interesse" (Figma 154:6211) – pílula branca
+                abaixo do subtítulo, exibida apenas em larguras < 1025px (ver
+                `.move-hero__cta` no CSS). Abre a rota /cadastro, que embute o
+                formulário do Google Forms em iframe full-screen – mesma
+                mecânica das outras experiências embutidas. */}
+            <Link to="/cadastro" className="move-hero__cta">
+              Cadastrar meu interesse
+              <Icon name="chevron-right" style="Line" size={16} />
+            </Link>
           </div>
         </div>
 

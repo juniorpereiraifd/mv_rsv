@@ -206,6 +206,52 @@
   color: #ffffff;
 }
 
+/* CTA "Cadastrar meu interesse" (154:6211): pílula branca com o texto em
+ * #141414 e o chevron à direita, alinhada à esquerda do bloco de texto. Fica
+ * oculta por padrão e só aparece em larguras < 1025px (regra no fim do
+ * arquivo) – o complemento da faixa `768–1024px` do título. */
+.move-hero__cta {
+  display: none;
+  align-self: flex-start;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: #ffffff;
+  color: var(--color-text-primary);
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: 16px;
+  line-height: 24px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  /* O CTA é um <Link> (vira <a>), que herda sublinhado e cor de link do UA. */
+  text-decoration: none;
+}
+
+.move-hero__cta:hover,
+.move-hero__cta:focus-visible {
+  background: var(--color-surface-secondary);
+}
+
+/* O glifo `chevron-right` do Icon.tsx aponta U+E88E, que na fonte da marca
+ * desenha um chevron para CIMA (∧) – a fonte não tem um glifo de chevron
+ * apontando para a direita nesta faixa. Rotacionamos 90° para obter o `›` do
+ * design, mesmo precedente do FilterSheet (que rotaciona 180° o chevron-down).
+ * Não corrigimos o mapa do Icon.tsx aqui porque o mesmo glifo é usado em
+ * outros lugares (ex.: PerfilPage) e isso é uma mudança fora deste escopo. */
+.move-hero__cta .icon {
+  transform: rotate(90deg);
+}
+
+/* Mostra a CTA só abaixo de 1025px (onde o hero ainda tem o bloco de texto). */
+@media (max-width: 1024px) {
+  .move-hero__cta {
+    display: flex;
+  }
+}
+
 /* Card de experiências (103:7996) – branco, raio 24, com 4px de vermelho
  * visível nas bordas (o design sobrepõe o card ao hero). O respiro antes do
  * card vem do `padding-bottom: 64px` do `.move-hero__content`; sem

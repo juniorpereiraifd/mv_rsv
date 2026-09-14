@@ -11,6 +11,7 @@ import PerfilPage from './pages/PerfilPage/PerfilPage'
 import MensagensPage from './pages/MensagensFlow/MensagensPage'
 import ChatPage from './pages/MensagensFlow/ChatPage'
 import ReservasPage from './pages/ReservasPage/ReservasPage'
+import CadastroPage from './pages/CadastroPage/CadastroPage'
 import ReservasLandingPage from './pages/ReservasLandingPage/ReservasLandingPage'
 import TagmePreviewPage from './pages/TagmePreviewPage/TagmePreviewPage'
 import FoodsterPreviewPage from './pages/FoodsterPreviewPage/FoodsterPreviewPage'
@@ -49,6 +50,11 @@ createRoot(document.getElementById('root')!).render(
             <Route path="/move" element={<MovePage />} />
             <Route path="/salao" element={<SalaoPage />} />
             <Route path="/reservas/visao-geral" element={<ReservasLandingPage />} />
+
+            {/* Cadastro de interesse (CTA do MovePage abaixo de 1025px): formulário
+                do Google embutido em iframe full-screen com barra "Voltar" para
+                /move (ver CadastroPage) – mesma mecânica de /salao e /reservas. */}
+            <Route path="/cadastro" element={<CadastroPage />} />
 
             {/* Visão de Reservas: embute o portal de reservas externo (Get In,
                 ginb2b.vercel.app) em iframe full-screen – mesma mecânica de
