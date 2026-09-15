@@ -12,8 +12,8 @@
  * Persistência em Vercel KV (chave `checkins`) com fallback p/ Blob ou memória –
  * ver `store.ts`.
  */
-import { readCheckins, writeCheckins, type Checkin } from './store'
-import type { CheckinHandler, HttpRequest } from './http'
+import { readCheckins, writeCheckins, type Checkin } from './store.js'
+import type { CheckinHandler, HttpRequest } from './http.js'
 
 /** Ordena a lista por `at` decrescente (mais recente primeiro). */
 function mostRecentFirst(list: Checkin[]): Checkin[] {

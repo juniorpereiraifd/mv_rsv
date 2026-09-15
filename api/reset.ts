@@ -5,8 +5,8 @@
  *
  * Retorna `{ ok: true }` mesmo quando já não havia dados (idempotente).
  */
-import { clearCheckins } from './store'
-import type { CheckinHandler } from './http'
+import { clearCheckins } from './store.js'
+import type { CheckinHandler } from './http.js'
 
 export default (async (req, res) => {
   if (req.method !== 'POST') {

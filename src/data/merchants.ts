@@ -3,7 +3,7 @@ import type { RatingVariant } from '../components/Rating/Rating'
 import type { BadgeVariant } from '../components/Badge/Badge'
 import type { TagsVariant } from '../components/Tags/Tags'
 import type { IconName } from '../components/Icon/Icon'
-import { PHOTOS } from './photos'
+import { PHOTOS } from './photos.js'
 
 /**
  * Fonte única de dados das lojas ("Comer Fora"). Regenerado por

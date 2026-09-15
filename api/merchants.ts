@@ -9,8 +9,8 @@
  * serverless da Vercel (esbuild), que remove os `import type` da camada de
  * dados. Os imports de componentes em `merchants.ts` são só de tipo.
  */
-import { MERCHANTS } from '../src/data/merchants'
-import type { CheckinHandler } from './http'
+import { MERCHANTS } from '../src/data/merchants.js'
+import type { CheckinHandler } from './http.js'
 
 export default (async (req, res) => {
   if (req.method !== 'GET') {
